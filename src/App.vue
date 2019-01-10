@@ -52,9 +52,7 @@
         </v-layout>
       </v-container>
     </v-content>
-    <!--<v-footer color="indigo" app>-->
-      <!--<span class="white&#45;&#45;text">&copy; 2017</span>-->
-    <!--</v-footer>-->
+
     <v-bottom-nav
             :active.sync="bottomNav"
             :color="color"
@@ -63,23 +61,29 @@
             dark
     >
       <v-btn dark>
-        <span>Video</span>
-        <v-icon>ondemand_video</v-icon>
+        <span>消息</span>
+        <v-icon :color="'darken-2'">chat</v-icon>
       </v-btn>
 
       <v-btn dark>
-        <span>Music</span>
-        <v-icon>music_note</v-icon>
+        <span>商城</span>
+        <v-icon>store_mall_directory</v-icon>
       </v-btn>
 
       <v-btn dark>
-        <span>Book</span>
-        <v-icon>book</v-icon>
+        <span>工作</span>
+        <v-icon>work</v-icon>
+      </v-btn>
+
+
+      <v-btn dark>
+        <span>通讯录</span>
+        <v-icon>people</v-icon>
       </v-btn>
 
       <v-btn dark>
-        <span>Image</span>
-        <v-icon>image</v-icon>
+        <span>我的</span>
+        <v-icon>face</v-icon>
       </v-btn>
     </v-bottom-nav>
   </v-app>
