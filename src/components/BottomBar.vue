@@ -1,12 +1,10 @@
 <template>
   <v-bottom-nav
-          :active.sync="bottomNav"
-          :color="color"
           :value="true"
           app
           dark
   >
-    <v-btn v-for="(item,index) in viewObj">
+    <v-btn v-for="(item,index) in viewObj" :key="index" @click="test(item.pathName)">
       <span>{{item.name}}</span>
       <v-icon>{{item.icon}}</v-icon>
     </v-btn>
@@ -21,26 +19,29 @@ import { Vue, Component } from 'vue-property-decorator'
 
 @Component({})
 export default class BottomBar extends Vue {
-  viewObj = [{
-    name:'消息',
+  private viewObj = [{
+    name: '消息',
     icon: 'chat',
-    url: ''
-  },{
-    name:'商城',
+    pathName: ''
+  }, {
+    name: '商城',
     icon: 'store_mall_directory',
-    url: ''
-  },{
-    name:'工作',
+    pathName: ''
+  }, {
+    name: '工作',
     icon: 'work',
-    url: ''
-  },{
-    name:'通讯录',
+    pathName: 'work'
+  }, {
+    name: '通讯录',
     icon: 'people',
-    url: ''
-  },{
-    name:'我的',
+    pathName: ''
+  }, {
+    name: '我的',
     icon: 'face',
-    url: ''
+    pathName: ''
   }]
+  public test (path: string) {
+    this.$router.push({ name: path })
+  }
 }
 </script>
