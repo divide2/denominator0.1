@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Layout from './views/Layout.vue';
+import FormLayout from './views/FormLayout.vue';
 
 Vue.use(Router);
 
@@ -17,6 +18,18 @@ export default new Router({
           path: '/work',
           name: 'work',
           component: () => import('./views/work/Work.vue'),
+        }
+      ]
+    },
+    {
+      path: '/purchase',
+      name: 'formRoot',
+      component: FormLayout,
+      children: [
+        {
+          path: '',
+          name: 'purchase',
+          component: () => import('./views/purchase/Purchase.vue'),
         }
       ]
     },

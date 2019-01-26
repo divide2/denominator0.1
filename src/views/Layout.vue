@@ -28,13 +28,9 @@
             <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
             <v-toolbar-title>Application</v-toolbar-title>
         </v-toolbar>
-
-
         <v-content>
-            <v-container fluid fill-height>
-                <v-layout
-                        justify-center
-                >
+            <v-container grid-list-md text-xs-center>
+                <v-layout>
                     <transition>
                         <keep-alive>
                             <router-view>
@@ -44,7 +40,6 @@
                 </v-layout>
             </v-container>
         </v-content>
-
         <bottom-bar></bottom-bar>
     </v-app>
 

@@ -1,28 +1,25 @@
 <template>
-    <div>
-        <!--<v-carousel>-->
-        <!--<v-carousel-item-->
-        <!--v-for="(item,i) in images"-->
-        <!--:key="i"-->
-        <!--:src="item.path"-->
-        <!--&gt;</v-carousel-item>-->
-        <!--</v-carousel>-->
-        <v-layout align-center justify-space-around>
-            <v-flex>
-                <v-flex xs12>
-                        <v-layout align-center justify-space-around>
-                            <v-icon x-large>home</v-icon>
-                            <v-icon x-large>event</v-icon>
-                            <v-icon x-large>info</v-icon>
-                            <v-icon x-large>info</v-icon>
-                            <v-icon x-large>info</v-icon>
-                        </v-layout>
-                </v-flex>
+    <v-layout row wrap>
 
-            </v-flex>
+        <v-layout column @click="toPurchase">
+            <v-icon large color="green darken-2">add_shopping_cart</v-icon>
+            <span>采购</span>
         </v-layout>
 
-    </div>
+        <v-layout column>
+            <v-icon large color="orange darken-2">redeem</v-icon>
+            <span>商品</span>
+        </v-layout>
+        <v-layout column>
+            <v-icon large color="purple darken-2">store</v-icon>
+            <span>库存</span>
+        </v-layout>
+        <v-layout column>
+            <v-icon large color="blue darken-2">assignment</v-icon>
+            <span>订单</span>
+        </v-layout>
+    </v-layout>
+
 </template>
 
 <script lang="ts">
@@ -31,9 +28,9 @@ import {Component, Vue} from 'vue-property-decorator'
 @Component({})
 export default class Work extends Vue {
 
-  public images = [
-    {path: 'http://pic26.nipic.com/20121227/10193203_131357536000_2.jpg'},
-    {path: 'http://www.pptok.com/wp-content/uploads/2012/08/xunguang-4.jpg'}
-  ]
+  public toPurchase() {
+    this.$router.push('/purchase')
+  }
+
 }
 </script>
