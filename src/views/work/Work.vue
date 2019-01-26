@@ -1,22 +1,39 @@
 <template>
-  <div>
-    <v-btn color="info" v-for="(item,index) in funcs">
-      <v-iocn light>
+    <div>
+        <!--<v-carousel>-->
+        <!--<v-carousel-item-->
+        <!--v-for="(item,i) in images"-->
+        <!--:key="i"-->
+        <!--:src="item.path"-->
+        <!--&gt;</v-carousel-item>-->
+        <!--</v-carousel>-->
+        <v-layout align-center justify-space-around>
+            <v-flex>
+                <v-flex xs12>
+                        <v-layout align-center justify-space-around>
+                            <v-icon x-large>home</v-icon>
+                            <v-icon x-large>event</v-icon>
+                            <v-icon x-large>info</v-icon>
+                            <v-icon x-large>info</v-icon>
+                            <v-icon x-large>info</v-icon>
+                        </v-layout>
+                </v-flex>
 
-      </v-iocn>
-    </v-btn>
-  </div>
+            </v-flex>
+        </v-layout>
+
+    </div>
 </template>
-<style>
-</style>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import {Component, Vue} from 'vue-property-decorator'
 
 @Component({})
 export default class Work extends Vue {
-  private funcs=[{
-    name: '采购'
-  }]
+
+  public images = [
+    {path: 'http://pic26.nipic.com/20121227/10193203_131357536000_2.jpg'},
+    {path: 'http://www.pptok.com/wp-content/uploads/2012/08/xunguang-4.jpg'}
+  ]
 }
 </script>

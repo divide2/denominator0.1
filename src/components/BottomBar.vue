@@ -2,7 +2,7 @@
   <v-bottom-nav
           :value="true"
           app
-          dark
+          light
   >
     <v-btn v-for="(item,index) in viewObj" :key="index" @click="test(item.pathName)">
       <span>{{item.name}}</span>
