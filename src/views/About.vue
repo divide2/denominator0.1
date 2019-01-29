@@ -10,12 +10,8 @@ import { Component, Vue } from 'vue-property-decorator';
 export default class About extends Vue {
   public count = 0
 
-  public addCount() {
+  public addCount () {
     this.count++;
-  }
-
-  mounted(){
-    console.log(this.$router)
   }
 }
 </script>
