@@ -6,7 +6,7 @@
             <span>采购</span>
         </v-layout>
 
-        <v-layout column>
+        <v-layout column @click="toProduct">
             <v-icon large color="orange darken-2">redeem</v-icon>
             <span>商品</span>
         </v-layout>
@@ -30,6 +30,10 @@ export default class Work extends Vue {
 
   public toPurchase() {
     this.$router.push('/purchase')
+  }
+
+  public toProduct() {
+    this.$router.push('/product')
   }
 
 }

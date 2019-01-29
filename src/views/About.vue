@@ -1,10 +1,10 @@
 <template>
-  <div class="about">
-    <h1 @click="addCount">{{count}}</h1>
-  </div>
+    <div class="about">
+        <h1 @click="addCount">{{count}}</h1>
+    </div>
 </template>
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator';
+import {Component, Vue} from 'vue-property-decorator';
 
 @Component({})
 export default class About extends Vue {
@@ -14,7 +14,7 @@ export default class About extends Vue {
     this.count++;
   }
 
-  mounted(){
+  mounted() {
     console.log(this.$router)
   }
 }
