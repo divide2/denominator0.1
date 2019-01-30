@@ -1,9 +1,10 @@
 module.exports = {
 
     devServer: {
+        port: '9527',
         proxy: {
             '/api': {
-                target: `http://localhost:8081/`,
+                target: `http://bvvy.free.idcfengye.com`,
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': ''

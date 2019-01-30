@@ -1,4 +1,5 @@
 import axios from 'axios'
+import { getToken } from '@/route/Token'
 
 export const Method = {
   POST: 'post',
@@ -6,6 +7,17 @@ export const Method = {
   DELETE: 'delete',
   PUT: 'put'
 }
+
+axios.interceptors.request.use(config => {
+  if (getToken()) {
+    config.headers = {
+      Authorization: 'Bearer ' + getToken()
+    }
+  }
+  return config
+}, error => {
+  Promise.reject(error)
+})
 
 const Api = {
   post: (url: string, data: any, headers?: any) => request(url, data, Method.POST, headers),

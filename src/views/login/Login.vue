@@ -22,6 +22,8 @@
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator'
 import {LoginForm} from '../types'
+import LoginApi from '../../api/LoginApi'
+import { setToken } from '../../route/Token'
 
 
 
@@ -32,7 +34,10 @@ export default class Login extends Vue {
   public form = new LoginForm()
 
   public login() {
-
+    LoginApi.loginByUsername(this.form).then(data => {
+      setToken(data.access_token)
+      this.$router.push('/')
+    })
   }
 }
 </script>
