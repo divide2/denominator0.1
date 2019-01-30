@@ -10,7 +10,6 @@
     </v-btn>
   </v-bottom-nav>
 </template>
-
 <style>
 </style>
 
@@ -40,6 +39,7 @@ export default class BottomBar extends Vue {
     icon: 'face',
     pathName: ''
   }]
+
   public test (path: string) {
     this.$router.push({ name: path })
   }
