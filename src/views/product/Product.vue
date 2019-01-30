@@ -4,7 +4,6 @@
             <v-list-tile
                     :key="item.title"
                     avatar
-                    @click=""
             >
                 <v-list-tile-avatar>
                     <img :src="item.avatar">

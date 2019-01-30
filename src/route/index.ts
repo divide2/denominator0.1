@@ -12,12 +12,11 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (to.path === '/login' || !getToken()) {
-    next('/login')
-  } else {
+  // if (getToken() ||  to.path==='/login') {
     next()
-  }
-
+  // }else {
+  //   next('/login')
+  // }
 })
 
 export default router

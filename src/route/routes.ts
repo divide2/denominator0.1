@@ -1,5 +1,6 @@
 import Layout from '../views/Layout.vue';
 import FormLayout from '../views/FormLayout.vue';
+import Login from '../views/login/Login.vue'
 
 const routes = [
   {
@@ -11,6 +12,11 @@ const routes = [
         path: '/work',
         name: 'work',
         component: () => import('../views/work/Work.vue'),
+      },
+      {
+        path: '/message',
+        name: 'message',
+        component: () => import('./views/message/Message.vue')
       }
     ]
   },
@@ -37,6 +43,11 @@ const routes = [
         component: () => import('../views/product/Product.vue'),
       }
     ]
+  },
+  {
+    path: '/login',
+    name: 'login ',
+    component: Login
   },
   {
     path: '/about1',
