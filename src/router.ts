@@ -17,7 +17,12 @@ export default new Router({
         {
           path: '/work',
           name: 'work',
-          component: () => import('./views/work/Work.vue'),
+          component: () => import('./views/work/Work.vue')
+        },
+        {
+          path: '/message',
+          name: 'message',
+          component: () => import('./views/message/Message.vue')
         }
       ]
     },

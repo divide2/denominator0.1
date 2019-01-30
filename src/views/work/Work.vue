@@ -1,34 +1,37 @@
 <template>
-    <v-layout row wrap>
-
+  <div>
+    <page :hasHeader="true">
+      <v-layout row wrap>
         <v-layout column @click="toPurchase">
-            <v-icon large color="green darken-2">add_shopping_cart</v-icon>
-            <span>采购</span>
+          <v-icon large color="green darken-2">add_shopping_cart</v-icon>
+          <span>采购</span>
         </v-layout>
 
         <v-layout column>
-            <v-icon large color="orange darken-2">redeem</v-icon>
-            <span>商品</span>
+          <v-icon large color="orange darken-2">redeem</v-icon>
+          <span>商品</span>
         </v-layout>
         <v-layout column>
-            <v-icon large color="purple darken-2">store</v-icon>
-            <span>库存</span>
+          <v-icon large color="purple darken-2">store</v-icon>
+          <span>库存</span>
         </v-layout>
         <v-layout column>
-            <v-icon large color="blue darken-2">assignment</v-icon>
-            <span>订单</span>
+          <v-icon large color="blue darken-2">assignment</v-icon>
+          <span>订单</span>
         </v-layout>
-    </v-layout>
-
+      </v-layout>
+    </page>
+  </div>
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
+import Page from '@/components/Page.vue'
 
-@Component({})
+@Component({ components: { Page } })
 export default class Work extends Vue {
 
-  public toPurchase() {
+  public toPurchase () {
     this.$router.push('/purchase')
   }
 
