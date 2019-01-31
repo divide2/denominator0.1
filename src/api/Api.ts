@@ -8,6 +8,7 @@ export const Method = {
   PUT: 'put'
 }
 
+// 请求拦截器加上token
 axios.interceptors.request.use(config => {
   if (getToken()) {
     config.headers = {

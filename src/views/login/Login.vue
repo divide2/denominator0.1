@@ -16,7 +16,6 @@
             </v-form>
         </v-content>
     </v-container>
-
 </template>
 
 <script lang="ts">
@@ -25,9 +24,7 @@ import {LoginForm} from '../types'
 import LoginApi from '../../api/LoginApi'
 import { setToken } from '../../route/Token'
 
-
-
-@Component()
+@Component({})
 export default class Login extends Vue {
   public valid = null
 
