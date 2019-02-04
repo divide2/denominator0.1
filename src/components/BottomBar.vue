@@ -21,7 +21,7 @@ export default class BottomBar extends Vue {
   private viewObj = [{
     name: '消息',
     icon: 'chat',
-    pathName: ''
+    pathName: 'message'
   }, {
     name: '商城',
     icon: 'store_mall_directory',

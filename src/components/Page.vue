@@ -1,12 +1,12 @@
 <template>
   <div class="page">
-    <page-header v-if="hasHeader" :title="title"></page-header>
+    <page-header v-if="hasHeader" :title="title" :hasBack="hasBack"></page-header>
 
     <v-content>
-      <v-container grid-list-md text-xs-center>
+      <!--<v-container grid-list-md text-xs-center>-->
         <slot>
         </slot>
-      </v-container>
+      <!--</v-container>-->
     </v-content>
 
     <footer v-if="hasFooter">
@@ -35,5 +35,8 @@ export default class Page extends Vue {
 
   @Prop( )
   title!: string
+
+  @Prop({default: false})
+  hasBack!: boolean
 }
 </script>

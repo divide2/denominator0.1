@@ -27,6 +27,9 @@
 
     <v-toolbar color="indigo" dark fixed app>
       <v-toolbar-side-icon v-if="hasDrawer" @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-btn icon v-if="hasBack" @click="$router.back()">
+        <v-icon>arrow_back</v-icon>
+      </v-btn>
       <v-toolbar-title>{{title}}</v-toolbar-title>
     </v-toolbar>
   </div>
@@ -46,5 +49,7 @@ export default class PageHeader extends Vue {
   @Prop({default: false }) public hasDrawer!: boolean
 
   @Prop({default: '除以二'}) public title!: string
+
+  @Prop({default: false}) public hasBack!: boolean
 }
 </script>

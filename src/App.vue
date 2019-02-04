@@ -1,7 +1,15 @@
 <template>
-    <router-view></router-view>
+  <router-view></router-view>
 </template>
-
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+  }
+  input {
+    outline: none;
+  }
+</style>
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import BottomBar from '@/components/BottomBar.vue'
