@@ -43,13 +43,15 @@
 
     <div class="input-line">
       <input type="text" class="input-chat" v-model="text">
-      <v-btn color="info" :depressed="true" class="btn-send" @click="send">发送</v-btn>
+      <v-btn color="info" :depressed="true" @click="send" class="btn-send">发送</v-btn>
     </div>
   </page>
 </template>
 
 <style scoped lang="stylus">
   .chat-room {
+    min-height:100%;
+    padding-bottom: 35px
     background-color: #e1e4e8;
     .content {
       .chat-card {
@@ -66,7 +68,7 @@
       .content {
         margin-left: 10px
         margin-right: 10px
-        padding: 20px
+        padding: 15px
         background-color: #fff;
         -webkit-border-radius: 4px
         -moz-border-radius: 4px
@@ -82,6 +84,7 @@
       display: flex;
       justify-content space-between
       align-items center
+      background-color: #fff;
       .input-chat {
         border: 1px solid #e1e4e8
         border-radius: 4px
@@ -92,6 +95,7 @@
         margin-top: 0
         margin-bottom: 0
         margin-right: 0
+        background-color: #2196f3;
       }
     }
   }
