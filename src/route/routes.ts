@@ -17,6 +17,11 @@ const routes = [
         path: '/message',
         name: 'message',
         component: () => import('@/views/message/Message.vue')
+      },
+      {
+        path: '/mine',
+        name: 'mine',
+        component: () => import('@/views/mine/Mine.vue')
       }
     ]
   },

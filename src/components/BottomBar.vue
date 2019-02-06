@@ -30,13 +30,9 @@ export default class BottomBar extends Vue {
     icon: 'work',
     pathName: 'work'
   }, {
-    name: '通讯录',
-    icon: 'people',
-    pathName: ''
-  }, {
     name: '我的',
     icon: 'face',
-    pathName: ''
+    pathName: 'mine'
   }]
 
   public test (path: string) {
