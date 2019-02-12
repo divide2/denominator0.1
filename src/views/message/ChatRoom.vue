@@ -1,5 +1,5 @@
 <template>
-  <page :hasBack="true" :hasHeader="true" class="chat-room">
+  <page :hasBack="true" :hasHeader="true" class="chat-room" v-if="$route">
     <v-container grid-list-xs>
       <div class="content">
         <div class="chat-card" v-for="(item,index) in messageRecord">
@@ -50,7 +50,7 @@
 
 <style scoped lang="stylus">
   .chat-room {
-    min-height:100%;
+    min-height: 100%;
     padding-bottom: 35px
     background-color: #e1e4e8;
     .content {
@@ -126,7 +126,6 @@ export default class ChatRoom extends Vue {
       message: this.text
     })
     this.text = ''
-
   }
 }
 </script>

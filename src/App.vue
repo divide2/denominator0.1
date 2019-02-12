@@ -1,13 +1,15 @@
 <template>
-  <router-view></router-view>
+  <keep-alive>
+    <router-view></router-view>
+  </keep-alive>
 </template>
 <style>
   * {
     margin: 0;
     padding: 0;
   }
-  html,body{
-    height:100%;
+  html, body {
+    height: 100%;
   }
   input {
     outline: none;

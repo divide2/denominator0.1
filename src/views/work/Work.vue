@@ -1,27 +1,39 @@
 <template>
-  <div>
     <page :hasHeader="true">
-      <v-layout row wrap>
-        <v-layout column @click="toPurchase">
-          <v-icon large color="green darken-2">add_shopping_cart</v-icon>
-          <span>采购</span>
-        </v-layout>
+      <v-container grid-list-md text-xs-center>
+        <v-layout row wrap>
+          <v-flex column @click="toPurchase" xs3>
+            <v-icon large color="green darken-2">add_shopping_cart</v-icon>
+            <p>采购</p>
+          </v-flex>
 
-        <v-layout column @click="toProduct">
+          <v-flex column @click="toProduct" xs3>
             <v-icon large color="orange darken-2">redeem</v-icon>
-            <span>商品</span>
+            <p>商品</p>
+          </v-flex>
+          <v-flex column xs3>
+            <v-icon large color="purple darken-2">store</v-icon>
+            <p>库存</p>
+          </v-flex>
+          <v-flex column xs3>
+            <v-icon large color="blue darken-2">assignment</v-icon>
+            <p>订单</p>
+          </v-flex>
+          <v-flex column xs3 @click="$router.push({name:'createTeam'})">
+            <v-icon large color="blue darken-2">assignment</v-icon>
+            <p>创建团队</p>
+          </v-flex>
+          <v-flex column xs3>
+            <v-icon large color="blue darken-2">assignment</v-icon>
+            <p>创建团队</p>
+          </v-flex>
+          <v-flex column xs3>
+            <v-icon large color="blue darken-2">assignment</v-icon>
+            <p>创建团队</p>
+          </v-flex>
         </v-layout>
-        <v-layout column>
-          <v-icon large color="purple darken-2">store</v-icon>
-          <span>库存</span>
-        </v-layout>
-        <v-layout column>
-          <v-icon large color="blue darken-2">assignment</v-icon>
-          <span>订单</span>
-        </v-layout>
-      </v-layout>
+      </v-container>
     </page>
-  </div>
 </template>
 
 <script lang="ts">
@@ -35,7 +47,7 @@ export default class Work extends Vue {
     this.$router.push('/purchase')
   }
 
-  public toProduct() {
+  public toProduct () {
     this.$router.push('/product')
   }
 

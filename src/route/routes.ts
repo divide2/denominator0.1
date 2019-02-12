@@ -66,6 +66,11 @@ const routes = [
     path: '/chatRoom/:chatRoomId',
     name: 'chatRoom',
     component: () => import('@/views/message/ChatRoom.vue')
+  },
+  {
+    path: '/createTeam',
+    name: 'createTeam',
+    component: () => import('@/views/work/CreateTeam.vue')
   }
 ]
 

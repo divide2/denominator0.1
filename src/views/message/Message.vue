@@ -1,9 +1,8 @@
 <template>
-  <page :hasHeader="true" :title="'消息'">
+  <page :hasHeader="true" :title="'消息1'">
     <v-list two-line>
-      <template v-for="(item, index) in items">
+      <div v-for="(item, index) in items" :key="index">
         <v-list-tile
-                :key="item.title"
                 avatar
                 @click="$router.push({name:'chatRoom',params:{chatRoomId: item.id}})"
         >
@@ -18,7 +17,7 @@
         </v-list-tile>
 
         <v-divider :inset="true"></v-divider>
-      </template>
+      </div>
     </v-list>
   </page>
 </template>
@@ -32,16 +31,6 @@ import Page from '@/components/Page.vue'
 
 @Component({ components: { Page } })
 export default class Message extends Vue {
-  public mess = [{
-    avator: 'https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=ecc13e4d65c4c800cd469980b725e649&quality=90&size=b200_10071&cut_x=0&cut_y=0&cut_w=200&cut_h=200&src=http%3A%2F%2Ftimg01.bdimg.com%2Ftimg%3Fpacompress%26imgtype%3D0%26sec%3D1439619614%26autorotate%3D1%26di%3D9592ed769bdbbc0a21d98f1db12767bc%26quality%3D90%26size%3Db870_10000%26src%3Dhttp%253A%252F%252Fpic.rmb.bdstatic.com%252F152095037053cbadf3239b8bf7c9bb8ccbc2778e02.png',
-    mess: '12312'
-  }, {
-    avator: 'https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=ecc13e4d65c4c800cd469980b725e649&quality=90&size=b200_10071&cut_x=0&cut_y=0&cut_w=200&cut_h=200&src=http%3A%2F%2Ftimg01.bdimg.com%2Ftimg%3Fpacompress%26imgtype%3D0%26sec%3D1439619614%26autorotate%3D1%26di%3D9592ed769bdbbc0a21d98f1db12767bc%26quality%3D90%26size%3Db870_10000%26src%3Dhttp%253A%252F%252Fpic.rmb.bdstatic.com%252F152095037053cbadf3239b8bf7c9bb8ccbc2778e02.png',
-    mess: '12312'
-  }, {
-    avator: 'https://timg01.bdimg.com/timg?pacompress&imgtype=0&sec=1439619614&autorotate=1&di=ecc13e4d65c4c800cd469980b725e649&quality=90&size=b200_10071&cut_x=0&cut_y=0&cut_w=200&cut_h=200&src=http%3A%2F%2Ftimg01.bdimg.com%2Ftimg%3Fpacompress%26imgtype%3D0%26sec%3D1439619614%26autorotate%3D1%26di%3D9592ed769bdbbc0a21d98f1db12767bc%26quality%3D90%26size%3Db870_10000%26src%3Dhttp%253A%252F%252Fpic.rmb.bdstatic.com%252F152095037053cbadf3239b8bf7c9bb8ccbc2778e02.png',
-    mess: '12312'
-  }]
 
   public items= [
     {
