@@ -22,13 +22,13 @@ export default class BottomBar extends Vue {
     icon: 'chat',
     pathName: 'message'
   }, {
-    name: '商城',
-    icon: 'store_mall_directory',
-    pathName: ''
-  }, {
     name: '工作',
     icon: 'work',
     pathName: 'work'
+  }, {
+    name: '联系',
+    icon: 'contact',
+    pathName: 'contact'
   }, {
     name: '我的',
     icon: 'face',

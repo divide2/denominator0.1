@@ -39,9 +39,13 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import Page from '@/components/Page.vue'
+import MineApi from '../../api/MineApi'
+import { Group } from '../types'
 
 @Component({ components: { Page } })
 export default class Work extends Vue {
+
+  public groups: Array<Group> = []
 
   public toPurchase () {
     this.$router.push('/purchase')
@@ -49,6 +53,12 @@ export default class Work extends Vue {
 
   public toProduct () {
     this.$router.push('/product')
+  }
+
+  created() {
+    MineApi.listGroups().then(data => {
+      this.groups = data
+    })
   }
 
 }

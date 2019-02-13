@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import routes from '@/route/routes'
-import {getToken} from '@/route/Token'
+import { getToken } from '@/route/Token'
 
 Vue.use(Router);
 
@@ -12,9 +12,9 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  if (getToken() ||  to.path==='/login') {
+  if (getToken() || to.path === '/login') {
     next()
-  }else {
+  } else {
     next('/login')
   }
 })
