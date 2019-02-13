@@ -16,7 +16,7 @@
       </v-list-tile>
       <v-divider></v-divider>
     </template>
-    <v-btn color="info" fixed block class="btn-add">增加商品</v-btn>
+    <v-btn color="info" fixed block class="btn-add" to='/product/add'>增加商品</v-btn>
 
   </v-list>
 </template>

@@ -1,9 +1,7 @@
 <template>
-  <page :title="'商品'">
-    <v-container>
+  <page :title="'商品'" :hasBack="true">
       <router-view>
       </router-view>
-    </v-container>
   </page>
 </template>
 
