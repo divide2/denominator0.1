@@ -23,7 +23,7 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import MineCompanyApi from '../../api/MineCompanyApi'
+import MineApi from '../../api/MineApi'
 
 @Component({})
 export default class Work extends Vue {
@@ -31,7 +31,7 @@ export default class Work extends Vue {
   public products = []
 
   public async created () {
-    const { content, totalElements } = await MineCompanyApi.listProducts({})
+    const { content, totalElements } = await MineApi.listProducts({})
     this.products = content
   }
 
