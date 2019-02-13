@@ -4,3 +4,7 @@ export function getToken(): string | null {
 export function setToken(token: string) {
   localStorage.setItem("token", token)
 }
+
+export function clearToken() {
+  localStorage.removeItem("token")
+}

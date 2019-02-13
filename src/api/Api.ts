@@ -22,7 +22,7 @@ axios.interceptors.request.use(config => {
 
 const Api = {
   post: (url: string, data: any, headers?: any) => request(url, data, Method.POST, headers),
-  get: (url: string, params: any, headers?: any) => request(url, params, Method.GET, headers),
+  get: (url: string, params?: any, headers?: any) => request(url, params, Method.GET, headers),
   delete: (url: string, data: any) => request(url, data, Method.DELETE),
   put: (url: string, data: any) => request(url, data, Method.PUT)
 }
