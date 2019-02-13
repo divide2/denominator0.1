@@ -1,5 +1,5 @@
 import qs from 'qs'
-import Api from './Api'
+import Api from '@/api/Api'
 import { LoginForm } from '@/views/types'
 
 // todo 添加返回类型

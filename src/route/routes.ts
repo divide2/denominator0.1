@@ -74,7 +74,12 @@ const routes = [
     path: '/createTeam',
     name: 'createTeam',
     component: () => import('@/views/work/CreateTeam.vue')
-  }
+  },
+  {
+    path: '/contact/search',
+    name: 'searchFriend',
+    component: () => import('@/views/contact/Search.vue')
+  },
 ]
 
 export default routes

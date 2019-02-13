@@ -21,7 +21,7 @@
 <script lang="ts">
 import {Component, Vue} from 'vue-property-decorator'
 import {LoginForm} from '../types'
-import LoginApi from '../../api/LoginApi'
+import LoginApi from '@/api/LoginApi'
 import { setToken } from '../../route/Token'
 
 @Component({})

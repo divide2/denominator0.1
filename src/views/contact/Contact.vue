@@ -1,7 +1,67 @@
 <template>
   <page :hasHeader="true" :title="'联系'" class="mine">
+    <div class="option">
+      <v-list class="pt-0 pb-0">
+        <div @click="$router.push({name:'searchFriend'})">
+          <v-list-tile
+                  avatar=""
+                  @click="">
+            <v-list-tile-avatar>
+              <v-icon color="green">person_add</v-icon>
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>添加好友</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+          <v-divider></v-divider>
+        </div>
+
+        <div>
+          <v-list-tile
+                  avatar=""
+                  @click="">
+            <v-list-tile-avatar>
+              <v-icon color="orange">group_add</v-icon>
+            </v-list-tile-avatar>
+            <v-list-tile-content>
+              <v-list-tile-title>添加团队</v-list-tile-title>
+            </v-list-tile-content>
+          </v-list-tile>
+        </div>
+      </v-list>
+    </div>
+
+    <div class="team-list">
+      <v-subheader>
+        我的团队
+      </v-subheader>
+      <v-list class="pt-0 pb-0">
+          <div v-for="(item, index) in groups" :key="index">
+
+            <v-list-tile
+                    avatar
+                    @click=""
+            >
+              <v-list-tile-avatar>
+                <img :src="item.avatar">
+              </v-list-tile-avatar>
+
+              <v-list-tile-content>
+                <v-list-tile-title>{{ item.groupName }}</v-list-tile-title>
+              </v-list-tile-content>
+            </v-list-tile>
+
+
+            <v-divider></v-divider>
+          </div>
+
+      </v-list>
+    </div>
     <div class="mine-info">
-      <v-list style="padding:0;margin-top:10px;">
+      <v-subheader>
+        我的好友
+      </v-subheader>
+      <v-list class="pt-0 pb-0">
         <div v-for="(item, index) in friends" :key="index">
 
           <v-list-tile
@@ -43,13 +103,18 @@ import MineApi from '../../api/MineApi'
 @Component({ components: {} })
 export default class File extends Vue {
   public friends = []
+  public groups = []
   public user = { name: '陈晓芭', avatar: 'https://vuetifyjs.com/apple-touch-icon-180x180.png', company: '玩途自由行' }
 
-  created() {
-    MineApi.listFriends().then(data =>{
+  created () {
+    MineApi.listFriends().then(data => {
       this.friends = data
     })
+    MineApi.listGroups().then(data => {
+      this.groups = data
+    })
   }
+
   public items = [
     {
       action: 'local_activity',

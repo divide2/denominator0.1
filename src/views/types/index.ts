@@ -9,3 +9,11 @@ export class Group {
   public groupId = ''
   public groupName = ''
 }
+
+interface Query {
+
+}
+
+export class UserSearchQuery implements Query {
+  query: string = ''
+}

@@ -27,7 +27,7 @@ export default class BottomBar extends Vue {
     pathName: 'work'
   }, {
     name: '联系',
-    icon: 'contact',
+    icon: 'contacts',
     pathName: 'contact'
   }, {
     name: '我的',
