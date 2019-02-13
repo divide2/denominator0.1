@@ -20,7 +20,7 @@
 
       <v-list style="padding:0;margin-top:10px;">
 
-        <div v-for="item in items" :key="item.title">
+        <div v-for="(item, index) in items" :key="index">
 
           <v-list-tile
                   avatar

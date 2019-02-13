@@ -31,7 +31,7 @@ import { Vue, Component, Prop } from 'vue-property-decorator'
   }
 })
 export default class Page extends Vue {
-  @Prop({ default: false })
+  @Prop({ default: true })
   hasHeader!: boolean
 
   @Prop({ default: false })

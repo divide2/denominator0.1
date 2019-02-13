@@ -11,12 +11,12 @@ const router = new Router({
   base: process.env.BASE_URL
 });
 
-// router.beforeEach((to, from, next) => {
-//   if (getToken() ||  to.path==='/login') {
-//     next()
-//   }else {
-//     next('/login')
-//   }
-// })
+router.beforeEach((to, from, next) => {
+  if (getToken() ||  to.path==='/login') {
+    next()
+  }else {
+    next('/login')
+  }
+})
 
 export default router

@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire">
+  <div>
     <transition>
       <keep-alive>
         <router-view>
@@ -7,8 +7,7 @@
       </keep-alive>
     </transition>
     <bottom-bar></bottom-bar>
-  </v-app>
-
+  </div>
 </template>
 
 <script lang="ts">

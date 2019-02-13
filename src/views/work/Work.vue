@@ -33,6 +33,7 @@
           </v-flex>
         </v-layout>
       </v-container>
+      <v-btn color="info">11</v-btn>
     </page>
 </template>
 
@@ -53,3 +54,4 @@ export default class Work extends Vue {
 
 }
 </script>
+<style scoped></style>
