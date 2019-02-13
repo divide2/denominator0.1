@@ -1,8 +1,6 @@
 <template>
-  <page :title="'商品'" :hasBack="true">
       <router-view>
       </router-view>
-  </page>
 </template>
 
 <script lang="ts">

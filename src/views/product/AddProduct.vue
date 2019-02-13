@@ -3,7 +3,7 @@
     <file-upload
             ref="upload"
             v-model="files"
-            post-action="/v1/upload/image"
+            post-action="/api/v1/upload/image"
             @input-file="inputFile"
             @input-filter="inputFilter"
     >上传文件</file-upload>
@@ -15,7 +15,7 @@
     <v-subheader>规格</v-subheader>
     <v-container grid-list-xs class="white">
 
-      <v-layout>
+      <v-layout >
         <v-flex xs12 md4>
           <v-text-field label="规格名称"></v-text-field>
         </v-flex>
@@ -23,9 +23,18 @@
           <v-text-field label="规格价格"></v-text-field>
         </v-flex>
       </v-layout>
-      <v-btn fab small>
-        <v-icon>add</v-icon>
-      </v-btn>
+      <v-layout class="img-list" wrap align-content-space-around>
+        <v-flex xs4 class="img-item">
+          <div class="img-box">
+          <v-btn flat block class="mt-0 mb-0">
+            <v-icon>
+              add
+            </v-icon>
+          </v-btn>
+          </div>
+        </v-flex>
+
+      </v-layout>
 
     </v-container>
   </page>
@@ -77,6 +86,15 @@ export default class AddProduct extends Vue {
   .add-product {
     .wrap-white {
       background-color: #fff;
+    }
+    .img-list{
+      .img-item{
+        text-align: center
+        padding:2px
+        .img-box{
+          border:1px dashed gray
+        }
+      }
     }
   }
 </style>

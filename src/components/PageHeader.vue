@@ -31,6 +31,15 @@
         <v-icon>arrow_back</v-icon>
       </v-btn>
       <v-toolbar-title>{{title}}</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn flat icon v-if="iconArr.add" @click="iconArr.clickAdd">
+          <v-icon size="30">add</v-icon>
+        </v-btn>
+        <v-btn flat icon v-if="iconArr.edit">
+          <v-icon size="25">edit</v-icon>
+        </v-btn>
+      </v-toolbar-items>
     </v-toolbar>
   </div>
 
@@ -41,9 +50,10 @@
 
 <script lang="ts">
 import { Vue, Component, Prop } from 'vue-property-decorator'
-
+// Todo 把整个pageHeader的属性弄成一个对象传进来
 @Component({})
 export default class PageHeader extends Vue {
+
   @Prop({default: false }) public drawer!: boolean
 
   @Prop({default: false }) public hasDrawer!: boolean
@@ -51,5 +61,7 @@ export default class PageHeader extends Vue {
   @Prop({default: '除以二'}) public title!: string
 
   @Prop({default: false}) public hasBack!: boolean
+
+  @Prop({default: () => ({})}) public iconArr!: object
 }
 </script>

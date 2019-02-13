@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <page-header v-if="hasHeader" :title="title" :hasBack="hasBack"></page-header>
+    <page-header v-if="hasHeader" :title="title" :hasBack="hasBack" :iconArr="iconArr"></page-header>
 
     <v-content>
       <!--<v-container grid-list-md text-xs-center>-->
@@ -42,5 +42,9 @@ export default class Page extends Vue {
 
   @Prop({default: false})
   hasBack!: boolean
+
+
+  @Prop({default: () => ({})})
+  iconArr!: object
 }
 </script>

@@ -39,20 +39,13 @@ const routes = [
   },
   {
     path: '/product',
-    name: 'formRoot',
-    component: FormLayout,
-    children: [
-      {
-        path: '',
-        name: 'product',
-        component: () => import('../views/product/Product.vue'),
-      },
-      {
-        path: 'add',
-        name: 'addProduct',
-        component: () => import('../views/product/AddProduct.vue'),
-      }
-    ]
+    name: 'product',
+    component: () => import('../views/product/Product.vue'),
+  },
+  {
+    path: '/product/add',
+    name: 'addProduct',
+    component: () => import('../views/product/AddProduct.vue'),
   },
   {
     path: '/login',

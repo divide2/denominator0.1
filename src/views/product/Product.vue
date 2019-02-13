@@ -1,24 +1,24 @@
 <template>
-  <v-list two-line class="product">
-    <template v-for="(item, index) in products">
-      <v-list-tile
-              :key="item.id"
-              avatar
-      >
-        <v-list-tile-avatar>
-          <img :src="item.image">
-        </v-list-tile-avatar>
+  <page :title="'商品'" :hasBack="true" :iconArr="iconArr">
+    <v-list two-line class="product">
+      <template v-for="(item, index) in products">
+        <v-list-tile
+                :key="item.id"
+                avatar
+        >
+          <v-list-tile-avatar>
+            <img :src="item.image">
+          </v-list-tile-avatar>
 
-        <v-list-tile-content>
-          <v-list-tile-title v-html="item.name"></v-list-tile-title>
-          <v-list-tile-sub-title v-html="item.remarks"></v-list-tile-sub-title>
-        </v-list-tile-content>
-      </v-list-tile>
-      <v-divider></v-divider>
-    </template>
-    <v-btn color="info" fixed block class="btn-add" to='/product/add'>增加商品</v-btn>
-
-  </v-list>
+          <v-list-tile-content>
+            <v-list-tile-title v-html="item.name"></v-list-tile-title>
+            <v-list-tile-sub-title v-html="item.remarks"></v-list-tile-sub-title>
+          </v-list-tile-content>
+        </v-list-tile>
+        <v-divider></v-divider>
+      </template>
+    </v-list>
+  </page>
 </template>
 
 <script lang="ts">
@@ -30,9 +30,18 @@ export default class Work extends Vue {
 
   public products = []
 
+  public iconArr = {
+    add: true ,
+    clickAdd: this.clickAdd
+  }
+
   public async created () {
     const { content, totalElements } = await MineCompanyApi.listProducts({})
     this.products = content
+  }
+
+  public clickAdd(){
+    this.$router.push({name:'addProduct'})
   }
 
 }
@@ -40,8 +49,8 @@ export default class Work extends Vue {
 <style scoped lang="stylus">
   .product {
     .btn-add {
-      bottom: 0
-      left:0
+      bottom: 30px
+      right: 30px
     }
   }
 </style>
