@@ -1,5 +1,16 @@
 <template>
-  <page :title="'商品'" :hasBack="true" :iconArr="iconArr">
+  <page :title="'商品'" :hasBack="true">
+    <div slot="headerRight">
+      <v-toolbar-items>
+        <v-btn flat icon @click="clickAdd">
+          <v-icon size="30">add</v-icon>
+        </v-btn>
+        <v-btn flat icon v-if="clickEdit">
+          <v-icon size="25">edit</v-icon>
+        </v-btn>
+      </v-toolbar-items>
+    </div>
+
     <v-list two-line class="product">
       <template v-for="(item, index) in products">
         <v-list-tile
@@ -31,8 +42,9 @@ export default class Work extends Vue {
   public products = []
 
   public iconArr = {
-    add: true ,
-    clickAdd: this.clickAdd
+    add: true,
+    clickAdd: this.clickAdd,
+    edit: true
   }
 
   public async created () {
@@ -40,8 +52,12 @@ export default class Work extends Vue {
     this.products = content
   }
 
-  public clickAdd(){
-    this.$router.push({name:'addProduct'})
+  public clickAdd () {
+    this.$router.push({ name: 'addProduct' })
+  }
+
+  public clickEdit () {
+    this.$router.push({ name: 'addProduct' })
   }
 
 }

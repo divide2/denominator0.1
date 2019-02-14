@@ -14,10 +14,9 @@
 </style>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
-import FormPageHeader from '../../components/FormPageHeader'
+import { Component, Vue } from 'vue-property-decorator'
 
-@Component({ components: { FormPageHeader } })
+@Component({ components: {} })
 export default class CreateTeam extends Vue {
 
 }
