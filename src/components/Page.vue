@@ -1,26 +1,28 @@
 <template>
   <div class="page">
-    <div v-if="hasHeader">
-      <v-toolbar color="indigo" dark fixed app>
-        <!--头部左边-->
+<!--    <div v-if="hasHeader">
+      &lt;!&ndash;<v-toolbar color="indigo" dark fixed app>
+        &lt;!&ndash;头部左边&ndash;&gt;
         <slot name="headerLeft"></slot>
         <v-btn icon v-if="hasBack" @click="$router.back()">
           <v-icon>arrow_back</v-icon>
         </v-btn>
         <v-toolbar-title>{{title}}</v-toolbar-title>
 
-        <!--头部中间-->
+        &lt;!&ndash;头部中间&ndash;&gt;
         <slot name="headerMiddle"></slot>
 
         <v-spacer></v-spacer>
 
-        <!--头部右边-->
+        &lt;!&ndash;头部右边&ndash;&gt;
         <slot name="headerRight"></slot>
 
-      </v-toolbar>
-    </div>
+      </v-toolbar>&ndash;&gt;
+    </div>-->
 
     <slot name="header">
+      <form-page-header></form-page-header>
+
     </slot>
 
     <v-content>
@@ -43,9 +45,11 @@
 <script lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
 import { Component, Prop, Vue } from 'vue-property-decorator'
+import FormPageHeader from './FormPageHeader'
 
 @Component({
   components: {
+    FormPageHeader,
     PageHeader
   }
 })
