@@ -1,5 +1,6 @@
 <template>
-  <page :title="'添加好友'" :hasBack="true" class="contact-search">
+  <page>
+    <form-page-header slot="header" title="新的朋友"></form-page-header>
     <v-container grid-list-md text-xs-center class="white">
       <v-layout wrap>
         <v-flex>
@@ -46,17 +47,16 @@
 import { Vue, Component } from 'vue-property-decorator'
 import UserApi from '../../api/UserApi';
 import { UserSearchQuery } from '../types/index';
+import FormPageHeader from '../../components/FormPageHeader'
 
-@Component({ components: {} })
+@Component({ components: { FormPageHeader } })
 export default class File extends Vue {
   query = new UserSearchQuery()
   user = {}
 
   search () {
-    UserApi.search(this.query).then(data => {
-      this.user = data
+    UserApi.search(this.query).then(data => {this.user = data}
     )
-    return false
   }
 }
 </script>
