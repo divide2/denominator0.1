@@ -1,6 +1,5 @@
 <template>
   <page>
-    <form-page-header slot="header" title="新的朋友"></form-page-header>
     <v-container grid-list-md text-xs-center class="white">
       <v-layout wrap>
         <v-flex>
@@ -47,9 +46,8 @@
 import { Vue, Component } from 'vue-property-decorator'
 import UserApi from '../../api/UserApi';
 import { UserSearchQuery } from '../types/index';
-import FormPageHeader from '../../components/FormPageHeader'
 
-@Component({ components: { FormPageHeader } })
+@Component({ components: {  } })
 export default class File extends Vue {
   query = new UserSearchQuery()
   user = null
