@@ -1,10 +1,8 @@
 <template>
   <div>
     <transition>
-      <keep-alive>
         <router-view>
         </router-view>
-      </keep-alive>
     </transition>
     <bottom-bar></bottom-bar>
   </div>

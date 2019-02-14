@@ -1,29 +1,26 @@
 <template>
   <div class="page">
-    <page-header v-if="hasHeader" :title="title" :hasBack="hasBack" :iconArr="iconArr"></page-header>
-
+    <slot name="header">
+    </slot>
     <v-content>
-      <!--<v-container grid-list-md text-xs-center>-->
-        <slot>
-        </slot>
-      <!--</v-container>-->
+      <slot>
+      </slot>
     </v-content>
-
-    <footer v-if="hasFooter">
-    </footer>
+    <slot name="footer">
+    </slot>
   </div>
 </template>
 
 <style scoped>
-  .page{
-    background-color: #e1e4e8;
-    padding-bottom:60px;
-  }
+.page {
+  background-color: #e1e4e8;
+  padding-bottom: 60px;
+}
 </style>
 
 <script lang="ts">
 import PageHeader from '@/components/PageHeader.vue'
-import { Vue, Component, Prop } from 'vue-property-decorator'
+import { Component, Prop, Vue } from 'vue-property-decorator'
 
 @Component({
   components: {
@@ -37,14 +34,14 @@ export default class Page extends Vue {
   @Prop({ default: false })
   hasFooter!: boolean
 
-  @Prop( )
+  @Prop()
   title!: string
 
-  @Prop({default: false})
+  @Prop({ default: false })
   hasBack!: boolean
 
 
-  @Prop({default: () => ({})})
+  @Prop({ default: () => ({}) })
   iconArr!: object
 }
 </script>

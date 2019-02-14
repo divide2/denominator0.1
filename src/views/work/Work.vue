@@ -1,5 +1,15 @@
 <template>
-    <page :hasHeader="true">
+  <div>
+    <page-header>
+      <v-toolbar-title>除以二</v-toolbar-title>
+      <v-spacer></v-spacer>
+      <v-toolbar-items>
+        <v-btn flat icon>
+          <v-icon size="30">search</v-icon>
+        </v-btn>
+      </v-toolbar-items>
+    </page-header>
+    <v-content>
       <v-container grid-list-md text-xs-center>
         <v-layout row wrap>
           <v-flex column @click="toPurchase" xs3>
@@ -33,25 +43,27 @@
           </v-flex>
         </v-layout>
       </v-container>
-    </page>
+    </v-content>
+  </div>
 </template>
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import Page from '@/components/Page.vue'
+import PageHeader from '@/components/PageHeader.vue'
 import MineApi from '../../api/MineApi'
 import { Group } from '../types'
 
-@Component({ components: { Page } })
+@Component({ components: { Page,PageHeader } })
 export default class Work extends Vue {
 
   public groups: Array<Group> = []
 
-  public toPurchase () {
+  public toPurchase() {
     this.$router.push('/purchase')
   }
 
-  public toProduct () {
+  public toProduct() {
     this.$router.push('/product')
   }
 
