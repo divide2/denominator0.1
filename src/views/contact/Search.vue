@@ -16,9 +16,9 @@
 
     </v-container>
 
-    <v-container class="mt-5 white">
+    <v-container class="mt-5 white" v-if="user">
       <v-list>
-        <div>
+        <div @click="$router.push({name: 'userDetail', params:{id:user.userId}})">
           <v-list-tile
                   avatar
                   @click=""
@@ -52,7 +52,7 @@ import FormPageHeader from '../../components/FormPageHeader'
 @Component({ components: { FormPageHeader } })
 export default class File extends Vue {
   query = new UserSearchQuery()
-  user = {}
+  user = null
 
   search () {
     UserApi.search(this.query).then(data => {this.user = data}
