@@ -8,6 +8,6 @@ export default  {
     return Api.get('/api/v1/user/search', data)
   },
   getDetail(id: string){
-    return Api.get(`/api/v1/user/${id}`)
+    return Api.get(`/api/v2/user/${id}`)
   }
 }

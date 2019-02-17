@@ -31,6 +31,7 @@
 .page {
   background-color: #e1e4e8;
   padding-bottom: 60px;
+  min-height:100%;
 }
 </style>
 

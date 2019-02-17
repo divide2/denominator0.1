@@ -10,7 +10,7 @@
               <v-icon color="green">person_add</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>添加好友</v-list-tile-title>
+              <v-list-tile-title>新的好友</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
           <v-divider></v-divider>
@@ -24,7 +24,7 @@
               <v-icon color="orange">group_add</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>添加团队</v-list-tile-title>
+              <v-list-tile-title>新的团队</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </div>
@@ -99,6 +99,7 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import MineApi from '../../api/MineApi'
+import FriendApi from '../../api/FriendApi';
 
 @Component({ components: {} })
 export default class File extends Vue {

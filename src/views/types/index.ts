@@ -4,6 +4,11 @@ export class LoginForm {
   public grant_type = 'password'
 }
 
+export class joinForm {
+  public account = ''
+  public password = ''
+}
+
 
 export class Group {
   public groupId = ''
@@ -16,4 +21,14 @@ interface Query {
 
 export class UserSearchQuery implements Query {
   query: string = ''
+}
+
+export class User {
+  public avatar = ''
+  public email = ''
+  public gender = ''
+  public nickname = ''
+  public phone = ''
+  public userId = 0
+  public username = ''
 }
