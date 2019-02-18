@@ -79,13 +79,13 @@ export default class File extends Vue {
     )
   }
 
-  confirm (item:Application) {
-    if(item.status==='finish'||item.selfApply){
-      this.$router.push({name:'userDetail',params:{id: item.user.userId}})
-    }else if(!item.selfApply){
-      this.$router.push({name:'confirmFriend',params:{id: item.user.userId}})
-    }else {
-      this.$router.push({name:'userDetail',params:{id: item.user.userId}})
+  confirm (item: Application) {
+    if (item.status === 'finish' || item.selfApply) {
+      this.$router.push({ name: 'userDetail', params: { id: item.user.userId.toString() } })
+    } else if (!item.selfApply) {
+      this.$router.push({ name: 'confirmFriend', params: { id: item.user.userId.toString() } })
+    } else {
+      this.$router.push({ name: 'userDetail', params: { id: item.user.userId.toString() } })
     }
   }
 }

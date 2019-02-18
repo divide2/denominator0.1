@@ -12,12 +12,12 @@ export class ApplyForm {
 
 export class Application{
   remark=''
-  slefApplay=true
+  selfApply=true
   status=''
   user=new User()
 }
 
 export class Confirm{
   memoName=''
-  toId=0
+  toId=''
 }

@@ -16,7 +16,7 @@
           <v-divider></v-divider>
         </div>
 
-        <div>
+        <div @click="$router.push({name:'addGroup'})">
           <v-list-tile
                   avatar=""
                   @click="">
@@ -24,7 +24,7 @@
               <v-icon color="orange">group_add</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>新的团队</v-list-tile-title>
+              <v-list-tile-title>创建团队</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </div>
@@ -36,7 +36,7 @@
         我的团队
       </v-subheader>
       <v-list class="pt-0 pb-0">
-          <div v-for="(item, index) in groups" :key="index">
+          <div v-for="(item, index) in groups" :key="index" @click="$router.push({name:'groupDetail',params:{id:item.groupId}})">
 
             <v-list-tile
                     avatar
