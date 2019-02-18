@@ -24,10 +24,11 @@
               <v-icon color="orange">group_add</v-icon>
             </v-list-tile-avatar>
             <v-list-tile-content>
-              <v-list-tile-title>创建团队</v-list-tile-title>
+              <v-list-tile-title>新的团队</v-list-tile-title>
             </v-list-tile-content>
           </v-list-tile>
         </div>
+
       </v-list>
     </div>
 
@@ -36,18 +37,18 @@
         我的团队
       </v-subheader>
       <v-list class="pt-0 pb-0">
-          <div v-for="(item, index) in groups" :key="index" @click="$router.push({name:'groupDetail',params:{id:item.groupId}})">
+          <div v-for="(item, index) in groups" :key="index" @click="$router.push({name:'groupDetail',params:{id:item.id}})">
 
             <v-list-tile
                     avatar
                     @click=""
             >
               <v-list-tile-avatar>
-                <img :src="item.avatar">
+                <img :src="item.image">
               </v-list-tile-avatar>
 
               <v-list-tile-content>
-                <v-list-tile-title>{{ item.groupName }}</v-list-tile-title>
+                <v-list-tile-title>{{ item.name }}</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
 

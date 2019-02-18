@@ -9,12 +9,6 @@ export class joinForm {
   public password = ''
 }
 
-
-export class Group {
-  public groupId = ''
-  public groupName = ''
-}
-
 interface Query {
 
 }

@@ -52,7 +52,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import Page from '@/components/Page.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import MineApi from '../../api/MineApi'
-import { Group } from '../types'
+import { Group } from '../types/group'
 
 @Component({ components: { Page,PageHeader } })
 export default class Work extends Vue {
