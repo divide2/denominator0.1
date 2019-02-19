@@ -57,13 +57,13 @@
 //todo 把application的状态写在常量文件
 import { Vue, Component } from 'vue-property-decorator'
 import UserApi from '../../api/UserApi';
-import { UserSearchQuery } from '../types/index';
+import { SearchQuery } from '../types/index';
 import FriendApi from '../../api/FriendApi';
 import { Application } from '../types/friend';
 
 @Component({ components: {} })
 export default class File extends Vue {
-  query = new UserSearchQuery()
+  query = new SearchQuery()
   applications = new Array<Application>()
 
   public created () {

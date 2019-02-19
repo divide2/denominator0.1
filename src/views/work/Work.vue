@@ -33,9 +33,9 @@
             <v-icon large color="blue darken-2">assignment</v-icon>
             <p>创建团队</p>
           </v-flex>
-          <v-flex column xs3>
+          <v-flex column xs3 @click="$router.push({name:'groupApplications'})">
             <v-icon large color="blue darken-2">assignment</v-icon>
-            <p>创建团队</p>
+            <p>审核团队申请</p>
           </v-flex>
           <v-flex column xs3>
             <v-icon large color="blue darken-2">assignment</v-icon>
@@ -54,20 +54,21 @@ import PageHeader from '@/components/PageHeader.vue'
 import MineApi from '../../api/MineApi'
 import { Group } from '../types/group'
 
-@Component({ components: { Page,PageHeader } })
+@Component({ components: { Page, PageHeader } })
 export default class Work extends Vue {
 
   public groups: Array<Group> = []
+  public myGroups: Array<Group> = []
 
-  public toPurchase() {
+  public toPurchase () {
     this.$router.push('/purchase')
   }
 
-  public toProduct() {
+  public toProduct () {
     this.$router.push('/product')
   }
 
-  created() {
+  created () {
     MineApi.listGroups().then(data => {
       this.groups = data
     })

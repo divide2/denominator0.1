@@ -15,3 +15,15 @@ export class GroupUser {
   }
   user = new User()
 }
+
+export class GroupApply {
+  memoName = ''
+  toGroupId = ''
+}
+
+export class Application{
+  id=''
+  memoNmae=''
+  status=''
+  user=new User()
+}

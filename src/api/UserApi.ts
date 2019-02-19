@@ -1,10 +1,10 @@
 import Api from '@/api/Api'
-import { UserSearchQuery } from "@/views/types";
+import { SearchQuery } from "@/views/types";
 
 
 export default  {
   // todo any to type
-  search(data: UserSearchQuery) {
+  search(data: SearchQuery) {
     return Api.get('/api/v1/user/search', data)
   },
   getDetail(id: string){

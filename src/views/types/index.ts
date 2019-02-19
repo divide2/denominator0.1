@@ -13,7 +13,7 @@ interface Query {
 
 }
 
-export class UserSearchQuery implements Query {
+export class SearchQuery implements Query {
   query: string = ''
 }
 
