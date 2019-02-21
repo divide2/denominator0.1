@@ -44,19 +44,6 @@
           <v-divider></v-divider>
         </div>
 
-        <div @click="$router.push({name:'addGroup'})">
-          <v-list-tile
-                  avatar=""
-                  @click="">
-            <v-list-tile-avatar>
-              <v-icon color="orange">group_add</v-icon>
-            </v-list-tile-avatar>
-            <v-list-tile-content>
-              <v-list-tile-title>审核团队申请人</v-list-tile-title>
-            </v-list-tile-content>
-          </v-list-tile>
-        </div>
-
       </v-list>
     </div>
 

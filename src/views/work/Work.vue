@@ -33,15 +33,20 @@
             <v-icon large color="blue darken-2">assignment</v-icon>
             <p>创建团队</p>
           </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'groupApplications'})">
+          <v-flex column xs3 @click="$router.push({name:'groupApplications',params:{id:groups[0].id}})">
             <v-icon large color="blue darken-2">assignment</v-icon>
-            <p>审核团队申请</p>
+            <p>团队申请</p>
           </v-flex>
-          <v-flex column xs3>
+          <v-flex column xs3 @click="$router.push({name:'cooperationSearch'})">
             <v-icon large color="blue darken-2">assignment</v-icon>
-            <p>创建团队</p>
+            <p>申请合作</p>
+          </v-flex>
+          <v-flex column xs3 @click="$router.push({name:'cooperationConfirm',params:{id:groupId}})">
+            <v-icon large color="blue darken-2">assignment</v-icon>
+            <p>确认合作</p>
           </v-flex>
         </v-layout>
+        {{groupId}}
       </v-container>
     </v-content>
   </div>
@@ -53,6 +58,7 @@ import Page from '@/components/Page.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import MineApi from '../../api/MineApi'
 import { Group } from '../types/group'
+import { mapState } from 'vuex'
 
 @Component({ components: { Page, PageHeader } })
 export default class Work extends Vue {
@@ -71,9 +77,13 @@ export default class Work extends Vue {
   created () {
     MineApi.listGroups().then(data => {
       this.groups = data
+      this.$store.commit('setGroupId', this.groups[0].id)
     })
   }
 
+  get groupId () {
+    return this.$store.state.groupId
+  }
 }
 </script>
 <style scoped></style>

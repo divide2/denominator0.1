@@ -29,4 +29,25 @@ export default [
     name: 'groupApplications',
     component: () => import('../views/group/Applications.vue'),
   },
+  {
+    path: '/group/:id/confirm',
+    name: 'groupConfirm',
+    component: () => import('../views/group/Confirm.vue'),
+  },
+  // 团队合作
+  {
+    path: '/group/cooperation/search',
+    name: 'cooperationSearch',
+    component: () => import('../views/group/cooperation/Search.vue'),
+  },
+  {
+    path: '/group/:id/cooperation/apply',
+    name: 'cooperationApply',
+    component: () => import('../views/group/cooperation/Apply.vue'),
+  },
+  {
+    path: '/group/:id/cooperation/confirm',
+    name: 'cooperationConfirm',
+    component: () => import('../views/group/cooperation/Confirm.vue'),
+  },
 ]

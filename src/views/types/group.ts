@@ -21,9 +21,23 @@ export class GroupApply {
   toGroupId = ''
 }
 
-export class Application{
-  id=''
-  memoNmae=''
-  status=''
-  user=new User()
+export class Application {
+  id = ''
+  memoNmae = ''
+  status = ''
+  user = new User()
 }
+
+export class ConfirmForm {
+  groupApplicationId = ''
+  memoName = ''
+  roleId = 1
+}
+
+// 合作
+export class CooperationApply {
+  fromGroupId = ''
+  remarks = ''
+  toGroupId = ''
+}
+
