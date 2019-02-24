@@ -20,7 +20,7 @@
         团队
       </v-subheader>
       <v-list>
-        <div @click="$router.push({name:'groupDetail',params:{id:group.id}})">
+        <div @click="$router.push({name:'teamDetail',params:{id:group.id}})">
           <v-list-tile
                   avatar
                   @click=""
@@ -50,16 +50,16 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { SearchQuery } from '../../types/index';
-import GroupApi from '../../../api/GroupApi';
-import { Group } from '../../types/group';
+import TeamApi from '../../../api/TeamApi';
+import { Team } from '../../types/team';
 
 @Component({ components: {} })
 export default class cooperationApply extends Vue {
   query = new SearchQuery()
-  group = new Group()
+  group = new Team()
 
   search () {
-    GroupApi.search(this.query).then(data => {
+    TeamApi.search(this.query).then(data => {
       this.group = data
     })
   }

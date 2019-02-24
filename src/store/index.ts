@@ -12,23 +12,23 @@ export default new Vuex.Store({
     resCode: []
   },
   mutations: {
-    setGroup(state, group) {
+    setGroup (state, group) {
       state.group = group
     },
-    setGroups(state, groups) {
+    setGroups (state, groups) {
       state.groups = groups
     },
-    setResCode(state, resCode) {
+    setResCode (state, resCode) {
       state.resCode = resCode
     }
   },
   actions: {
-    async setGroups({ commit }) {
+    async setGroups ({ commit }) {
       const groups = await MineApi.listGroups()
       commit('setGroups', groups)
     }
   },
-  modules:{
+  modules: {
     group
   }
 });

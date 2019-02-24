@@ -33,7 +33,7 @@
             <v-icon large color="blue darken-2">assignment</v-icon>
             <p>创建团队</p>
           </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'groupApplications',params:{id:groups[0].id}})">
+          <v-flex column xs3 @click="$router.push({name:'teamApplications',params:{id:groups[0].id}})">
             <v-icon large color="blue darken-2">assignment</v-icon>
             <p>团队申请</p>
           </v-flex>
@@ -57,14 +57,14 @@ import { Component, Vue } from 'vue-property-decorator'
 import Page from '@/components/Page.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import MineApi from '../../api/MineApi'
-import { Group } from '../types/group'
+import { Team } from '../types/team'
 import { mapState } from 'vuex'
 
 @Component({ components: { Page, PageHeader } })
 export default class Work extends Vue {
 
-  public groups: Array<Group> = []
-  public myGroups: Array<Group> = []
+  public groups: Array<Team> = []
+  public myGroups: Array<Team> = []
 
   public toPurchase () {
     this.$router.push('/purchase')

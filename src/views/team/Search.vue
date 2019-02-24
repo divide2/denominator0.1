@@ -33,7 +33,7 @@
             </v-list-tile-content>
             <v-spacer></v-spacer>
 
-            <v-btn color="success" @click="$router.push({name:'applyGroup',params:{id:group.id}})">
+            <v-btn color="success" @click="$router.push({name:'applyTeam',params:{id:group.id}})">
               申请
             </v-btn>
           </v-list-tile>
@@ -48,17 +48,17 @@
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
 import { SearchQuery } from '../types/index';
-import GroupApi from '../../api/GroupApi';
-import { Group } from '../types/group';
+import TeamApi from '../../api/TeamApi';
+import { Team } from '../types/team';
 
 @Component({ components: {} })
 export default class File extends Vue {
   query=new SearchQuery()
 
-  group=new Group()
+  group=new Team()
 
   search(){
-    GroupApi.search(this.query).then(data=>{
+    TeamApi.search(this.query).then(data=>{
       // todo alert
       this.group=data
     })

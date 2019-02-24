@@ -5,6 +5,7 @@ import App from './App.vue';
 import router from './route';
 import store from './store/index';
 import '@/components/index'
+import '@/util/classComponentHooks'
 // import GlobalAlert from '@/components/alert/Alert'
 
 Vue.config.productionTip = false;

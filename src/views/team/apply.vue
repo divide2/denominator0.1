@@ -14,19 +14,19 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { GroupApply } from '../types/group';
-import GroupApi from '../../api/GroupApi';
+import { TeamApply } from '../types/team';
+import TeamApi from '../../api/TeamApi';
 
 @Component({ components: {} })
 export default class File extends Vue {
-  groupApply = new GroupApply()
+  groupApply = new TeamApply()
 
   created () {
     this.groupApply.toGroupId = this.$route.params.id
   }
 
   apply(){
-    GroupApi.apply(this.groupApply).then(data=>{
+    TeamApi.apply(this.groupApply).then(data=>{
       this.$router.back()
     })
   }

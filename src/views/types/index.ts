@@ -26,3 +26,19 @@ export class User {
   public userId = 0
   public username = ''
 }
+
+export class Delete {
+  id: number | string
+
+  constructor (id: number | string) {
+    this.id = id
+  }
+}
+
+export class Detail {
+  id: number | string
+
+  constructor (id: number | string) {
+    this.id = id
+  }
+}

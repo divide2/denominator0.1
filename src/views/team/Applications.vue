@@ -24,7 +24,7 @@
           <v-btn
                   v-else
                   color="success"
-                  @click.stop="$router.push({name:'groupConfirm',params:{id:item.id}})">
+                  @click.stop="$router.push({name:'teamConfirm',params:{id:item.id}})">
             接受
           </v-btn>
         </v-list-tile>
@@ -38,14 +38,14 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import GroupApi from '../../api/GroupApi';
+import TeamApi from '../../api/TeamApi';
 
 @Component({ components: {} })
 export default class Applications extends Vue {
   applications: Array<Applications> = []
 
   created () {
-    GroupApi.getApplication(this.$route.params.id).then(data => {
+    TeamApi.getApplication(this.$route.params.id).then(data => {
       this.applications = data
     })
   }

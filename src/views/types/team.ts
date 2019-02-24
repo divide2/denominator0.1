@@ -1,13 +1,13 @@
 // 添加
 import { User } from "@/views/types/index"
 
-export class Group {
+export class Team {
   name = ''
   image = ''
   id = ''
 }
 
-export class GroupUser {
+export class TeamUser {
   role = {
     code: '',
     id: 0,
@@ -16,7 +16,7 @@ export class GroupUser {
   user = new User()
 }
 
-export class GroupApply {
+export class TeamApply {
   memoName = ''
   toGroupId = ''
 }

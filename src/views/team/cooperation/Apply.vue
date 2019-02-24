@@ -15,8 +15,8 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { CooperationApply } from '../../types/group';
-import GroupApi from '../../../api/GroupApi';
+import { CooperationApply } from '../../types/team';
+import TeamApi from '../../../api/TeamApi';
 
 @Component({ components: {} })
 export default class File extends Vue {
@@ -28,7 +28,7 @@ export default class File extends Vue {
   }
 
   apply () {
-    GroupApi.cooperationApply(this.cooperationApply).then(data=> {
+    TeamApi.cooperationApply(this.cooperationApply).then(data=> {
       this.$router.back()
     })
   }

@@ -1,13 +1,13 @@
 const state = {
-  // group: JSON.parse(sessionStorage.getItem('group') ? sessionStorage.getItem('group') : null)
+  // team: JSON.parse(sessionStorage.getItem('team') ? sessionStorage.getItem('team') : null)
   groupId: sessionStorage.getItem('groupId')
 }
 const getters = {}
 const actions = {}
 const mutations = {
   // setGroup (state: any, data: any) {
-  //   state.group = data
-  //   sessionStorage.setItem('group', data)
+  //   state.team = data
+  //   sessionStorage.setItem('team', data)
   // }
   setGroupId (state: any, id: string) {
     state.groupId = id

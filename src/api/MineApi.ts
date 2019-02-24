@@ -6,7 +6,7 @@ export default  {
     return Api.get('/api/v1/mine/products', data)
   },
   listGroups() {
-    return Api.get('/api/v1/mine/groups')
+    return Api.get('/api/v1/mine/teams')
   },
   listFriends() {
     return Api.get('/api/v1/mine/friends')

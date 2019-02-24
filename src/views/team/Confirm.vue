@@ -13,8 +13,8 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { ConfirmForm } from '../types/group';
-import GroupApi from '../../api/GroupApi';
+import { ConfirmForm } from '../types/team';
+import TeamApi from '../../api/TeamApi';
 
 // todo 1.把memoName从上一页记住在state中穿过来 2.弹出框
 @Component({ components: {} })
@@ -26,7 +26,7 @@ export default class Confirm extends Vue {
   }
 
   confirm(){
-    GroupApi.confirm(this.confirmForm).then(data=>{
+    TeamApi.confirm(this.confirmForm).then(data=>{
       console.log('seccess')
       this.$router.back()
     })

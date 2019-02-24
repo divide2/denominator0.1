@@ -4,13 +4,13 @@ import routes from '@/route/routes'
 import user from '@/route/user'
 import { getToken } from '@/route/Token'
 import friend from "@/route/friend";
-import group from "@/route/group";
+import team from "@/route/team";
 
 Vue.use(Router);
 
 const router = new Router({
   mode: 'history',
-  routes: routes.concat(user,friend, group),
+  routes: routes.concat(user,friend, team),
   base: process.env.BASE_URL
 });
 

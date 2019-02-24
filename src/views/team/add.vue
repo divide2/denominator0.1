@@ -16,14 +16,14 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import { Group } from '../types/group';
-import GroupApi from '../../api/GroupApi';
+import { Team } from '../types/team';
+import TeamApi from '../../api/TeamApi';
 
 @Component({ components: {} })
 export default class Add extends Vue {
-  group=new Group()
+  group=new Team()
   add(){
-    GroupApi.add(this.group).then(data=>{
+    TeamApi.add(this.group).then(data=>{
       this.$router.back()
     })
   }

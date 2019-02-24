@@ -17,15 +17,15 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import GroupApi from '../../api/GroupApi';
-import { GroupUser } from '../types/group';
+import TeamApi from '../../api/TeamApi';
+import { TeamUser } from '../types/team';
 
 @Component({ components: {} })
 export default class Users extends Vue {
-  users = new Array<GroupUser>()
+  users = new Array<TeamUser>()
 
   public created () {
-    GroupApi.getUsers(this.$route.params.id).then(data => {
+    TeamApi.getUsers(this.$route.params.id).then(data => {
       this.users=data
     })
   }

@@ -41,20 +41,32 @@ import { setToken } from '../../route/Token'
 @Component({})
 export default class Login extends Vue {
   public valid = null
+  public lastPathName = ''
 
   public form = new LoginForm()
   public joinForm = new joinForm()
 
   public login () {
     LoginApi.loginByUsername(this.form).then(data => {
+
       setToken(data.access_token)
-      this.$router.push('/')
+      if (this.lastPathName) {
+        this.$router.push({ name: this.lastPathName })
+      } else {
+        this.$router.push('/')
+      }
     })
   }
 
   public join () {
-    LoginApi.join(this.joinForm).then(data=>{
+    LoginApi.join(this.joinForm).then(data => {
       this.$router.push('/')
+    })
+  }
+
+  beforeRouteEnter (to, from, next) {
+    next(vm => {
+      vm.lastPathName = from.name
     })
   }
 }

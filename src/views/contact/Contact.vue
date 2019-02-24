@@ -16,7 +16,7 @@
           <v-divider></v-divider>
         </div>
 
-        <div @click="$router.push({name:'addGroup'})">
+        <div @click="$router.push({name:'addTeam'})">
           <v-list-tile
                   avatar=""
                   @click="">
@@ -30,7 +30,7 @@
           <v-divider></v-divider>
         </div>
 
-        <div @click="$router.push({name:'searchGroup'})">
+        <div @click="$router.push({name:'searchTeam'})">
           <v-list-tile
                   avatar=""
                   @click="">
@@ -52,7 +52,7 @@
         我的团队
       </v-subheader>
       <v-list class="pt-0 pb-0">
-          <div v-for="(item, index) in groups" :key="index" @click="$router.push({name:'groupDetail',params:{id:item.id}})">
+          <div v-for="(item, index) in groups" :key="index" @click="$router.push({name:'teamDetail',params:{id:item.id}})">
 
             <v-list-tile
                     avatar

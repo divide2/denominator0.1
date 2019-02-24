@@ -3,8 +3,8 @@ module.exports = {
         port: '9527',
         proxy: {
             '/api': {
-                target: 'http://bvvy.free.idcfengye.com',
-                // target:'http://192.168.3.12:8080',
+                // target: 'http://bvvy.free.idcfengye.com',
+                target:'http://192.168.3.38:8080',
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': ''

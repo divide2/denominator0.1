@@ -1,6 +1,6 @@
-import Layout from '../views/Layout.vue';
-import FormLayout from '../views/FormLayout.vue';
-import Login from '../views/login/Login.vue'
+import Layout from '@/views/Layout.vue';
+import FormLayout from '@/views/FormLayout.vue';
+import Login from '@/views/login/Login.vue'
 
 const routes = [
   {
@@ -11,7 +11,7 @@ const routes = [
       {
         path: '/work',
         name: 'work',
-        component: () => import('../views/work/Work.vue'),
+        component: () => import('@/views/work/Work.vue'),
       },
       {
         path: '/message',
@@ -38,23 +38,23 @@ const routes = [
       {
         path: '',
         name: 'purchase',
-        component: () => import('../views/purchase/Purchase.vue'),
+        component: () => import('@/views/purchase/Purchase.vue'),
       }
     ]
   },
   {
     path: '/product',
     name: 'product',
-    component: () => import('../views/product/Product.vue'),
+    component: () => import('@/views/product/Product.vue'),
   },
   {
     path: '/product/add',
     name: 'addProduct',
-    component: () => import('../views/product/AddProduct.vue'),
+    component: () => import('@/views/product/Add.vue'),
   },
   {
     path: '/login',
-    name: 'login ',
+    name: 'login',
     component: Login
   },
   {
@@ -63,7 +63,7 @@ const routes = [
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
+    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
   },
   {
     path: '/chatRoom/:chatRoomId',

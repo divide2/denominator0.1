@@ -7,7 +7,7 @@
       <v-list>
         <div
                 v-for="(item,index) in applications" :key="index"
-                @click="$router.push({name:'groupDetail',params:{id:group.id}})">
+                @click="$router.push({name:'teamDetail',params:{id:group.id}})">
           <v-list-tile
                   avatar
                   @click=""
@@ -46,22 +46,22 @@
 
 <script lang="ts">
 import { Vue, Component } from 'vue-property-decorator'
-import GroupApi from '../../../api/GroupApi';
-import { CooperationApply } from '../../types/group';
+import TeamApi from '../../../api/TeamApi';
+import { CooperationApply } from '../../types/team';
 
 @Component({ components: {} })
 export default class cooperationApply extends Vue {
   applications: Array<CooperationApply> = []
 
   created () {
-    GroupApi.getCooApplications(this.$store.state.group.groupId).then(data => {
+    TeamApi.getCooApplications(this.$store.state.group.groupId).then(data => {
       this.applications = data
     })
   }
 
   confirm (id: string) {
     let param = { id: id }
-    GroupApi.cooperationConfirm(param).then(data => {
+    TeamApi.cooperationConfirm(param).then(data => {
       console.log('success')
     })
 

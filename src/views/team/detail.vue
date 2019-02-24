@@ -50,21 +50,21 @@
 
 <script lang="ts">
 import  { Vue, Component } from 'vue-property-decorator'
-import { Group } from '../types/group';
-import GroupApi from '../../api/GroupApi';
+import { Team } from '../types/team';
+import TeamApi from '../../api/TeamApi';
 
 @Component({ components: {} })
 export default class Detail extends Vue {
-  group=new Group()
+  group=new Team()
 
   public created(){
-    GroupApi.getGroup(this.$route.params.id).then(data=>{
+    TeamApi.getGroup(this.$route.params.id).then(data=>{
       this.group=data
     })
   }
 
   goTo(){
-    this.$router.push({name:'groupUsers',params:{id:this.$route.params.id}})
+    this.$router.push({name:'teamUsers',params:{id:this.$route.params.id}})
   }
 }
 </script>

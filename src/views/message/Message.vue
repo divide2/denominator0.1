@@ -88,5 +88,10 @@ export default class Message extends Vue {
       subtitle: "<span class='text--primary'>Sandra Adams</span> &mdash; Do you have Paris recommendations? Have you ever been?"
     }
     ]
+
+  beforeRouteEnter (to, from, next) {
+    console.log(from)
+    next()
+  }
 }
 </script>
