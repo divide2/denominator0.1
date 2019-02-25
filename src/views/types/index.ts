@@ -42,3 +42,8 @@ export class Detail {
     this.id = id
   }
 }
+
+export class PageList {
+  page = 1
+  size = 10
+}
