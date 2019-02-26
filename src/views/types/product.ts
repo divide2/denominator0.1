@@ -10,6 +10,7 @@ export class Specs {
 export class Product {
   name = ''
   remarks = ''
+  image: Array<string> = []
   specs: Array<Specs> = []
   teamId = ''
   unit = ''

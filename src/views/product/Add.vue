@@ -3,7 +3,8 @@
     <file-upload
             ref="upload"
             v-model="files"
-            post-action="/api/v1/upload/image"
+            :post-action="'/api/v1/upload/image'"
+            :headers="headers"
             @input-file="inputFile"
             @input-filter="inputFilter"
     >上传文件
@@ -57,11 +58,13 @@ import { Vue, Component } from 'vue-property-decorator'
 import FileUpload from 'vue-upload-component'
 import { Product, Specs } from '../types/product';
 import ProductApi from '../../api/ProductApi';
+import { getToken } from '@/route/Token'
 
 @Component({ components: { FileUpload } })
 export default class AddProduct extends Vue {
   product = new Product()
   public files = []
+  public headers = {Authorization: 'Bearer ' + getToken()}
 
   public inputFile (newFile: any, oldFile: any) {
     if (newFile && !oldFile) {
@@ -72,6 +75,8 @@ export default class AddProduct extends Vue {
     if (newFile && oldFile && !newFile.active && oldFile.active) {
       // 获得相应数据
       console.log('response', newFile.response)
+      this.product.image.push(newFile.response.url)
+
       if (newFile.xhr) {
         //  获得响应状态码
         console.log('status', newFile.xhr.status)
