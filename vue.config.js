@@ -4,8 +4,8 @@ module.exports = {
     proxy: {
       '/api': {
         // target: 'http://bvvy.free.idcfengye.com',
-        // target: 'http://bvvy.ngrok.xiaomiqiu.cn',
-        target:'http://192.168.3.50:8080',
+        target: ' http://divide.free.idcfengye.com',
+        // target:'http://192.168.3.50:8080',
         changeOrigin: true,
         pathRewrite: {
           '^/api': ''

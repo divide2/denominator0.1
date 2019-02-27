@@ -1,17 +1,37 @@
 <template>
   <page :title="'添加商品'" class="add-product" :hasBack="true">
-    <file-upload
-            ref="upload"
-            v-model="files"
-            :post-action="'/api/v1/upload/image'"
-            :headers="headers"
-            @input-file="inputFile"
-            @input-filter="inputFilter"
-    >上传文件
-    </file-upload>
+    <!--<file-upload-->
+            <!--ref="upload"-->
+            <!--v-model="files"-->
+            <!--:post-action="'/api/v1/upload/image'"-->
+            <!--:headers="headers"-->
+            <!--@input-file="inputFile"-->
+            <!--@input-filter="inputFilter"-->
+    <!--&gt;上传文件-->
+    <!--</file-upload>-->
 
     <v-container grid-list-xs class="white">
       <v-text-field label="商品名称" v-model="product.name"></v-text-field>
+      <v-layout class="img-list">
+        <v-flex xs4 class="img-item">
+          <div class="img-box">
+            <file-upload
+                    ref="upload"
+                    v-model="files"
+                    :post-action="'/api/v1/upload/image'"
+                    :headers="headers"
+                    @input-file="inputFile"
+                    @input-filter="inputFilter"
+            >
+              <v-btn flat block>
+                <v-icon>
+                  add
+                </v-icon>
+              </v-btn>
+            </file-upload>
+          </div>
+        </v-flex>
+      </v-layout>
     </v-container>
 
     <v-subheader>

@@ -1,5 +1,5 @@
 import Api from './Api'
-import { Product, ProductUpdate } from "@/views/types/product";
+import { ListParam, Product, ProductUpdate } from "@/views/types/product";
 import { Delete } from "@/views/types";
 
 export default {
@@ -14,6 +14,9 @@ export default {
   },
   getDetail (id: number | string) {
     return Api.get(`/api/v1/product/${id}`)
+  },
+  list (data: ListParam) {
+    return Api.get('/api/v1/product/find', data)
   }
 
 }

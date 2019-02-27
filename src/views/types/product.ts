@@ -1,3 +1,5 @@
+import { Page } from "@/views/types/index";
+
 export class Specs {
   id = 0
   image: Array<string> = []
@@ -20,5 +22,9 @@ export class Product {
 export class ProductUpdate extends Product {
   id = 0
   initAmount = 0
+}
+
+export class ListParam extends Page {
+
 }
 
