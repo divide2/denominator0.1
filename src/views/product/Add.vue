@@ -1,16 +1,37 @@
 <template>
   <page :title="'添加商品'" class="add-product" :hasBack="true">
-    <file-upload
-            ref="upload"
-            v-model="files"
-            post-action="/api/v1/upload/image"
-            @input-file="inputFile"
-            @input-filter="inputFilter"
-    >上传文件
-    </file-upload>
+    <!--<file-upload-->
+            <!--ref="upload"-->
+            <!--v-model="files"-->
+            <!--:post-action="'/api/v1/upload/image'"-->
+            <!--:headers="headers"-->
+            <!--@input-file="inputFile"-->
+            <!--@input-filter="inputFilter"-->
+    <!--&gt;上传文件-->
+    <!--</file-upload>-->
 
     <v-container grid-list-xs class="white">
       <v-text-field label="商品名称" v-model="product.name"></v-text-field>
+      <v-layout class="img-list">
+        <v-flex xs4 class="img-item">
+          <div class="img-box">
+            <file-upload
+                    ref="upload"
+                    v-model="files"
+                    :post-action="'/api/v1/upload/image'"
+                    :headers="headers"
+                    @input-file="inputFile"
+                    @input-filter="inputFilter"
+            >
+              <v-btn flat block>
+                <v-icon>
+                  add
+                </v-icon>
+              </v-btn>
+            </file-upload>
+          </div>
+        </v-flex>
+      </v-layout>
     </v-container>
 
     <v-subheader>
@@ -57,11 +78,13 @@ import { Vue, Component } from 'vue-property-decorator'
 import FileUpload from 'vue-upload-component'
 import { Product, Specs } from '../types/product';
 import ProductApi from '../../api/ProductApi';
+import { getToken } from '@/route/Token'
 
 @Component({ components: { FileUpload } })
 export default class AddProduct extends Vue {
   product = new Product()
   public files = []
+  public headers = {Authorization: 'Bearer ' + getToken()}
 
   public inputFile (newFile: any, oldFile: any) {
     if (newFile && !oldFile) {
@@ -72,6 +95,8 @@ export default class AddProduct extends Vue {
     if (newFile && oldFile && !newFile.active && oldFile.active) {
       // 获得相应数据
       console.log('response', newFile.response)
+      this.product.image.push(newFile.response.url)
+
       if (newFile.xhr) {
         //  获得响应状态码
         console.log('status', newFile.xhr.status)

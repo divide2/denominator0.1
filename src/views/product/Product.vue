@@ -34,12 +34,14 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import MineApi from '../../api/MineApi'
+import ProductApi from '../../api/ProductApi';
+import { ListParam } from '../types/product';
 
 @Component({})
 export default class Work extends Vue {
 
   public products = []
+  public listParam = new ListParam()
 
   public iconArr = {
     add: true,
@@ -47,9 +49,12 @@ export default class Work extends Vue {
     edit: true
   }
 
-  public async created () {
-    const { content, totalElements } = await MineApi.listProducts({})
-    this.products = content
+  public created () {
+//    const { content, totalElements } = await ProductApi.list(this.listParam)
+//    this.products = content
+    ProductApi.list(this.listParam).then(data=>{
+      console.log(data)
+    })
   }
 
   public clickAdd () {

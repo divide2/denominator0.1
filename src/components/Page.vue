@@ -1,6 +1,6 @@
 <template>
   <div class="page">
-    <v-toolbar color="indigo" dark fixed app>
+    <v-toolbar light fixed app>
       <!--头部左边-->
       <slot name="headerLeft"></slot>
       <v-btn icon v-if="hasBack" @click="$router.back()">

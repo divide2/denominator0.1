@@ -1,14 +1,19 @@
 <template>
-  <div>
-    <page-header>
-      <v-toolbar-title>除以二</v-toolbar-title>
-      <v-spacer></v-spacer>
+  <page>
+    <div slot="headerLeft">
+      <v-toolbar-title class="company-select">
+        <v-select :items="groups" :item-text="'name'" :item-value="'id'"
+                  @change="changeTeam"></v-select>
+      </v-toolbar-title>
+    </div>
+    <div slot="headerRight">
       <v-toolbar-items>
         <v-btn flat icon>
           <v-icon size="30">search</v-icon>
         </v-btn>
       </v-toolbar-items>
-    </page-header>
+    </div>
+
     <v-content>
       <v-container grid-list-md text-xs-center>
         <v-layout row wrap>
@@ -49,7 +54,7 @@
         {{groupId}}
       </v-container>
     </v-content>
-  </div>
+  </page>
 </template>
 
 <script lang="ts">
@@ -64,7 +69,6 @@ import { mapState } from 'vuex'
 export default class Work extends Vue {
 
   public groups: Array<Team> = []
-  public myGroups: Array<Team> = []
 
   public toPurchase () {
     this.$router.push('/purchase')
@@ -75,15 +79,26 @@ export default class Work extends Vue {
   }
 
   created () {
-    MineApi.listGroups().then(data => {
-      this.groups = data
-      this.$store.commit('setGroupId', this.groups[0].id)
-    })
+    this.groups = [{ id: '1', name: '除以二之初始化一个欢乐世界与你同在一片欢乐世界' }, { id: '2', name: 'bb' }]
+    this.$store.commit('setCurrTeam', this.groups[0])
+//    MineApi.listGroups().then(data => {
+//      this.groups = data
+//      this.$store.commit('setGroupId', this.groups[0].id)
+//    })
   }
 
   get groupId () {
     return this.$store.state.groupId
   }
+
+  changeTeam (id) {
+    let team = this.groups.find(item => item.id === id)
+    this.$store.commit('setCurrTeam', team)
+  }
 }
 </script>
-<style scoped></style>
+<style scoped lang="stylus">
+  .company-select {
+    width: 200px;
+  }
+</style>

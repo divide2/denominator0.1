@@ -43,7 +43,7 @@ export class Detail {
   }
 }
 
-export class PageList {
-  page = 1
-  size = 10
+export class Page {
+  size: 1
+  page: 1
 }
