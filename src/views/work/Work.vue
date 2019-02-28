@@ -79,8 +79,10 @@ export default class Work extends Vue {
   }
 
   created () {
-    this.groups = [{ id: '1', name: '除以二之初始化一个欢乐世界与你同在一片欢乐世界' }, { id: '2', name: 'bb' }]
-    this.$store.commit('setCurrTeam', this.groups[0])
+    const test = new Team()
+    console.log(test)
+    console.log(this.$store.state.team.currTeam)
+//    this.$store.commit('setCurrTeam', this.groups[0])
 //    MineApi.listGroups().then(data => {
 //      this.groups = data
 //      this.$store.commit('setGroupId', this.groups[0].id)
