@@ -17,6 +17,7 @@ export class Product {
   teamId = ''
   unit = ''
   image = []
+  createTime = ''
 }
 
 export class ProductUpdate extends Product {

@@ -6,7 +6,7 @@ export default {
   add (data: Team) {
     return Api.post('/api/v1/team', data)
   },
-  getGroup (id: string) {
+  getTeam (id: string) {
     return Api.get(`/api/v1/team/${id}`)
   },
   getUsers (id: string) {

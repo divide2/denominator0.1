@@ -12,22 +12,41 @@
     </div>
 
     <v-list two-line class="product">
-      <template v-for="(item, index) in products">
-        <v-list-tile
-                :key="item.id"
-                avatar
-        >
-          <v-list-tile-avatar>
-            <img :src="item.image">
-          </v-list-tile-avatar>
+      <div v-for="(item, index) in products" @click="$router.push({name:'productDetail',params:{id:item.id}})">
+        <!--<v-list-tile-->
+                <!--:key="item.id"-->
+                <!--avatar-->
+        <!--&gt;-->
+          <!--<v-list-tile-avatar>-->
+            <!--<img :src="item.image">-->
+          <!--</v-list-tile-avatar>-->
 
-          <v-list-tile-content>
-            <v-list-tile-title v-html="item.name"></v-list-tile-title>
-            <v-list-tile-sub-title v-html="item.remarks"></v-list-tile-sub-title>
-          </v-list-tile-content>
-        </v-list-tile>
+          <!--<v-list-tile-content>-->
+            <!--<v-list-tile-title v-html="item.name"></v-list-tile-title>-->
+            <!--<v-list-tile-sub-title v-html="item.remarks"></v-list-tile-sub-title>-->
+          <!--</v-list-tile-content>-->
+        <!--</v-list-tile>-->
+
+        <v-flex>
+          <v-card>
+            <v-layout>
+              <v-flex xs5>
+                <v-img :src="item.image">
+
+                </v-img>
+              </v-flex>
+              <v-flex xs7>
+                <v-card-title primary-title>
+                  <div>
+
+                  </div>
+                </v-card-title>
+              </v-flex>
+            </v-layout>
+          </v-card>
+        </v-flex>
         <v-divider></v-divider>
-      </template>
+      </div>
     </v-list>
   </page>
 </template>
@@ -35,12 +54,14 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import ProductApi from '../../api/ProductApi';
-import { ListParam } from '../types/product';
+import { ListParam, Product } from '../types/product';
+import { State } from 'vuex-class';
 
 @Component({})
 export default class Work extends Vue {
+  @State(state=> state.team.currTeam) currTeam
 
-  public products = []
+  public products = new Product()
   public listParam = new ListParam()
 
   public iconArr = {
@@ -50,10 +71,11 @@ export default class Work extends Vue {
   }
 
   public created () {
+    console.log(this.listParam)
 //    const { content, totalElements } = await ProductApi.list(this.listParam)
 //    this.products = content
     ProductApi.list(this.listParam).then(data=>{
-      console.log(data)
+      this.products=data.content
     })
   }
 

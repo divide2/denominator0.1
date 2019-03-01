@@ -2,8 +2,12 @@
   <page>
     <div slot="headerLeft">
       <v-toolbar-title class="company-select">
-        <v-select :items="groups" :item-text="'name'" :item-value="'id'"
-                  @change="changeTeam"></v-select>
+        <v-select
+                v-model="currTeam"
+                :items="groups"
+                :item-text="'name'"
+                :item-value="'id'"
+                @change="changeTeam"></v-select>
       </v-toolbar-title>
     </div>
     <div slot="headerRight">
@@ -64,6 +68,7 @@ import PageHeader from '@/components/PageHeader.vue'
 import MineApi from '../../api/MineApi'
 import { Team } from '../types/team'
 import { mapState } from 'vuex'
+import { Mutation, State } from 'vuex-class';
 
 @Component({ components: { Page, PageHeader } })
 export default class Work extends Vue {
@@ -78,15 +83,18 @@ export default class Work extends Vue {
     this.$router.push('/product')
   }
 
+  @State(state => state.team.currTeam) currTeam
+  @Mutation('setCurrTeam') setCurrTeam
+
   created () {
     const test = new Team()
-    console.log(test)
-    console.log(this.$store.state.team.currTeam)
 //    this.$store.commit('setCurrTeam', this.groups[0])
-//    MineApi.listGroups().then(data => {
-//      this.groups = data
-//      this.$store.commit('setGroupId', this.groups[0].id)
-//    })
+    MineApi.listGroups().then(data => {
+      this.groups = data
+      if (!this.currTeam) {
+        this.setCurrTeam(this.groups[0])
+      }
+    })
   }
 
   get groupId () {
@@ -95,7 +103,7 @@ export default class Work extends Vue {
 
   changeTeam (id) {
     let team = this.groups.find(item => item.id === id)
-    this.$store.commit('setCurrTeam', team)
+    this.setCurrTeam(team)
   }
 }
 </script>
