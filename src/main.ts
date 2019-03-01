@@ -7,6 +7,7 @@ import store from './store/index';
 import '@/components/index'
 import '@/util/classComponentHooks'
 // import GlobalAlert from '@/components/alert/Alert'
+console.log(this)
 
 Vue.config.productionTip = false;
 // 全局插件需要在new Vue()之前完成

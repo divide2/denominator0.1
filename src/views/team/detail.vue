@@ -58,7 +58,7 @@ export default class Detail extends Vue {
   group=new Team()
 
   public created(){
-    TeamApi.getGroup(this.$route.params.id).then(data=>{
+    TeamApi.getTeam(this.$route.params.id).then(data=>{
       this.group=data
     })
   }

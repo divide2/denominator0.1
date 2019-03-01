@@ -1,6 +1,7 @@
 import Api from './Api'
 import { ListParam, Product, ProductUpdate } from "@/views/types/product";
 import { Delete } from "@/views/types";
+import store from '@/store/index'
 
 export default {
   add (data: Product) {
@@ -16,7 +17,7 @@ export default {
     return Api.get(`/api/v1/product/${id}`)
   },
   list (data: ListParam) {
-    return Api.get('/api/v1/product/find', data)
+    return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/products`, data)
   }
 
 }
