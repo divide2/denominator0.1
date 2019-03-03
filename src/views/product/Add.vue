@@ -1,18 +1,24 @@
 <template>
   <page :title="'添加商品'" class="add-product" :hasBack="true">
     <!--<file-upload-->
-            <!--ref="upload"-->
-            <!--v-model="files"-->
-            <!--:post-action="'/api/v1/upload/image'"-->
-            <!--:headers="headers"-->
-            <!--@input-file="inputFile"-->
-            <!--@input-filter="inputFilter"-->
+    <!--ref="upload"-->
+    <!--v-model="files"-->
+    <!--:post-action="'/api/v1/upload/image'"-->
+    <!--:headers="headers"-->
+    <!--@input-file="inputFile"-->
+    <!--@input-filter="inputFilter"-->
     <!--&gt;上传文件-->
     <!--</file-upload>-->
 
     <v-container grid-list-xs class="white">
+
       <v-text-field label="商品名称" v-model="product.name"></v-text-field>
       <v-layout class="img-list">
+        <v-flex xs4 class="img-item" v-for="(item,index) in product.image" :key="index">
+          <div class="img-box">
+            <c-image :src="item" :width="100" :height="100"></c-image>
+          </div>
+        </v-flex>
         <v-flex xs4 class="img-item">
           <div class="img-box">
             <file-upload
@@ -69,7 +75,7 @@
 
     </v-container>
 
-    <v-btn block @click="add">添加</v-btn>
+    <v-btn block @click="save">添加</v-btn>
   </page>
 </template>
 
@@ -84,7 +90,7 @@ import { getToken } from '@/route/Token'
 export default class AddProduct extends Vue {
   product = new Product()
   public files = []
-  public headers = {Authorization: 'Bearer ' + getToken()}
+  public headers = { Authorization: 'Bearer ' + getToken() }
 
   public inputFile (newFile: any, oldFile: any) {
     if (newFile && !oldFile) {
@@ -134,8 +140,30 @@ export default class AddProduct extends Vue {
 
   add () {
     ProductApi.add(this.product).then(data => {
-
+      this.$router.back()
     })
+  }
+
+  update(){
+    ProductApi.update(this.product).then(data => {
+      this.$router.back()
+    })
+  }
+
+  save(){
+    if(this.$route.name === 'productDetail'){
+      this.update()
+    }else{
+      this.add()
+    }
+  }
+
+  created () {
+    if (this.$route.name === 'productDetail') {
+      ProductApi.getDetail(this.$route.params.id).then(data => {
+        this.product = data
+      })
+    }
   }
 }
 </script>
@@ -148,6 +176,8 @@ export default class AddProduct extends Vue {
       .img-item {
         text-align: center
         padding: 2px
+        height: 100px;
+        overflow: hidden;
         .img-box {
           border: 1px dashed gray
         }

@@ -34,6 +34,10 @@
             <v-icon large color="purple darken-2">store</v-icon>
             <p>库存</p>
           </v-flex>
+          <v-flex column xs3 @click="$router.push({name:'warehouse'})">
+            <v-icon large color="purple darken-2">store</v-icon>
+            <p>仓库</p>
+          </v-flex>
           <v-flex column xs3>
             <v-icon large color="blue darken-2">assignment</v-icon>
             <p>订单</p>

@@ -44,6 +44,6 @@ export class Detail {
 }
 
 export class Page {
-  size: 1
-  page: 1
+  size = 10
+  page = 1
 }

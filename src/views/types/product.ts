@@ -12,15 +12,12 @@ export class Specs {
 export class Product {
   name = ''
   remarks = ''
-  image: Array<string> = []
+  image: Array<String> = []
   specs: Array<Specs> = []
   teamId = ''
   unit = ''
   image = []
   createTime = ''
-}
-
-export class ProductUpdate extends Product {
   id = 0
   initAmount = 0
 }
