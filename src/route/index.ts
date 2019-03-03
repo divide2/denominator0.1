@@ -7,12 +7,13 @@ import friend from "@/route/friend";
 import team from "@/route/team";
 import product from "@/route/product";
 import warehouse from "@/route/warehouse";
+import order from "@/route/order";
 
 Vue.use(Router);
 
 const router = new Router({
   mode: 'history',
-  routes: routes.concat(user, friend, team, product, warehouse),
+  routes: routes.concat(user, friend, team, product, warehouse,order),
   base: process.env.BASE_URL
 });
 

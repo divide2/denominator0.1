@@ -43,7 +43,15 @@ export class Detail {
   }
 }
 
+export class idParam {
+  id: number | string
+
+  constructor (id: number | string) {
+    this.id = id
+  }
+}
+
 export class Page {
   size = 10
-  page = 1
+  page = 0
 }

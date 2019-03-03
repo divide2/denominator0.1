@@ -1,5 +1,5 @@
 <template>
-  <page :hasBack="true" :title="'申请合作'">
+  <page :hasBack="true" :title="'确认合作'">
     <v-container class="mt-5 white">
       <v-subheader>
         团队
@@ -13,7 +13,7 @@
                   @click=""
           >
             <v-list-tile-avatar>
-              <img :src="item.group.image">
+              <img :src="item.team.image">
             </v-list-tile-avatar>
 
             <v-list-tile-content>
@@ -54,7 +54,7 @@ export default class cooperationApply extends Vue {
   applications: Array<CooperationApply> = []
 
   created () {
-    TeamApi.getCooApplications(this.$store.state.group.groupId).then(data => {
+    TeamApi.getCooApplications(this.$store.state.team.currTeam.id).then(data => {
       this.applications = data
     })
   }

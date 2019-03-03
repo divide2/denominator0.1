@@ -3,7 +3,7 @@
     <option-btn :icon="'add'" @click.native="clickAdd"></option-btn>
 
     <v-list two-line class="product">
-      <div v-for="(item, index) in products" @click="$router.push({name:'productDetail',params:{id:item.id}})">
+      <div v-for="(item, index) in products" @click="$router.push({name:'productUpdate',params:{id:item.id}})">
         <v-flex>
           <v-card>
             <v-layout class="pa-2">

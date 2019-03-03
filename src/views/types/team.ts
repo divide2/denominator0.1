@@ -36,8 +36,8 @@ export class ConfirmForm {
 
 // 合作
 export class CooperationApply {
-  fromGroupId = ''
+  fromTeamId = ''
   remarks = ''
-  toGroupId = ''
+  toTeamId = ''
 }
 

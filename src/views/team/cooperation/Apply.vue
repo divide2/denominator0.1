@@ -22,16 +22,11 @@ import TeamApi from '../../../api/TeamApi';
 export default class File extends Vue {
   cooperationApply = new CooperationApply()
 
-  created () {
-    this.cooperationApply.toGroupId = this.$route.params.id
-    this.cooperationApply.fromGroupId = this.$store.state.group.groupId
-  }
-
   apply () {
+    this.cooperationApply.toTeamId = this.$route.params.id
     TeamApi.cooperationApply(this.cooperationApply).then(data=> {
       this.$router.back()
     })
   }
-
 }
 </script>
