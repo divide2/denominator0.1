@@ -1,6 +1,8 @@
 import Api from '@/api/Api'
 import { ConfirmForm, CooperationApply, Team, TeamApply } from "@/views/types/team";
 import { SearchQuery } from "@/views/types";
+import store from '@/store/index'
+
 
 export default {
   add (data: Team) {
@@ -28,6 +30,7 @@ export default {
 
   // 申请合作
   cooperationApply (data: CooperationApply) {
+    data.fromTeamId=store.state.team.currTeam.id
     return Api.post('/api/v1/team/cooperation/apply', data)
   },
   cooperationConfirm(data: any){
@@ -38,5 +41,8 @@ export default {
   },
   deleteCooApplication(id:string){
     // return Api.delete(`/api/v1/team/cooperation/applications/${id}`)
+  },
+  cooperationList(){
+    return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/cooperations`)
   }
 }

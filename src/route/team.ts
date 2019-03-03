@@ -50,4 +50,9 @@ export default [
     name: 'cooperationConfirm',
     component: () => import('@/views/team/cooperation/Confirm.vue'),
   },
+  {
+    path: '/team/:id/cooperation/list',
+    name: 'cooperationList',
+    component: () => import('@/views/team/cooperation/List.vue'),
+  },
 ]

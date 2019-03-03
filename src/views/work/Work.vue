@@ -21,7 +21,7 @@
     <v-content>
       <v-container grid-list-md text-xs-center>
         <v-layout row wrap>
-          <v-flex column @click="toPurchase" xs3>
+          <v-flex column @click="$router.push({name:'orderAdd'})" xs3>
             <v-icon large color="green darken-2">add_shopping_cart</v-icon>
             <p>采购</p>
           </v-flex>
@@ -34,13 +34,13 @@
             <v-icon large color="purple darken-2">store</v-icon>
             <p>库存</p>
           </v-flex>
-          <v-flex column xs3>
+          <v-flex column xs3 @click="$router.push({name:'warehouse'})">
+            <v-icon large color="purple darken-2">store</v-icon>
+            <p>仓库</p>
+          </v-flex>
+          <v-flex column xs3 @click="$router.push({name:'orderList'})">
             <v-icon large color="blue darken-2">assignment</v-icon>
             <p>订单</p>
-          </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'createTeam'})">
-            <v-icon large color="blue darken-2">assignment</v-icon>
-            <p>创建团队</p>
           </v-flex>
           <v-flex column xs3 @click="$router.push({name:'teamApplications',params:{id:groups[0].id}})">
             <v-icon large color="blue darken-2">assignment</v-icon>
@@ -50,12 +50,15 @@
             <v-icon large color="blue darken-2">assignment</v-icon>
             <p>申请合作</p>
           </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'cooperationConfirm',params:{id:groupId}})">
+          <v-flex column xs3 @click="$router.push({name:'cooperationConfirm',params:{id:currTeam.id}})">
             <v-icon large color="blue darken-2">assignment</v-icon>
             <p>确认合作</p>
           </v-flex>
+          <v-flex column xs3 @click="$router.push({name:'cooperationList',params:{id:currTeam.id}})">
+            <v-icon large color="blue darken-2">assignment</v-icon>
+            <p>合作伙伴</p>
+          </v-flex>
         </v-layout>
-        {{groupId}}
       </v-container>
     </v-content>
   </page>
@@ -95,10 +98,6 @@ export default class Work extends Vue {
         this.setCurrTeam(this.groups[0])
       }
     })
-  }
-
-  get groupId () {
-    return this.$store.state.groupId
   }
 
   changeTeam (id) {
