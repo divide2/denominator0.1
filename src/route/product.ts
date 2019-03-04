@@ -10,7 +10,7 @@ export default [
     component: () => import('@/views/product/Add.vue'),
   },
   {
-    path: '/product/:id',
+    path: '/product/:id/update',
     name: 'productUpdate',
     component: () => import('@/views/product/Add.vue'),
   },

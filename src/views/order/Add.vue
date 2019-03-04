@@ -24,6 +24,7 @@
                     @change="changeTeam">
             </v-select>
             <v-btn color="primary" @click="currStep = 2">下一步</v-btn>
+            <v-btn flat @click="currStep = 1">上一步</v-btn>
 
           </v-stepper-content>
 
@@ -50,9 +51,18 @@
                 <v-divider></v-divider>
               </div>
             </v-list>
-            <v-btn color="primary" @click="currStep = 3">下一步</v-btn>
 
-            <v-btn flat @click="currStep = 1">上一步</v-btn>
+            <v-bottom-sheet v-model="sheet" class="d-inline-block">
+              <template slot="activator">
+                <v-btn fab>
+                  <v-icon>shopping_cart</v-icon>
+                </v-btn>
+              </template>
+
+              <v-list>nothing</v-list>
+            </v-bottom-sheet>
+            <v-btn color="primary" @click="currStep = 3">下一步</v-btn>
+            <v-btn color="primary" @click="currStep = 1">上一步</v-btn>
           </v-stepper-content>
 
           <v-stepper-content step="3">
@@ -94,6 +104,7 @@ export default class WarehouseAdd extends Vue {
   public page = new Page()
   public currStep = 1// 当前步骤
   public products = new Array<Product>()
+  public sheet = false
 
   save () {
     OrderApi.add(this.order).then(data => {
