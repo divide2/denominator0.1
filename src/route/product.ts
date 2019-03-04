@@ -13,5 +13,10 @@ export default [
     path: '/product/:id',
     name: 'productUpdate',
     component: () => import('@/views/product/Add.vue'),
+  },
+  {
+    path: '/product/:id',
+    name: 'productDetail',
+    component: () => import('@/views/product/Detail.vue'),
   }
 ]

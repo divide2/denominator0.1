@@ -1,5 +1,13 @@
 <template>
   <page :title="product.name" :hasBack="true">
+    <v-container>
+      <v-carousel :height="200">
+        <v-carousel-item v-for="(item,index) in product.image" :key="index" :src="item">
+        </v-carousel-item>
+      </v-carousel>
+      <v-layout>
+      </v-layout>
+    </v-container>
 
   </page>
 </template>
