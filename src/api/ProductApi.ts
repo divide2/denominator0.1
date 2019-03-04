@@ -17,8 +17,8 @@ export default {
   getDetail (id: number | string) {
     return Api.get(`/api/v1/product/${id}`)
   },
-  list (data: ListParam) {
-    return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/products`, data)
+  list (data: ListParam, id:string = store.state.team.currTeam.id) {
+    return Api.get(`/api/v1/team/${id}/products`, data)
   }
 
 }
