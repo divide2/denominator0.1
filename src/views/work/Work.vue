@@ -58,6 +58,10 @@
             <v-icon large color="blue darken-2">assignment</v-icon>
             <p>合作伙伴</p>
           </v-flex>
+          <v-flex column xs3 @click="$router.push({name:'workbench',params:{id:currTeam.id}})">
+            <v-icon large color="blue darken-2">assignment</v-icon>
+            <p>工作台</p>
+          </v-flex>
         </v-layout>
       </v-container>
     </v-content>

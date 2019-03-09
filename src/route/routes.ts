@@ -70,6 +70,11 @@ const routes = [
     name: 'searchFriend',
     component: () => import('@/views/contact/Search.vue')
   },
+  {
+    path: '/workbench',
+    name: 'workbench',
+    component: () => import('@/views/workbench/Workbench.vue')
+  }
 ]
 
 export default routes
