@@ -11,9 +11,9 @@ export default {
     data.teamId = store.state.team.currTeam.id
     return Api.post('/api/v1/warehouse', data)
   },
-  detail (id) {
-    return Api.get(`/api/v1/warehouse/${id}`)
-  },
+    detail(id: String) {
+        return Api.get(`/api/v1/warehouse/${id}`)
+    },
   delete (data: Delete) {
     return Api.delete('/v1/warehouse', data)
   }

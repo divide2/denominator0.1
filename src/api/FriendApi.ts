@@ -9,6 +9,6 @@ export default {
     return Api.get('/api/v1/friend/applications')
   },
   confirm (data: Confirm) {
-    return Api.post('/api/v1/friend/confirm',data)
+    return Api.post('/api/v1/friend/confirm', data)
   }
 }

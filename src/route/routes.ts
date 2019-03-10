@@ -74,7 +74,12 @@ const routes = [
     path: '/workbench',
     name: 'workbench',
     component: () => import('@/views/workbench/Workbench.vue')
-  }
+  },
+    {
+       path: '/workbench/:menuGroupId/menus',
+       name: 'workbenchMenu',
+       component: () => import('@/views/workbench/WorkbenchMenu.vue')
+   }
 ]
 
 export default routes

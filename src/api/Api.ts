@@ -16,7 +16,7 @@ axios.interceptors.request.use(config => {
     }
   }
   return config
-}, error => {
+}, (error) => {
   Promise.reject(error)
 })
 
@@ -29,7 +29,7 @@ const Api = {
 
 const request = async function (url: string, data: any, method: string = 'get', headers?: any) {
   try {
-    let response = await axios({
+    const response = await axios({
       url,
       method,
       params: method === 'get' ? data : {},
@@ -44,7 +44,6 @@ const request = async function (url: string, data: any, method: string = 'get', 
   } catch (e) {
     throw e
   }
-
 }
 
 export default Api
