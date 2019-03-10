@@ -8,6 +8,7 @@ export default {
     return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/warehouses`)
   },
   add (data: Order) {
+    data.productSpecPrices = store.state.order.shopping_cart
     return Api.post('/api/v1/order', data)
   },
   detail (id) {

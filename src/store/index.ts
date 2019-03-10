@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import MineApi from '@/api/MineApi'
 import group from "@/store/modules/group";
 import team from "@/store/modules/team";
+import order from "@/store/modules/order";
 
 Vue.use(Vuex);
 
@@ -31,6 +32,7 @@ export default new Vuex.Store({
   },
   modules: {
     group,
-    team
+    team,
+    order
   }
 });

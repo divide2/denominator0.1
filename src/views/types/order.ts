@@ -4,6 +4,7 @@ export class ProductSpecPrice { // 不同规格商品价格
   productId = 0
   productSpecId = 0
   unit = ''
+  image: string[] = []
 }
 
 export class Order {
@@ -13,5 +14,5 @@ export class Order {
   earnestMoney = 0 // 定金
   productSpecPrices: Array<ProductSpecPrice> = []
   remarks = ''
-  toId = 0
+  toTeamId = 0
 }
