@@ -51,15 +51,41 @@
           <v-flex>
             <v-text-field label="规格名称" v-model="item.name"></v-text-field>
             <v-text-field label="规格价格" v-model="item.price"></v-text-field>
-            <v-flex xs4 class="img-item">
-              <div class="img-box">
-                <v-btn flat block class="mt-0 mb-0">
-                  <v-icon>
-                    add
-                  </v-icon>
-                </v-btn>
-              </div>
-            </v-flex>
+            <!--<v-flex xs4 class="img-item">-->
+              <!--<div class="img-box">-->
+                <!--<v-btn flat block class="mt-0 mb-0">-->
+                  <!--<v-icon>-->
+                    <!--add-->
+                  <!--</v-icon>-->
+                <!--</v-btn>-->
+              <!--</div>-->
+            <!--</v-flex>-->
+            <v-layout class="img-list">
+              <v-flex xs4 class="img-item" v-for="(it,index) in item.image" :key="index">
+                <div class="img-box">
+                  <c-image :src="it" :width="100" :height="100"></c-image>
+                </div>
+              </v-flex>
+              {{item.image}}
+              <v-flex xs4 class="img-item">
+                <div class="img-box">
+                  <file-upload
+                          ref="specUpload"
+                          v-model="specFiles"
+                          :post-action="'/api/v1/upload/image'"
+                          :headers="headers"
+                          @input-file="specFile"
+                          @input-filter="inputFilter"
+                  >
+                    <v-btn flat block>
+                      <v-icon>
+                        add
+                      </v-icon>
+                    </v-btn>
+                  </file-upload>
+                </div>
+              </v-flex>
+            </v-layout>
           </v-flex>
 
           <div class="d-flex align-center">
@@ -90,9 +116,32 @@ import { getToken } from '@/route/Token'
 export default class AddProduct extends Vue {
   product = new Product()
   public files = []
+  public specFiles = []
   public headers = { Authorization: 'Bearer ' + getToken() }
 
   public inputFile (newFile: any, oldFile: any) {
+    if (newFile && !oldFile) {
+        this.$refs.upload.active = true
+    }
+
+
+    if (newFile && oldFile && !newFile.active && oldFile.active) {
+      // 获得相应数据
+      console.log('response', newFile.response)
+      if(arr){
+        arr.push(newFile.response.url)
+      }else{
+        this.product.image.push(newFile.response.url)
+      }
+
+      if (newFile.xhr) {
+        //  获得响应状态码
+        console.log('status', newFile.xhr.status)
+      }
+    }
+  }
+
+  public specFile (newFile: any, oldFile: any) {
     if (newFile && !oldFile) {
       this.$refs.upload.active = true
     }
@@ -101,7 +150,11 @@ export default class AddProduct extends Vue {
     if (newFile && oldFile && !newFile.active && oldFile.active) {
       // 获得相应数据
       console.log('response', newFile.response)
-      this.product.image.push(newFile.response.url)
+      if(arr){
+        arr.push(newFile.response.url)
+      }else{
+        this.product.image.push(newFile.response.url)
+      }
 
       if (newFile.xhr) {
         //  获得响应状态码
@@ -151,7 +204,7 @@ export default class AddProduct extends Vue {
   }
 
   save(){
-    if(this.$route.name === 'productDetail'){
+    if(this.$route.name === 'productUpdate'){
       this.update()
     }else{
       this.add()
@@ -159,7 +212,7 @@ export default class AddProduct extends Vue {
   }
 
   created () {
-    if (this.$route.name === 'productDetail') {
+    if (this.$route.name === 'productUpdate') {
       ProductApi.getDetail(this.$route.params.id).then(data => {
         this.product = data
       })
