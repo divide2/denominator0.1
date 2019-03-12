@@ -3,11 +3,10 @@
     <div slot="headerLeft">
       <v-toolbar-title class="company-select">
         <v-select
-                v-model="currTeam"
-                :items="groups"
-                :item-text="'name'"
-                :item-value="'id'"
-                @change="changeTeam"></v-select>
+            :items="teams"
+            item-text="name"
+            item-value="id"
+            @change="changeTeam"></v-select>
       </v-toolbar-title>
     </div>
     <div slot="headerRight">
@@ -25,7 +24,7 @@
         </v-subheader>
         <v-layout text-xs-center row wrap>
           <v-flex v-for="menu in w.menus" :key="menu.id" xs3 @click="$router.push(menu.path)">
-              <v-icon :color="menu.color">{{menu.icon}}</v-icon>
+            <v-icon :color="menu.color">{{menu.icon}}</v-icon>
             <p style="font-size: 12px">{{menu.name}}</p>
           </v-flex>
         </v-layout>
@@ -36,56 +35,40 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import Page from '@/components/Page.vue'
 import PageHeader from '@/components/PageHeader.vue'
-import MineApi from '../../api/MineApi'
-import {Team} from '../types/team'
-import {Mutation, State} from 'vuex-class';
+import { Mutation, State } from 'vuex-class';
 import WorkbenchApi from '../../api/WorkbenchApi'
-import {Workbench} from '../types/workbench'
+import { Workbench } from '../types/workbench'
 
 @Component({ components: { Page, PageHeader } })
 export default class Work extends Vue {
 
-  public groups: Team [] = []
   workbench: Workbench [] = [];
-
-  public toPurchase () {
-    this.$router.push('/purchase')
-  }
-
-  public toProduct () {
-    this.$router.push('/product')
-  }
 
   @State(state => state.team.currTeam) currTeam
   @Mutation('setCurrTeam') setCurrTeam
+  @State(state => state.team.teams) teams
 
-  async created () {
-    const test = new Team()
-//    this.$store.commit('setCurrTeam', this.groups[0])
-    await MineApi.listTeams().then(data => {
-      this.groups = data
-      if (!this.currTeam) {
-        this.setCurrTeam(this.groups[0])
-      }
-    })
+  async created() {
     this.get();
+  }
 
-  }
   async get() {
-      this.workbench = await WorkbenchApi.get();
+
+    this.workbench = await WorkbenchApi.get();
   }
-  changeTeam (id) {
-    let team = this.groups.find(item => item.id === id)
+
+  changeTeam(id: string) {
+    let team = this.teams.find(item => item.id === id)
     this.setCurrTeam(team)
     this.get()
   }
 }
 </script>
 <style scoped lang="stylus">
-  .company-select {
-    width: 200px;
-  }
+.company-select {
+  width: 200px;
+}
 </style>

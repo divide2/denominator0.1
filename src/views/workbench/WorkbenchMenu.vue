@@ -37,38 +37,36 @@
 
 <script lang="ts">
 
-import {Component, Vue} from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import WorkbenchApi from '../../api/WorkbenchApi'
-import {GroupMenu} from '../types/workbench'
+import { GroupMenu } from '../types/workbench'
 
 
 @Component({})
 export default class List extends Vue {
 
-    menuGroupId = "";
+  menuGroupId = "";
+  sels = [];
+  tree = [];
 
+  created() {
+    this.menuGroupId = this.$route.params.menuGroupId;
+    this.getTree();
+  }
 
-    sels = [];
-    tree = [];
+  async getTree() {
+    this.tree = await WorkbenchApi.getMenuTree(this.menuGroupId);
+  }
 
-    created() {
-        this.menuGroupId = this.$route.params.menuGroupId;
-        this.getTree();
-    }
-
-    async getTree() {
-        this.tree = await WorkbenchApi.getMenuTree(this.menuGroupId);
-    }
-
-    async addGroupMenu(menuId) {
-        const groupMenu = new GroupMenu(
-            this.$store.state.team.currTeam.id,
-            this.menuGroupId,
-            menuId
-        );
-        await WorkbenchApi.addGroupMenu(groupMenu);
-        await this.getTree();
-    }
+  async addGroupMenu(menuId: string) {
+    const groupMenu = new GroupMenu(
+      this.$store.state.team.currTeam.id,
+      this.menuGroupId,
+      menuId
+    );
+    await WorkbenchApi.addGroupMenu(groupMenu);
+    await this.getTree();
+  }
 
 }
 </script>

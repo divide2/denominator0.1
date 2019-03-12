@@ -4,7 +4,7 @@ import {GroupMenu, MenuGroup, MenuGroupDelete} from '@/views/types/workbench';
 
 export default {
   get() {
-    return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/workbench`)
+    return Api.get(`/api/v1/team/${store.getters.teamId}/workbench`)
   },
   getMenuTree(menuGroupId: string) {
     return Api.get(`/api/v1/workbench/${menuGroupId}/menus`)

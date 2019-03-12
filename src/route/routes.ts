@@ -1,6 +1,6 @@
 import Layout from '@/views/Layout.vue';
-import FormLayout from '@/views/FormLayout.vue';
 import Login from '@/views/login/Login.vue'
+import work from './work';
 
 const routes = [
   {
@@ -8,14 +8,10 @@ const routes = [
     name: 'layout',
     component: Layout,
     children: [
+      work,
       {
-        path: '/work',
-        name: 'work',
-        component: () => import('@/views/work/Work.vue'),
-      },
-      {
-        path: '/message',
-        name: 'message',
+        path: '/chat',
+        name: 'chat',
         component: () => import('@/views/message/Message.vue')
       },
       {
@@ -31,29 +27,9 @@ const routes = [
     ]
   },
   {
-    path: '/purchase',
-    name: 'formRoot',
-    component: FormLayout,
-    children: [
-      {
-        path: '',
-        name: 'purchase',
-        component: () => import('@/views/purchase/Purchase.vue'),
-      }
-    ]
-  },
-  {
     path: '/login',
     name: 'login',
     component: Login
-  },
-  {
-    path: '/about1',
-    name: 'about1',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '@/views/About.vue'),
   },
   {
     path: '/chatRoom/:chatRoomId',
@@ -69,17 +45,7 @@ const routes = [
     path: '/contact/search',
     name: 'searchFriend',
     component: () => import('@/views/contact/Search.vue')
-  },
-  {
-    path: '/workbench',
-    name: 'workbench',
-    component: () => import('@/views/workbench/Workbench.vue')
-  },
-    {
-       path: '/workbench/:menuGroupId/menus',
-       name: 'workbenchMenu',
-       component: () => import('@/views/workbench/WorkbenchMenu.vue')
-   }
+  }
 ]
 
 export default routes

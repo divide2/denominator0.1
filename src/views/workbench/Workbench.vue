@@ -104,18 +104,18 @@ export default class List extends Vue {
 
     }
 
-    async deleteMenuGroup(menuGroupId: any) {
-        await this['$confirm']('确定要删除么?');
+    async deleteMenuGroup(menuGroupId: string) {
+        await this.$confirm('确定要删除么?');
         const del = new MenuGroupDelete(this.$store.state.team.currTeam.id, menuGroupId)
         await WorkbenchApi.deleteMenuGroup(del);
         await this.get();
     }
 
-    addGroupMenu(menuGroupId: any) {
+    addGroupMenu(menuGroupId: string) {
         this.$router.push({name: 'workbenchMenu', params: {menuGroupId}})
     }
 
-    async deleteGroupMenu(groupId: any, menuId: any) {
+    async deleteGroupMenu(groupId: string, menuId: string) {
         const groupMenu = new GroupMenu(
             this.$store.state.team.currTeam.id,
             groupId,

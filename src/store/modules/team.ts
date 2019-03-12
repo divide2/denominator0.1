@@ -3,22 +3,26 @@ import MineApi from '@/api/MineApi';
 import {Team} from '@/views/types/team';
 
 const CURR_TEAM_STATE = 'CURR_TEAM';
+const HAS_TEAM = 'HAS_TEAM'
 
-class TeamState {
+export class TeamState {
   public currTeam: Team | null = storage.get(CURR_TEAM_STATE);
-  public teams: Team[] = [];
+  public teams: Team[] | null = null;
 }
 
 const teamState = new TeamState();
 
 const getters = {};
 const actions = {
-  async listUserTeams({commit, state}) {
+  async getUserTeams({commit, state}) {
     const teams = await MineApi.listTeams();
-    if (teams.length && !state.currTeam) {
-      commit('setCurrTeam', teams[0]);
+    if (teams.length) {
+      if (!state.currTeam) {
+        commit('setCurrTeam', teams[0]);
+      }
     }
     commit('setTeams', teams);
+    return teams;
   }
 };
 const mutations = {

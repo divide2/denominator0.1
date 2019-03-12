@@ -17,11 +17,8 @@ export default {
     }
     return Api.post('/api/v1/logout', {}, headers)
   },
-  getUserInfo (token: string) {
-    const headers = {
-      Authorization: `bearer ${token}`
-    }
-    return Api.get('/api/v1/user', {}, headers)
+  getUserInfo () {
+    return Api.get('/api/v1/user')
   },
   join (data: joinForm) {
     return Api.post('/api/join', data)

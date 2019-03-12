@@ -90,7 +90,6 @@ export default class Message extends Vue {
     ]
 
   beforeRouteEnter (to, from, next) {
-    console.log(from)
     next()
   }
 }

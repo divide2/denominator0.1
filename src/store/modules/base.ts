@@ -1,9 +1,12 @@
 import storage from '@/util/storage';
+import { LoginForm, User } from '@/views/types'
+import LoginApi from '@/api/LoginApi'
 
-const TOKEN_STATE = 'token';
+const TOKEN_STATE = 'TOKEN';
 
-class BaseState {
+export class BaseState {
   public token = storage.get(TOKEN_STATE);
+  public userInfo: User | null = null
 }
 
 const baseState = new BaseState();
@@ -16,9 +19,27 @@ const mutations = {
   removeToken(state: BaseState) {
     state.token = '';
     storage.remove(TOKEN_STATE);
+  },
+  setUserInfo(state: BaseState, userInfo: User) {
+    state.userInfo = userInfo
   }
 };
+
+const actions = {
+  async getUserInfo({ commit }) {
+    // todo 后台用户返回数据太多
+    const userinfo = await LoginApi.getUserInfo()
+    commit('setUserInfo', userinfo.principal)
+    return userinfo.principal
+  },
+  async loginByUsername({ commit }, loginForm: LoginForm) {
+    const data = await LoginApi.loginByUsername(loginForm)
+    commit('setToken', data.access_token)
+    return data;
+  }
+}
 export default {
   baseState,
+  actions,
   mutations
 }

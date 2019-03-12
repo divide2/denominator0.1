@@ -12,7 +12,7 @@
             label="Password"
             required
         ></v-text-field>
-        <v-btn @click="login">登录</v-btn>
+        <v-btn @click="login()">登录</v-btn>
       </v-form>
       <v-form>
         <v-text-field
@@ -33,10 +33,10 @@
 
 <script lang="ts">
 // todo 修改样式
-import {Component, Vue} from 'vue-property-decorator'
-import {joinForm, LoginForm} from '../types'
+import { Component, Vue } from 'vue-property-decorator'
+import { joinForm, LoginForm } from '../types'
 import LoginApi from '@/api/LoginApi'
-import {Mutation} from 'vuex-class'
+import { Action, Mutation } from 'vuex-class'
 
 @Component({})
 export default class Login extends Vue {
@@ -46,17 +46,16 @@ export default class Login extends Vue {
   public form = new LoginForm()
   public joinForm = new joinForm()
 
-  @Mutation('setToken') setToken
-
-  public login() {
-    LoginApi.loginByUsername(this.form).then(data => {
-
-      this.setToken(data.access_token)
-      if (this.lastPathName) {
-        this.$router.push({name: this.lastPathName})
-      } else {
-        this.$router.push('/')
-      }
+  @Action('loginByUsername') loginByUsername
+  login() {
+    this.loginByUsername(this.form).then(data => {
+      this.$router.push({ name: 'chat' })
+      console.log(this.$store.getters.token, '-----')
+      console.log(this.$store.state.base.token, '=====')
+      /*    if (this.lastPathName) {
+            this.$router.push({name: this.lastPathName})
+          } else {
+          }*/
     })
   }
 
@@ -66,11 +65,11 @@ export default class Login extends Vue {
     })
   }
 
-  beforeRouteEnter(to, from, next) {
-    next(vm => {
-      vm.lastPathName = from.name
-    })
-  }
+  /*  beforeRouteEnter(to, from, next) {
+      next(vm => {
+        vm.lastPathName = from.name
+      })
+    }*/
 }
 </script>
 

@@ -1,6 +1,6 @@
 import Api from './Api'
-import {ListParam, Product} from '@/views/types/product';
-import {Delete} from '@/views/types';
+import { ListParam, Product } from '@/views/types/product';
+import { Delete } from '@/views/types';
 import store from '@/store/index'
 
 export default {
@@ -20,5 +20,4 @@ export default {
   list(data: ListParam, id: string = store.state.team.currTeam.id) {
     return Api.get(`/api/v1/team/${id}/products`, data)
   }
-
 }
