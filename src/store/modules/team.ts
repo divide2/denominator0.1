@@ -39,7 +39,7 @@ const mutations = {
   }
 };
 export default {
-  teamState,
+  state: teamState,
   getters,
   actions,
   mutations

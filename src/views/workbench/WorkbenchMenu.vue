@@ -2,7 +2,7 @@
   <v-card>
     <v-list subheader v-for="t in tree" :key="t.id">
       <v-subheader>
-        <v-icon>{{t.icon}}</v-icon>
+        <v-icon :color="t.color">{{t.icon}}</v-icon>
         {{t.name}}
         <v-spacer></v-spacer>
         <v-btn v-if="!t.exist" flat icon color="primary" @click="addGroupMenu(t.id)">
@@ -16,7 +16,7 @@
           avatar
       >
         <v-list-tile-avatar>
-          <v-icon>{{tc.icon}}</v-icon>
+          <v-icon :color="tc.color">{{tc.icon}}</v-icon>
         </v-list-tile-avatar>
 
 

@@ -14,7 +14,7 @@
               <template slot="badge">
                 <v-icon color="white" @click="deleteGroupMenu(w.menuGroup.id,menu.id)">mdi-minus</v-icon>
               </template>
-              <v-icon>{{menu.icon}}</v-icon>
+              <v-icon :color="menu.color">{{menu.icon}}</v-icon>
             </v-badge>
             <p style="font-size: 12px">{{menu.name}}</p>
           </v-flex>

@@ -12,16 +12,25 @@ const routes = [
       {
         path: '/chat',
         name: 'chat',
+        meta: {
+          bar: true
+        },
         component: () => import('@/views/message/Message.vue')
       },
       {
         path: '/contact',
         name: 'contact',
+        meta: {
+          bar: true
+        },
         component: () => import('@/views/contact/Contact.vue')
       },
       {
         path: '/mine',
         name: 'mine',
+        meta: {
+          bar: true
+        },
         component: () => import('@/views/mine/Mine.vue')
       }
     ]
@@ -46,6 +55,6 @@ const routes = [
     name: 'searchFriend',
     component: () => import('@/views/contact/Search.vue')
   }
-]
+];
 
 export default routes

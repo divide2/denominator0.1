@@ -1,12 +1,12 @@
 export default [
   {
-    path: '/product',
-    name: 'product',
+    path: '/products',
+    name: 'products',
     component: () => import('../../views/product/Product.vue'),
   },
   {
     path: '/product/add',
-    name: 'addProduct',
+    name: 'productAdd',
     component: () => import('../../views/product/Add.vue'),
   },
   {

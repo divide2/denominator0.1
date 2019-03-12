@@ -12,7 +12,6 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log(store.getters.token, to.path)
   if (store.getters.token && to.path !== '/login') {
     if (store.getters.userInfo) {
       next()

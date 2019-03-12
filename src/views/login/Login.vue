@@ -50,8 +50,6 @@ export default class Login extends Vue {
   login() {
     this.loginByUsername(this.form).then(data => {
       this.$router.push({ name: 'chat' })
-      console.log(this.$store.getters.token, '-----')
-      console.log(this.$store.state.base.token, '=====')
       /*    if (this.lastPathName) {
             this.$router.push({name: this.lastPathName})
           } else {

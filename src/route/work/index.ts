@@ -1,7 +1,7 @@
 import Work from '@/views/work/index.vue'
 import product from '@/route/work/product'
 import warehouse from '@/route/work/warehouse'
-import team from '@/route/team'
+import team from '@/route/work/team'
 import order from '@/route/work/order'
 import store from '@/store';
 
@@ -12,6 +12,9 @@ export default {
     {
       path: '',
       name: 'work',
+      meta: {
+        bar: true
+      },
       component: () => import('@/views/work/Work.vue')
     },
     {

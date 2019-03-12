@@ -36,10 +36,14 @@ const actions = {
     const data = await LoginApi.loginByUsername(loginForm)
     commit('setToken', data.access_token)
     return data;
+  },
+  async logout({ commit }) {
+    await LoginApi.logout()
+    commit('removeToken')
   }
 }
 export default {
-  baseState,
+  state: baseState,
   actions,
   mutations
-}
+};
