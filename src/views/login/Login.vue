@@ -3,27 +3,27 @@
     <v-content>
       <v-form v-model="valid">
         <v-text-field
-                v-model="form.username"
-                label="Username"
-                required
+            v-model="form.username"
+            label="Username"
+            required
         ></v-text-field>
         <v-text-field
-                v-model="form.password"
-                label="Password"
-                required
+            v-model="form.password"
+            label="Password"
+            required
         ></v-text-field>
         <v-btn @click="login">登录</v-btn>
       </v-form>
       <v-form>
         <v-text-field
-                v-model="joinForm.account"
-                label="Username"
-                required
+            v-model="joinForm.account"
+            label="Username"
+            required
         ></v-text-field>
         <v-text-field
-                v-model="joinForm.password"
-                label="Password"
-                required
+            v-model="joinForm.password"
+            label="Password"
+            required
         ></v-text-field>
         <v-btn @click="join">注册</v-btn>
       </v-form>
@@ -33,10 +33,10 @@
 
 <script lang="ts">
 // todo 修改样式
-import { Component, Vue } from 'vue-property-decorator'
-import { joinForm, LoginForm } from '../types'
+import {Component, Vue} from 'vue-property-decorator'
+import {joinForm, LoginForm} from '../types'
 import LoginApi from '@/api/LoginApi'
-import { setToken } from '../../route/Token'
+import {Mutation} from 'vuex-class'
 
 @Component({})
 export default class Login extends Vue {
@@ -46,25 +46,27 @@ export default class Login extends Vue {
   public form = new LoginForm()
   public joinForm = new joinForm()
 
-  public login () {
+  @Mutation('setToken') setToken
+
+  public login() {
     LoginApi.loginByUsername(this.form).then(data => {
 
-      setToken(data.access_token)
+      this.setToken(data.access_token)
       if (this.lastPathName) {
-        this.$router.push({ name: this.lastPathName })
+        this.$router.push({name: this.lastPathName})
       } else {
         this.$router.push('/')
       }
     })
   }
 
-  public join () {
+  public join() {
     LoginApi.join(this.joinForm).then(data => {
       this.$router.push('/')
     })
   }
 
-  beforeRouteEnter (to, from, next) {
+  beforeRouteEnter(to, from, next) {
     next(vm => {
       vm.lastPathName = from.name
     })

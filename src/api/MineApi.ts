@@ -2,7 +2,7 @@ import Api from '@/api/Api'
 
 export default  {
   // todo any to type
-  listGroups() {
+  listTeams() {
     return Api.get('/api/v1/mine/teams')
   },
   listFriends() {

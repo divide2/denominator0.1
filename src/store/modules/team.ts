@@ -1,26 +1,41 @@
-import storage from "@/util/storage";
+import storage from '@/util/storage';
+import MineApi from '@/api/MineApi';
+import {Team} from '@/views/types/team';
 
-const state = {
-  // team: JSON.parse(sessionStorage.getItem('team') ? sessionStorage.getItem('team') : null)
-  currTeam: JSON.parse(localStorage.getItem('currTeam'))
+const CURR_TEAM_STATE = 'CURR_TEAM';
+
+class TeamState {
+  public currTeam: Team | null = storage.get(CURR_TEAM_STATE);
+  public teams: Team[] = [];
 }
-const getters = {}
-const actions = {}
-const mutations = {
-  // setGroup (state: any, data: any) {
-  //   state.team = data
-  //   sessionStorage.setItem('team', data)
-  // }
-  setCurrTeam (state: any, data) {
-    state.currTeam = data
-    storage.save('currTeam', data)
-  },
-  removeCurrTeam () {
-    localStorage.removeItem('currTeam')
+
+const teamState = new TeamState();
+
+const getters = {};
+const actions = {
+  async listUserTeams({commit, state}) {
+    const teams = await MineApi.listTeams();
+    if (teams.length && !state.currTeam) {
+      commit('setCurrTeam', teams[0]);
+    }
+    commit('setTeams', teams);
   }
-}
+};
+const mutations = {
+  setCurrTeam(state: TeamState, data: Team) {
+    state.currTeam = data;
+    storage.save(CURR_TEAM_STATE, data)
+  },
+  removeCurrTeam(state: TeamState) {
+    state.currTeam = null;
+    storage.remove(CURR_TEAM_STATE);
+  },
+  setTeams(state: TeamState, teams: Team[]) {
+    state.teams = teams;
+  }
+};
 export default {
-  state,
+  teamState,
   getters,
   actions,
   mutations

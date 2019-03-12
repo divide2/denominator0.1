@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getToken } from '@/route/Token'
+import store from '@/store'
 
 export const Method = {
   POST: 'post',
@@ -10,9 +10,9 @@ export const Method = {
 
 // 请求拦截器加上token
 axios.interceptors.request.use(config => {
-  if (getToken()) {
+  if (store.getters.token) {
     config.headers = {
-      Authorization: 'Bearer ' + getToken()
+      Authorization: 'Bearer ' + store.getters.token
     }
   }
   return config

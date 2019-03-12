@@ -39,7 +39,7 @@ import { Team } from '../../types/team';
 
 @Component({ components: {} })
 export default class List extends Vue {
-  cooperations = new Array<Team>()
+  cooperations: Team[] = [];
 
   created () {
     TeamApi.cooperationList().then(data => {

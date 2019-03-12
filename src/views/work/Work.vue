@@ -25,7 +25,7 @@
         </v-subheader>
         <v-layout text-xs-center row wrap>
           <v-flex v-for="menu in w.menus" :key="menu.id" xs3 @click="$router.push(menu.path)">
-              <v-icon>{{menu.icon}}</v-icon>
+              <v-icon :color="menu.color">{{menu.icon}}</v-icon>
             <p style="font-size: 12px">{{menu.name}}</p>
           </v-flex>
         </v-layout>
@@ -36,15 +36,14 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import {Component, Vue} from 'vue-property-decorator'
 import Page from '@/components/Page.vue'
 import PageHeader from '@/components/PageHeader.vue'
 import MineApi from '../../api/MineApi'
-import { Team } from '../types/team'
-import { mapState } from 'vuex'
-import { Mutation, State } from 'vuex-class';
-import WorkbenchApi from "../../api/WorkbenchApi"
-import {Workbench} from "../types/workbench"
+import {Team} from '../types/team'
+import {Mutation, State} from 'vuex-class';
+import WorkbenchApi from '../../api/WorkbenchApi'
+import {Workbench} from '../types/workbench'
 
 @Component({ components: { Page, PageHeader } })
 export default class Work extends Vue {
@@ -66,7 +65,7 @@ export default class Work extends Vue {
   async created () {
     const test = new Team()
 //    this.$store.commit('setCurrTeam', this.groups[0])
-    await MineApi.listGroups().then(data => {
+    await MineApi.listTeams().then(data => {
       this.groups = data
       if (!this.currTeam) {
         this.setCurrTeam(this.groups[0])

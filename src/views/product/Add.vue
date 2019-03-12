@@ -110,7 +110,7 @@ import { Vue, Component } from 'vue-property-decorator'
 import FileUpload from 'vue-upload-component'
 import { Product, Specs } from '../types/product';
 import ProductApi from '../../api/ProductApi';
-import { getToken } from '@/route/Token'
+import { getToken } from '@/store/modules/base'
 
 @Component({ components: { FileUpload } })
 export default class AddProduct extends Vue {

@@ -1,36 +1,21 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import MineApi from '@/api/MineApi'
-import group from "@/store/modules/group";
-import team from "@/store/modules/team";
+import team from '@/store/modules/team';
+import base from '@/store/modules/base';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    groups: [],
-    group: {},
-    resCode: []
-  },
-  mutations: {
-    setGroup (state, group) {
-      state.group = group
+  getters: {
+    teamId() {
+      return team.teamState.currTeam && team.teamState.currTeam.id;
     },
-    setGroups (state, groups) {
-      state.groups = groups
-    },
-    setResCode (state, resCode) {
-      state.resCode = resCode
-    }
-  },
-  actions: {
-    async setGroups ({ commit }) {
-      const groups = await MineApi.listGroups()
-      commit('setGroups', groups)
+    token() {
+      return base.baseState.token;
     }
   },
   modules: {
-    group,
-    team
+    team,
+    base
   }
 });
