@@ -6,11 +6,11 @@
       </v-subheader>
       <v-list>
         <div
-                v-for="(item,index) in applications" :key="index"
-                @click="$router.push({name:'teamDetail',params:{id:group.id}})">
+            v-for="(item,index) in applications" :key="index"
+            @click="$router.push({name:'teamDetail',params:{id:group.id}})">
           <v-list-tile
-                  avatar
-                  @click=""
+              avatar
+              @click=""
           >
             <v-list-tile-avatar>
               <img :src="item.team.image">
@@ -45,22 +45,22 @@
 </style>
 
 <script lang="ts">
-import { Vue, Component } from 'vue-property-decorator'
+import {Vue, Component} from 'vue-property-decorator'
 import TeamApi from '../../../api/TeamApi';
-import { CooperationApply } from '../../types/team';
+import {CooperationApply} from '../../types/team';
 
-@Component({ components: {} })
+@Component({components: {}})
 export default class cooperationApply extends Vue {
-  applications: Array<CooperationApply> = []
+  applications: CooperationApply [] = [];
 
-  created () {
+  created() {
     TeamApi.getCooApplications(this.$store.state.team.currTeam.id).then(data => {
       this.applications = data
     })
   }
 
-  confirm (id: string) {
-    let param = { id: id }
+  confirm(id) {
+    let param = {id: id}
     TeamApi.cooperationConfirm(param).then(data => {
       console.log('success')
     })

@@ -1,9 +1,13 @@
+import cookie from 'js-cookie'
+
 export default {
-  save (key, value) {
-    if (typeof(value) === "object") {
-      localStorage.setItem(key, JSON.stringify(value))
-    } else {
-      localStorage.setItem(key, value)
-    }
+  save(key: string, value: any) {
+    cookie.set(key, value);
+  },
+  get<T>(key: string): T | null {
+    return cookie.getJSON(key);
+  },
+  remove(key: string) {
+    cookie.remove(key);
   }
 }

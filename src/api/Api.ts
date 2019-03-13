@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { getToken } from '@/route/Token'
+import store from '@/store'
 
 export const Method = {
   POST: 'post',
@@ -10,13 +10,13 @@ export const Method = {
 
 // 请求拦截器加上token
 axios.interceptors.request.use(config => {
-  if (getToken()) {
+  if (store.getters.token) {
     config.headers = {
-      Authorization: 'Bearer ' + getToken()
+      Authorization: 'Bearer ' + store.getters.token
     }
   }
   return config
-}, error => {
+}, (error) => {
   Promise.reject(error)
 })
 
@@ -29,7 +29,7 @@ const Api = {
 
 const request = async function (url: string, data: any, method: string = 'get', headers?: any) {
   try {
-    let response = await axios({
+    const response = await axios({
       url,
       method,
       params: method === 'get' ? data : {},
@@ -44,7 +44,6 @@ const request = async function (url: string, data: any, method: string = 'get', 
   } catch (e) {
     throw e
   }
-
 }
 
 export default Api

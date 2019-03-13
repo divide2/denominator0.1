@@ -17,6 +17,8 @@
     "no-consecutive-blank-lines": false,
     "semicolon": false,
     "trailing-comma": false,
-    "space-before-function-paren": false
+    "member-access": false,
+    "space-before-function-paren": false,
+    "max-classes-per-file": false
   }
 }

@@ -6,11 +6,11 @@ import router from './route';
 import store from './store/index';
 import '@/components/index'
 import '@/util/classComponentHooks'
-// import GlobalAlert from '@/components/alert/Alert'
+import MessageBox from '@/components/alert/Alert'
 
 Vue.config.productionTip = false;
 // 全局插件需要在new Vue()之前完成
-// Vue.use(GlobalAlert)
+Vue.use(MessageBox)
 
 new Vue({
   router,

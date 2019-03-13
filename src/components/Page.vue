@@ -21,7 +21,6 @@
       <slot>
       </slot>
     </v-content>
-
     <slot name="footer">
     </slot>
   </div>
@@ -29,7 +28,6 @@
 
 <style scoped>
 .page {
-  background-color: #e1e4e8;
   padding-bottom: 60px;
   min-height:100%;
 }

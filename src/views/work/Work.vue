@@ -3,11 +3,11 @@
     <div slot="headerLeft">
       <v-toolbar-title class="company-select">
         <v-select
-                v-model="currTeam"
-                :items="groups"
-                :item-text="'name'"
-                :item-value="'id'"
-                @change="changeTeam"></v-select>
+            :value="currTeam"
+            :items="teams"
+            item-text="name"
+            item-value="id"
+            @change="changeTeam"></v-select>
       </v-toolbar-title>
     </div>
     <div slot="headerRight">
@@ -18,95 +18,52 @@
       </v-toolbar-items>
     </div>
 
-    <v-content>
-      <v-container grid-list-md text-xs-center>
-        <v-layout row wrap>
-          <v-flex column @click="$router.push({name:'orderAdd'})" xs3>
-            <v-icon large color="green darken-2">add_shopping_cart</v-icon>
-            <p>采购</p>
-          </v-flex>
-
-          <v-flex column @click="toProduct" xs3>
-            <v-icon large color="orange darken-2">redeem</v-icon>
-            <p>商品</p>
-          </v-flex>
-          <v-flex column xs3>
-            <v-icon large color="purple darken-2">store</v-icon>
-            <p>库存</p>
-          </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'warehouse'})">
-            <v-icon large color="purple darken-2">store</v-icon>
-            <p>仓库</p>
-          </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'orderList'})">
-            <v-icon large color="blue darken-2">assignment</v-icon>
-            <p>订单</p>
-          </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'teamApplications',params:{id:groups[0].id}})">
-            <v-icon large color="blue darken-2">assignment</v-icon>
-            <p>团队申请</p>
-          </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'cooperationSearch'})">
-            <v-icon large color="blue darken-2">assignment</v-icon>
-            <p>申请合作</p>
-          </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'cooperationConfirm',params:{id:currTeam.id}})">
-            <v-icon large color="blue darken-2">assignment</v-icon>
-            <p>确认合作</p>
-          </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'cooperationList',params:{id:currTeam.id}})">
-            <v-icon large color="blue darken-2">assignment</v-icon>
-            <p>合作伙伴</p>
-          </v-flex>
-          <v-flex column xs3 @click="$router.push({name:'workbench',params:{id:currTeam.id}})">
-            <v-icon large color="blue darken-2">assignment</v-icon>
-            <p>工作台</p>
+    <v-card>
+      <v-list two-line subheader v-for="w in workbench" :key="w.menuGroup.id">
+        <v-subheader>
+          {{w.menuGroup.name}}
+        </v-subheader>
+        <v-layout text-xs-center row wrap>
+          <v-flex v-for="menu in w.menus" :key="menu.id" xs3 @click="$router.push({name: menu.path})">
+            <v-icon :color="menu.color">{{menu.icon}}</v-icon>
+            <p style="font-size: 12px">{{menu.name}}</p>
           </v-flex>
         </v-layout>
-      </v-container>
-    </v-content>
+        <v-divider></v-divider>
+      </v-list>
+    </v-card>
   </page>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from 'vue-property-decorator'
+import {Component, Vue} from 'vue-property-decorator'
 import Page from '@/components/Page.vue'
 import PageHeader from '@/components/PageHeader.vue'
-import MineApi from '../../api/MineApi'
-import { Team } from '../types/team'
-import { mapState } from 'vuex'
-import { Mutation, State } from 'vuex-class';
+import {Mutation, State} from 'vuex-class';
+import WorkbenchApi from '../../api/WorkbenchApi'
+import {Workbench} from '../types/workbench'
 
-@Component({ components: { Page, PageHeader } })
+@Component({components: {Page, PageHeader}})
 export default class Work extends Vue {
 
-  public groups: Array<Team> = []
-
-  public toPurchase () {
-    this.$router.push('/purchase')
-  }
-
-  public toProduct () {
-    this.$router.push('/product')
-  }
+  workbench: Workbench [] = [];
 
   @State(state => state.team.currTeam) currTeam
   @Mutation('setCurrTeam') setCurrTeam
+  @State(state => state.team.teams) teams
 
-  created () {
-    const test = new Team()
-//    this.$store.commit('setCurrTeam', this.groups[0])
-    MineApi.listGroups().then(data => {
-      this.groups = data
-      if (!this.currTeam) {
-        this.setCurrTeam(this.groups[0])
-      }
-    })
+  async created() {
+    this.get();
   }
 
-  changeTeam (id) {
-    let team = this.groups.find(item => item.id === id)
+  async get() {
+    this.workbench = await WorkbenchApi.get();
+  }
+
+  changeTeam(id: string) {
+    let team = this.teams.find(item => item.id === id)
     this.setCurrTeam(team)
+    this.get()
   }
 }
 </script>

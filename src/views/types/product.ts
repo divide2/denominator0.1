@@ -2,7 +2,7 @@ import { Page } from "@/views/types/index";
 
 export class Specs {
   id = 0
-  image: Array<string> = []
+  image: String[] = [];
   name = ''
   price = 0
   productId = 0
@@ -13,11 +13,10 @@ export class Specs {
 export class Product {
   name = ''
   remarks = ''
-  image: Array<String> = []
   specs: Array<Specs> = []
   teamId = ''
   unit = ''
-  image = []
+  image: String[] = []
   createTime = ''
   id = 0
   initAmount = 0

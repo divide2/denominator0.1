@@ -1,11 +1,6 @@
 <template>
-  <div>
-    <transition>
-        <router-view>
-        </router-view>
-    </transition>
-    <bottom-bar></bottom-bar>
-  </div>
+  <router-view>
+  </router-view>
 </template>
 
 <script lang="ts">
@@ -18,9 +13,7 @@ import PageHeader from '@/components/PageHeader.vue'
     BottomBar, PageHeader
   },
 })
-export default class Home extends Vue {
-  public drawer = null
-  public hasDrawer = null
+export default class Layout extends Vue {
 }
 </script>
 

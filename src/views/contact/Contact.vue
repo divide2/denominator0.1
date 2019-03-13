@@ -127,7 +127,7 @@ export default class File extends Vue {
     MineApi.listFriends().then(data => {
       this.friends = data
     })
-    MineApi.listGroups().then(data => {
+    MineApi.listTeams().then(data => {
       this.groups = data
     })
   }

@@ -1,9 +1,11 @@
 <template>
   <v-bottom-nav
-          :value="true"
+          :value="$route.meta.bar"
+          :active="$route.name"
           app
+          flat
   >
-    <v-btn v-for="(item,index) in viewObj" :key="index" @click="test(item.pathName)">
+    <v-btn flat color="teal" :value="item.pathName" v-for="(item,index) in viewObj" :key="index" @click="test(item.pathName)">
       <span>{{item.name}}</span>
       <v-icon>{{item.icon}}</v-icon>
     </v-btn>
@@ -20,7 +22,7 @@ export default class BottomBar extends Vue {
   private viewObj = [{
     name: '消息',
     icon: 'chat',
-    pathName: 'message'
+    pathName: 'chat'
   }, {
     name: '工作',
     icon: 'work',
