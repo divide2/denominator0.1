@@ -8,6 +8,15 @@ export class Menu {
   public path = '';
   public pid = '';
   public shortcut = false;
+  public color = ''
+}
+
+export class MenuTree {
+  public icon = '';
+  public id = '';
+  public name = '';
+  public color = ''
+  public children: MenuTree[] = []
 }
 
 export class Workbench {

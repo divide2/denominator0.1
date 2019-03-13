@@ -29,5 +29,15 @@ export default [
     path: '/team/:id/cooperation/list',
     name: 'cooperationList',
     component: () => import('@/views/team/cooperation/List.vue'),
+  },
+  {
+    path: '/team/member/manage',
+    name: 'memberManage',
+    component: () => import('@/views/team/MemberManage.vue')
+  },
+  {
+    path: '/team/member/:type/:id/menu',
+    name: 'memberAuth',
+    component: () => import('@/views/team/MemberAuth.vue')
   }
 ]

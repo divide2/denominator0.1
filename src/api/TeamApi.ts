@@ -11,8 +11,15 @@ export default {
   getTeam(id: string) {
     return Api.get(`/api/v1/team/${id}`)
   },
+  /**
+   * @deprecated
+   * @param id
+   */
   getUsers(id: string) {
     return Api.get(`/api/v1/team/${id}/users`)
+  },
+  getMembers() {
+    return Api.get(`/api/v1/team/${store.getters.teamId}/users`)
   },
   search(data: SearchQuery) {
     return Api.get('/api/v1/team/search', data)
