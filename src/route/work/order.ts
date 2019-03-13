@@ -1,7 +1,7 @@
 export default [
   {
     path: '/order',
-    name: 'orderList',
+    name: 'order',
     component: () => import('../../views/order/List.vue'),
   },
   {

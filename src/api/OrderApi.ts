@@ -5,7 +5,7 @@ import { Order } from "@/views/types/order";
 
 export default {
   list () {
-    return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/warehouses`)
+    return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/order/receive`)
   },
   add (data: Order) {
     data.productSpecPrices = store.state.order.shopping_cart

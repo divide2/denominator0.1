@@ -2,27 +2,21 @@
   <page :title="'订单'" :hasBack="true">
     <option-btn :icon="'add'" @click.native="$router.push({name:'orderAdd'})"></option-btn>
     <v-container>
-      <v-list>
-        <div
-                v-for="(item, index) in warehouses"
-                :key="index"
-                @click="$router.push({name:'warehouseUpdate',params:{id:item.id}})">
-          <v-list-tile
-                  avatar
-                  @click=""
-          >
-            <v-list-tile-content>
-              <v-list-tile-title>{{ item.name }}</v-list-tile-title>
-              <v-list-tile-sub-title>{{ item.remarks }}</v-list-tile-sub-title>
-            </v-list-tile-content>
-            <v-list-title-action @click.stop="del(item.id)">
-              <v-icon>delete</v-icon>
-            </v-list-title-action>
+      <v-tabs centered>
+        <v-tab>待确认</v-tab>
+        <v-tab>待发货</v-tab>
+        <v-tab>待收货</v-tab>
+        <v-tab-item>
+          确认
+        </v-tab-item>
+        <v-tab-item>
+          发货
+        </v-tab-item>
+        <v-tab-item>
+          收货
+        </v-tab-item>
+      </v-tabs>
 
-          </v-list-tile>
-          <v-divider></v-divider>
-        </div>
-      </v-list>
     </v-container>
 
   </page>
