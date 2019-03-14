@@ -1,5 +1,5 @@
 <template>
-  <page hasBack>
+  <page :hasBack="true">
     <v-card>
       <v-list two-line subheader v-for="w in workbench" :key="w.menuGroup.id">
         <v-subheader>

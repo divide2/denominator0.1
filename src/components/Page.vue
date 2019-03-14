@@ -43,20 +43,12 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   }
 })
 export default class Page extends Vue {
-  @Prop({ default: true })
-  hasHeader!: boolean
-
-  @Prop({ default: false })
-  hasFooter!: boolean
 
   @Prop()
-  title!: string
+  title!: string;
 
   @Prop({ default: false })
   hasBack!: boolean
 
-
-  @Prop({ default: () => ({}) })
-  iconArr!: object
 }
 </script>
