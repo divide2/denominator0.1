@@ -2,11 +2,10 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import team from '@/store/modules/team';
 import base from '@/store/modules/base';
+import order from "@/store/modules/order";
 
 Vue.use(Vuex);
 
-
-// todo 使用getters取不出数据?
 export default new Vuex.Store({
   getters: {
     teamId: (state) => state.team.currTeam.id,
@@ -19,6 +18,7 @@ export default new Vuex.Store({
   },
   modules: {
     team,
-    base
+    base,
+    order
   }
 });

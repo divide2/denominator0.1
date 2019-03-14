@@ -6,6 +6,7 @@ export class Specs {
   name = ''
   price = 0
   productId = 0
+  amount = 0 // 面向订单添加
 }
 
 
