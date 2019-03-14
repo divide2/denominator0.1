@@ -48,6 +48,7 @@ export default class Users extends Vue {
   }
   async created() {
     this.menus = await MenuApi.tree()
+    this.tree = ["6", "5", "7", "8"]
   }
 
   save() {

@@ -36,39 +36,32 @@
 </template>
 
 <script lang="ts">
-import {Component, Vue} from 'vue-property-decorator'
+import { Component, Vue } from 'vue-property-decorator'
 import Page from '@/components/Page.vue'
 import PageHeader from '@/components/PageHeader.vue'
-import {Mutation, State} from 'vuex-class';
-import WorkbenchApi from '../../api/WorkbenchApi'
-import {Workbench} from '../types/workbench'
+import { Mutation, State } from 'vuex-class';
+import { Workbench } from '../types/workbench'
+import workbench from './workbench.json'
 
-@Component({components: {Page, PageHeader}})
+@Component({ components: { Page, PageHeader } })
 export default class Work extends Vue {
 
-  workbench: Workbench [] = [];
+  workbench: Workbench [] = workbench
 
   @State(state => state.team.currTeam) currTeam
   @Mutation('setCurrTeam') setCurrTeam
   @State(state => state.team.teams) teams
 
-  async created() {
-    this.get();
-  }
 
-  async get() {
-    this.workbench = await WorkbenchApi.get();
-  }
 
   changeTeam(id: string) {
     let team = this.teams.find(item => item.id === id)
     this.setCurrTeam(team)
-    this.get()
   }
 }
 </script>
 <style scoped lang="stylus">
-  .company-select {
-    width: 200px;
-  }
+.company-select {
+  width: 200px;
+}
 </style>
