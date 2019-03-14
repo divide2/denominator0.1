@@ -10,7 +10,6 @@ export default new Vuex.Store({
   getters: {
     teamId: (state) => state.team.currTeam.id,
     token: (state) => {
-      console.log(state.base);
       return state.base.token
     },
     teams: (state) => state.team.teams,

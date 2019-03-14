@@ -15,7 +15,8 @@ export class MenuTree {
   public icon = '';
   public id = '';
   public name = '';
-  public color = ''
+  public color = '';
+  public leaf = false;
   public children: MenuTree[] = []
 }
 

@@ -36,14 +36,22 @@ export default class Users extends Vue {
   menus: MenuTree[] = []
 
   get leafs() {
-    return []
+    let leaf = [];
+    this.menus.forEach(p => {
+      p.children.forEach(c => {
+        if (this.tree.includes(c.id)) {
+          leaf.push(c.id);
+        }
+      })
+    });
+    return leaf;
   }
   async created() {
     this.menus = await MenuApi.tree()
   }
 
   save() {
-    console.log(this.tree);
+    console.log(this.leafs);
   }
 }
 </script>
