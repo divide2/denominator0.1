@@ -21,7 +21,7 @@
         <v-divider></v-divider>
         <v-list-tile
             avatar
-            @click="logout"
+            @click="signOut"
         >
           <v-list-tile-avatar>
             <v-icon color="error">mdi-exit-to-app</v-icon>
@@ -55,9 +55,9 @@ export default class File extends Vue {
   @Getter('userInfo') user: User;
   @Action('logout') logout;
 
-  logout() {
+  signOut() {
     this.logout().then(()=> {
-      this.$router.push({name: 'login'})
+      window.location.reload()
     });
   }
 }

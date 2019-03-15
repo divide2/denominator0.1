@@ -3,7 +3,7 @@
     <v-toolbar light fixed app>
       <!--头部左边-->
       <slot name="headerLeft"></slot>
-      <v-btn icon v-if="hasBack" @click="$router.back()">
+      <v-btn icon color="primary" flat v-if="hasBack" @click="$router.back()">
         <v-icon>arrow_back</v-icon>
       </v-btn>
       <v-toolbar-title>{{title}}</v-toolbar-title>
@@ -43,20 +43,12 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
   }
 })
 export default class Page extends Vue {
-  @Prop({ default: true })
-  hasHeader!: boolean
-
-  @Prop({ default: false })
-  hasFooter!: boolean
 
   @Prop()
-  title!: string
+  title!: string;
 
   @Prop({ default: false })
   hasBack!: boolean
 
-
-  @Prop({ default: () => ({}) })
-  iconArr!: object
 }
 </script>
