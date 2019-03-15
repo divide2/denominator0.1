@@ -4,6 +4,7 @@ import warehouse from '@/route/work/warehouse'
 import team from '@/route/work/team'
 import order from '@/route/work/order'
 import store from '@/store';
+import TeamApi from '@/api/TeamApi'
 
 export default {
   path: '/work',
@@ -40,6 +41,9 @@ export default {
     ...order
   ],
   beforeEnter: (to, from, next) => {
+    TeamApi.listAuthorities().then(data => {
+      console.log(data)
+    })
     if (!store.getters.teams) {
       store.dispatch('getUserTeams').then((teams) => {
         if (teams.length) {

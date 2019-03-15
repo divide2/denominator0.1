@@ -28,12 +28,15 @@
 import { Component, Vue } from 'vue-property-decorator'
 import MenuApi from '../../api/MenuApi'
 import { MenuTree } from '../types/workbench'
+import TeamApi from '../../api/TeamApi'
+import { Auth } from '../types/team'
 
 @Component({ components: {} })
 export default class Users extends Vue {
 
   tree = [];
   menus: MenuTree[] = []
+  auth = new Auth()
 
   get leafs() {
     let leaf = [];
@@ -48,11 +51,16 @@ export default class Users extends Vue {
   }
   async created() {
     this.menus = await MenuApi.tree()
-    this.tree = ["6", "5", "7", "8"]
+    this.tree = await TeamApi.listTeamUserMenus(this.$route.params.type, this.$route.params.id)
   }
 
-  save() {
-    console.log(this.leafs);
+  async save() {
+    this.auth.principleId = this.$route.params.id
+    this.auth.principleType = this.$route.params.type
+    this.auth.teamId = this.$store.getters.teamId
+    this.auth.menuIds = this.leafs
+    await TeamApi.setAuth(this.auth)
+    this.$router.back()
   }
 }
 </script>

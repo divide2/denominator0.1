@@ -1,6 +1,13 @@
 // 添加
 import { User } from "@/views/types/index"
 
+export class Auth {
+  menuIds: string[] = [];
+  teamId = ''
+  principleId = '';
+  principleType = '';
+}
+
 export class Team {
   name = ''
   image = ''

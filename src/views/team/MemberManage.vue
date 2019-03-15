@@ -15,7 +15,7 @@
               </v-list-tile-content>
               <v-list-tile-action>
                 <v-btn flat color="warning" icon @click.stop="setAuth('squad', member.squad.id)">
-                  <v-icon>mdi-lock</v-icon>
+                  <v-icon>mdi-account-key-outline</v-icon>
                 </v-btn>
               </v-list-tile-action>
             </v-list-tile>
@@ -35,7 +35,7 @@
 
             <v-list-tile-action>
               <v-btn icon color="warning" flat @click.stop="setAuth('user',user.userId)">
-                <v-icon>mdi-lock</v-icon>
+                <v-icon>mdi-account-key-outline</v-icon>
               </v-btn>
             </v-list-tile-action>
           </v-list-tile>

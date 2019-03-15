@@ -8,6 +8,13 @@
       "icon": "mdi-account-multiple",
       "authority": "team:member:view",
       "color": "green lighten-3"
+    },{
+      "id": "3",
+      "name": "合作伙伴",
+      "path": "cooperationList",
+      "icon": "mdi-account-multiple-outline",
+      "authority": "team:cooperation:view",
+      "color": "purple lighten-2"
     }]
   }, {
   "menuGroup": { "id": "4028028269669dd3016966a3f4cf0000", "name": "商品" },

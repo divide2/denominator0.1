@@ -1,10 +1,19 @@
 import Api from '@/api/Api'
-import {ConfirmForm, CooperationApply, Team, TeamApply} from '@/views/types/team';
-import {SearchQuery} from '@/views/types';
+import { Auth, ConfirmForm, CooperationApply, Team, TeamApply } from '@/views/types/team';
+import { SearchQuery } from '@/views/types';
 import store from '@/store/index'
 
 
 export default {
+  listTeamUserMenus(type: string, id: number) {
+    return Api.get(`/api/v1/team/${store.getters.teamId}/type/${type}/principal/${id}/menus`)
+  },
+  setAuth(auth: Auth) {
+    return Api.post('/api/v1/auth', auth)
+  },
+  listAuthorities() {
+    return Api.get(`/api/v1/team/${store.getters.teamId}/user/authorities`)
+  },
   add(data: Team) {
     return Api.post('/api/v1/team', data)
   },
