@@ -16,3 +16,8 @@ export class Order {
   remarks = ''
   toTeamId = 0
 }
+
+export class Search {
+  createTime = ''
+  status = ''
+}

@@ -3,9 +3,7 @@
     <option-btn :icon="'add'" @click.native="$router.push({name:'orderAdd'})"></option-btn>
     <v-container>
       <v-tabs centered>
-        <v-tab>待确认</v-tab>
-        <v-tab>待发货</v-tab>
-        <v-tab>待收货</v-tab>
+        <v-tab v-for="(item,index) in orderStatus">{{item}}</v-tab>
         <v-tab-item>
           确认
         </v-tab-item>
@@ -29,29 +27,35 @@
 import { Vue, Component } from 'vue-property-decorator'
 import OptionBtn from '@/components/OptionBtn'
 import { Page } from '../types/index';
-import WarehouseApi from '../../api/WarehouseApi';
 import { Warehouse } from '../types/warehouse';
+import { Order, Search } from '../types/order';
+import { ORDER_STATUS } from '../../const/index';
+import OrderApi from '../../api/OrderApi';
 
 @Component({ components: { OptionBtn } })
 export default class File extends Vue {
   public page = new Page()
-  public warehouses: Array<Warehouse> = []
+  public orders: Array<Order> = []
+  orderStatus = ORDER_STATUS
+  orderSearchParams = new Search()
+
 
   created () {
-    this.list()
+    this.list(this.orderStatus[0])
   }
 
-  list () {
-    WarehouseApi.list().then(data => {
-      this.warehouses = data
+  list (status) {
+    this.orderSearchParams.status = status
+    OrderApi.list(this.orderSearchParams).then(data => {
+      this.orders = data
     })
   }
 
-  del (id) {
-    WarehouseApi.delete(id).then(data => {
-      this.list()
-    })
-  }
+//  del (id) {
+//    OrderApi.delete(id).then(data => {
+//      this.list(this.orderStatus[0])
+//    })
+//  }
 
 }
 </script>

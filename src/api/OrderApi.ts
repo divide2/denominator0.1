@@ -1,11 +1,11 @@
 import Api from './Api'
 import store from '@/store/index'
 import { Delete } from "@/views/types";
-import { Order } from "@/views/types/order";
+import { Order, Search } from "@/views/types/order";
 
 export default {
-  list () {
-    return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/order/receive`)
+  list (data: Search) {
+    return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/order/receive`, data)
   },
   add (data: Order) {
     data.productSpecPrices = store.state.order.shopping_cart
