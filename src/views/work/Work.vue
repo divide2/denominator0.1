@@ -13,7 +13,7 @@
     <div slot="headerRight">
       <v-toolbar-items>
         <v-btn flat icon>
-          <v-icon size="30">search</v-icon>
+          <v-icon size="30" color="primary" flat>search</v-icon>
         </v-btn>
       </v-toolbar-items>
     </div>

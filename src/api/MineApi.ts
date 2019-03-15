@@ -7,5 +7,8 @@ export default  {
   },
   listFriends() {
     return Api.get('/api/v1/mine/friends')
+  },
+  listChats() {
+    return Api.get('/api/v1/mine/chats')
   }
 }

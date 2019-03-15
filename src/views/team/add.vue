@@ -1,5 +1,5 @@
 <template>
-  <page :hasBack="ture">
+  <page :hasBack="true">
     <v-container>
       <v-text-field label="团队名称" v-model="group.name">
 

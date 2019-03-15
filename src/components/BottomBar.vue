@@ -1,11 +1,11 @@
 <template>
   <v-bottom-nav
           :value="$route.meta.bar"
-          :active="$route.name"
+          :active="$route.meta.active"
           app
           flat
   >
-    <v-btn flat color="teal" :value="item.pathName" v-for="(item,index) in viewObj" :key="index" @click="test(item.pathName)">
+    <v-btn flat color="primary" :value="item.pathName" v-for="(item,index) in viewObj" :key="index" @click="test(item.pathName)">
       <span>{{item.name}}</span>
       <v-icon>{{item.icon}}</v-icon>
     </v-btn>

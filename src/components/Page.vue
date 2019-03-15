@@ -3,7 +3,7 @@
     <v-toolbar light fixed app>
       <!--头部左边-->
       <slot name="headerLeft"></slot>
-      <v-btn icon v-if="hasBack" @click="$router.back()">
+      <v-btn icon color="primary" flat v-if="hasBack" @click="$router.back()">
         <v-icon>arrow_back</v-icon>
       </v-btn>
       <v-toolbar-title>{{title}}</v-toolbar-title>

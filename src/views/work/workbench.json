@@ -1,43 +1,98 @@
 [
   {
-    "menuGroup": { "id": "1", "name": "团队" },
-    "menus": [{
+    "menuGroup": {
+      "id": "1",
+      "name": "团队"
+    },
+    "menus": [
+      {
+        "id": "101",
+        "name": "成员管理",
+        "path": "memberManage",
+        "icon": "mdi-account-multiple",
+        "authority": "team:member:view",
+        "color": "green lighten-3"
+      },
+      {
+        "id": "102",
+        "name": "合作伙伴",
+        "path": "cooperationList",
+        "icon": "mdi-account-multiple-outline",
+        "authority": "team:cooperation:view",
+        "color": "purple lighten-2"
+      },
+      {
+        "id": "103",
+        "name": "申请",
+        "path": "cooperationSearch",
+        "icon": "mdi-account-multiple-plus-outline",
+        "authority": "team:apply:view",
+        "color": "indigo lighten-2"
+      }
+    ]
+  },
+  {
+    "menuGroup": {
       "id": "2",
-      "name": "成员管理",
-      "path": "memberManage",
-      "icon": "mdi-account-multiple",
-      "authority": "team:member:view",
-      "color": "green lighten-3"
-    },{
+      "name": "商品"
+    },
+    "menus": [
+      {
+        "id": "201",
+        "name": "商品",
+        "path": "products",
+        "icon": "mdi-shopping",
+        "authority": "team:product:view",
+        "color": "orange lighten-3"
+      },
+      {
+        "id": "202",
+        "name": "订单",
+        "path": "order",
+        "icon": "mdi-file-document-outline",
+        "authority": "team:order:view",
+        "color": "blue lighten-3"
+      },
+      {
+        "id": "203",
+        "name": "库存",
+        "path": "stock",
+        "icon": "mdi-bank",
+        "authority": "team:stock:view",
+        "color": "light-green lighten-3"
+      }
+    ]
+  },
+  {
+    "menuGroup": {
       "id": "3",
-      "name": "合作伙伴",
-      "path": "cooperationList",
-      "icon": "mdi-account-multiple-outline",
-      "authority": "team:cooperation:view",
-      "color": "purple lighten-2"
-    }]
-  }, {
-  "menuGroup": { "id": "4028028269669dd3016966a3f4cf0000", "name": "商品" },
-  "menus": [{
-    "id": "4",
-    "name": "商品",
-    "path": "products",
-    "icon": "mdi-shopping",
-    "authority": "team:product:view",
-    "color": "orange lighten-3"
-  }, {
-    "id": "12",
-    "name": "订单",
-    "path": "order",
-    "icon": "mdi-file-document-outline",
-    "authority": "team:order:view",
-    "color": "blue lighten-3"
-  }, {
-    "id": "9",
-    "name": "库存",
-    "path": "stock",
-    "icon": "mdi-bank",
-    "authority": "team:stock:view",
-    "color": "light-green lighten-3"
-  }]
-}]
+      "name": "基础"
+    },
+    "menus": [
+      {
+        "id": "301",
+        "name": "仓库",
+        "path": "warehouse",
+        "icon": "mdi-domain",
+        "authority": "team:product:view",
+        "color": "indigo accent-3"
+      }
+    ]
+  },
+  {
+    "menuGroup": {
+      "id": "4",
+      "name": "统计"
+    },
+    "menus": [
+      {
+        "id": "401",
+        "name": "库存流水",
+        "path": "stockStream",
+        "icon": "mdi-clipboard-flow",
+        "authority": "team:stock:stream",
+        "color": "purple accent-3"
+      }
+    ]
+  }
+]

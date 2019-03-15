@@ -13,7 +13,8 @@ const routes = [
         path: '/chat',
         name: 'chat',
         meta: {
-          bar: true
+          bar: true,
+          active: 'chat'
         },
         component: () => import('@/views/message/Message.vue')
       },
@@ -21,7 +22,8 @@ const routes = [
         path: '/contact',
         name: 'contact',
         meta: {
-          bar: true
+          bar: true,
+          active: 'contact'
         },
         component: () => import('@/views/contact/Contact.vue')
       },
@@ -29,7 +31,8 @@ const routes = [
         path: '/mine',
         name: 'mine',
         meta: {
-          bar: true
+          bar: true,
+          active: 'mine'
         },
         component: () => import('@/views/mine/Mine.vue')
       }
@@ -54,6 +57,14 @@ const routes = [
     path: '/contact/search',
     name: 'searchFriend',
     component: () => import('@/views/contact/Search.vue')
+  }, {
+    path: '/team/without',
+    name: 'withoutTeam',
+    meta: {
+      bar: true,
+      active: 'work'
+    },
+    component: () => import('@/views/work/WithoutTeam.vue')
   }
 ];
 

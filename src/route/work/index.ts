@@ -14,7 +14,8 @@ export default {
       path: '',
       name: 'work',
       meta: {
-        bar: true
+        bar: true,
+        active: 'work'
       },
       component: () => import('@/views/work/Work.vue')
     },
@@ -28,35 +29,28 @@ export default {
       name: 'workbenchMenu',
       component: () => import('@/views/workbench/WorkbenchMenu.vue')
     },
-    {
-      path: '/nothing',
-      name: 'nothing',
-      component: {
-        template: '<div>nihao zheli huiyou一个按钮</div>'
-      }
-    },
     ...product,
     ...warehouse,
     ...team,
     ...order
   ],
   beforeEnter: (to, from, next) => {
-    TeamApi.listAuthorities().then(data => {
+    /*TeamApi.listAuthorities().then(data => {
       console.log(data)
-    })
+    })*/
     if (!store.getters.teams) {
       store.dispatch('getUserTeams').then((teams) => {
         if (teams.length) {
           next()
         } else {
-          next({ name: 'nothing' })
+          next({ name: 'withoutTeam' })
         }
       })
     } else {
       if (store.getters.teams.length) {
         next()
       } else {
-        next({ name: 'nothing' })
+        next({ name: 'withoutTeam' })
       }
     }
   }
