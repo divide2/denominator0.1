@@ -3,9 +3,9 @@
     <option-btn :icon="'add'" @click.native="$router.push({name:'orderAdd'})"></option-btn>
     <v-container>
       <v-tabs centered>
-        <v-tab v-for="(item,index) in orderStatus">{{item}}</v-tab>
+        <v-tab v-for="(item,index) in orderStatus" @click="getData">{{item.name}}</v-tab>
         <v-tab-item>
-          确认
+
         </v-tab-item>
         <v-tab-item>
           发货
@@ -39,12 +39,11 @@ export default class File extends Vue {
   orderStatus = ORDER_STATUS
   orderSearchParams = new Search()
 
-
   created () {
-    this.list(this.orderStatus[0])
+    this.getData(this.orderStatus[0].value)
   }
 
-  list (status) {
+  getData (status) {
     this.orderSearchParams.status = status
     OrderApi.list(this.orderSearchParams).then(data => {
       this.orders = data
