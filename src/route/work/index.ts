@@ -29,6 +29,10 @@ export default {
       name: 'workbenchMenu',
       component: () => import('@/views/workbench/WorkbenchMenu.vue')
     },
+    { path: '/stock',
+      name: 'stock',
+      component: () => import('@/views/stock/Stock.vue')
+    },
     ...product,
     ...warehouse,
     ...team,

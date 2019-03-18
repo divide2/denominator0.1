@@ -2,7 +2,7 @@
   <page :hasBack="true">
 
     <v-card>
-      <v-list>
+      <v-list expand>
         <v-list-group
             v-for="member in members"
             :key="member.squad.id"
