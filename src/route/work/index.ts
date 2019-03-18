@@ -33,6 +33,14 @@ export default {
       name: 'stock',
       component: () => import('@/views/stock/Stock.vue')
     },
+    { path: '/stock/out',
+      name: 'stockOut',
+      component: () => import('@/views/stock/StockOut.vue')
+    },
+    { path: '/stock/in',
+      name: 'stockIn',
+      component: () => import('@/views/stock/StockIn.vue')
+    },
     ...product,
     ...warehouse,
     ...team,

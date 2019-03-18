@@ -43,7 +43,6 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import TeamApi from '../../api/TeamApi';
 import StockApi from '../../api/StockApi'
 
 @Component({ components: {} })
