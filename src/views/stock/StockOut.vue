@@ -2,49 +2,25 @@
   <page :hasBack="true">
 
     <v-card>
-      <v-form v-model="valid">
-        <v-container>
-          <v-layout>
-            <v-flex
-                xs12
-                md4
-            >
-              <v-text-field
-                  v-model="firstname"
-                  :rules="nameRules"
-                  :counter="10"
-                  label="First name"
-                  required
-              ></v-text-field>
-            </v-flex>
-
-            <v-flex
-                xs12
-                md4
-            >
-              <v-text-field
-                  v-model="lastname"
-                  :rules="nameRules"
-                  :counter="10"
-                  label="Last name"
-                  required
-              ></v-text-field>
-            </v-flex>
-
-            <v-flex
-                xs12
-                md4
-            >
-              <v-text-field
-                  v-model="email"
-                  :rules="emailRules"
-                  label="E-mail"
-                  required
-              ></v-text-field>
-            </v-flex>
-          </v-layout>
-        </v-container>
-      </v-form>
+      <v-container>
+        <v-autocomplete
+            :items="products"
+            item-text="name"
+            item-value="id"
+            label="商品"
+            :search-input.sync="search">
+          <template slot="item" slot-scope="data">
+            <template>
+              <v-list-tile-avatar>
+                <img :src="data.image[0]">
+              </v-list-tile-avatar>
+              <v-list-tile-content>
+                <v-list-tile-title v-html="data.name"></v-list-tile-title>
+              </v-list-tile-content>
+            </template>
+          </template>
+        </v-autocomplete>
+      </v-container>
     </v-card>
   </page>
 </template>
@@ -54,17 +30,23 @@
 
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
-import StockApi from '../../api/StockApi'
+import ProductApi from '../../api/ProductApi'
+import { ListParam } from '../types/product'
 
 @Component({ components: {} })
 export default class Users extends Vue {
-  stocks = []
+  products = [];
 
   public created() {
-    StockApi.list().then(data => {
-      this.stocks = data.content
-    })
+    this.search();
   }
 
+  search() {
+    const param = new ListParam();
+    param.size = 20;
+    ProductApi.list(param).then(data => {
+      this.products = data.content;
+    });
+  }
 }
 </script>
