@@ -12,10 +12,10 @@
           <template slot="item" slot-scope="data">
             <template>
               <v-list-tile-avatar>
-                <img :src="data.image[0]">
+                <img :src="data.item.image && data.item.image[0]">
               </v-list-tile-avatar>
               <v-list-tile-content>
-                <v-list-tile-title v-html="data.name"></v-list-tile-title>
+                <v-list-tile-title>{{data.item.name}}</v-list-tile-title>
               </v-list-tile-content>
             </template>
           </template>
