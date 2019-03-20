@@ -3,15 +3,15 @@
     <option-btn :icon="'add'" @click.native="$router.push({name:'orderAdd'})"></option-btn>
     <v-container>
       <v-tabs centered>
-        <v-tab v-for="(item,index) in orderStatus" @click="getData">{{item.name}}</v-tab>
+        <v-tab v-for="(item,index) in orderStatus" @click="getData(item.value)">{{item.name}}</v-tab>
         <v-tab-item>
-
+          <order-list :orders="orders" @confirm="confirm"></order-list>
         </v-tab-item>
         <v-tab-item>
-          发货
+          <order-list :orders="orders" @deliver="deliver"></order-list>
         </v-tab-item>
         <v-tab-item>
-          收货
+          <order-list :orders="orders" @receive="receive"></order-list>
         </v-tab-item>
       </v-tabs>
 
@@ -31,8 +31,9 @@ import { Warehouse } from '../types/warehouse';
 import { Order, Search } from '../types/order';
 import { ORDER_STATUS } from '../../const/index';
 import OrderApi from '../../api/OrderApi';
+import OrderList from './components/orderList'
 
-@Component({ components: { OptionBtn } })
+@Component({ components: { OptionBtn, OrderList } })
 export default class File extends Vue {
   public page = new Page()
   public orders: Array<Order> = []
@@ -46,7 +47,7 @@ export default class File extends Vue {
   getData (status) {
     this.orderSearchParams.status = status
     OrderApi.list(this.orderSearchParams).then(data => {
-      this.orders = data
+      this.orders = data.content
     })
   }
 
@@ -55,6 +56,28 @@ export default class File extends Vue {
 //      this.list(this.orderStatus[0])
 //    })
 //  }
+  confirm (id) {
+    OrderApi.confirm({ id: id }).then((res) => {
+      console.log(res)
+      this.getData(this.orderStatus[0].value)
+    })
+  }
+
+  deliver (id) {
+    OrderApi.confirm({ id: id }).then((res) => {
+      console.log(res)
+      this.getData(this.orderStatus[0].value)
+    })
+  }
+
+  receive (id) {
+    OrderApi.confirm({ id: id }).then((res) => {
+      console.log(res)
+      this.getData(this.orderStatus[0].value)
+    })
+  }
+
+
 
 }
 </script>

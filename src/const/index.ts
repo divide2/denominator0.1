@@ -3,7 +3,7 @@ export const ORDER_STATUS = [{
   name: '待确认'
 }, {
   value: 'waiting_deliver',
-  name: '待发送'
+  name: '待发货'
 }, {
   value: 'waiting_receive',
   name: '待收货'

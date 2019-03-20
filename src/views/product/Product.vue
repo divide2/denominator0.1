@@ -66,11 +66,11 @@ export default class Work extends Vue {
   }
 
   public clickAdd () {
-    this.$router.push({ name: 'addProduct' })
+    this.$router.push({ name: 'productAdd' })
   }
 
   public clickEdit () {
-    this.$router.push({ name: 'addProduct' })
+    this.$router.push({ name: 'productUpdate' })
   }
 
   public del(id){

@@ -110,14 +110,16 @@ import { Vue, Component } from 'vue-property-decorator'
 import FileUpload from 'vue-upload-component'
 import { Product, Specs } from '../types/product';
 import ProductApi from '../../api/ProductApi';
-import { getToken } from '@/store/modules/base'
+import { Getter } from 'vuex-class';
 
 @Component({ components: { FileUpload } })
 export default class AddProduct extends Vue {
   product = new Product()
   public files = []
   public specFiles = []
-  public headers = { Authorization: 'Bearer ' + getToken() }
+  public headers = { Authorization: 'Bearer ' + this.token}
+
+  @Getter('token') token
 
   public inputFile (newFile: any, oldFile: any) {
     if (newFile && !oldFile) {
