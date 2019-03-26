@@ -4,7 +4,6 @@
     <v-card>
       <v-container>
         <v-layout row wrap>
-
           <v-flex xs12 >
             <v-autocomplete
 
@@ -27,7 +26,7 @@
             </v-autocomplete>
           </v-flex>
           <v-flex xs12  v-for="(spec,index) in specs" :key="spec.id">
-            <v-card flat class="px-0">
+            <v-card flat>
               <v-layout row  justify-center  align-center>
                 <v-flex xs6>
                   <v-list-tile-avatar>
@@ -45,6 +44,7 @@
             </v-card>
           </v-flex>
         </v-layout>
+        <v-btn color="primary" @click="save" block>保存</v-btn>
       </v-container>
     </v-card>
   </page>
@@ -56,12 +56,17 @@
 <script lang="ts">
 import { Component, Vue } from 'vue-property-decorator'
 import ProductApi from '../../api/ProductApi'
-import { ListParam } from '../types/product'
+import { ListParam, StockDTO } from '../types/product'
+import StockApi from '../../api/StockApi'
+import { Getter } from 'vuex-class'
 
 @Component({ components: {} })
 export default class Users extends Vue {
   products = [];
   specs = [];
+  stockOut = new StockDTO();
+
+  @Getter('teamId') teamId;
 
   public created() {
     this.search();
@@ -78,9 +83,16 @@ export default class Users extends Vue {
   onProductChange(productId) {
 
     let specs = this.products.find(item => item.id === productId).specs
-    console.log(specs)
+    this.stockOut.productId = productId;
+    this.stockOut.teamId = this.teamId
+    this.stockOut.warehouseId = 'ac122f71-6943-13df-8169-440522930000'
     this.specs = specs.map(item => Object.assign({}, item, { amount: 0 }))
-    console.log('xxxxx');
+  }
+
+  save() {
+    this.stockOut.specStocks = this.specs.map(item => ({ productSpecId: item.id, amount: item.amount }));
+    console.log(this.stockOut);
+    StockApi.outStock(this.stockOut);
   }
 }
 </script>

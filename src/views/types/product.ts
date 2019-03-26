@@ -26,3 +26,15 @@ export class ListParam extends Page {
 
 }
 
+export class StockDTO {
+  teamId = '';
+  productId = '';
+  warehouseId = '';
+  specStocks: ProductSpec[] = [];
+
+}
+
+class ProductSpec {
+  productSpecId = '';
+  amount = 0
+}
