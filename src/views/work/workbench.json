@@ -60,6 +60,21 @@
         "icon": "mdi-bank",
         "authority": "team:stock:view",
         "color": "light-green lighten-3"
+      },
+      {
+        "id": "204",
+        "name": "入库",
+        "path": "stockIn",
+        "icon": "mdi-bank-plus",
+        "authority": "team:stock:in",
+        "color": "green lighten-3"
+      },{
+        "id": "205",
+        "name": "出库",
+        "path": "stockOut",
+        "icon": "mdi-bank-minus",
+        "authority": "team:stock:out",
+        "color": "green lighten-2"
       }
     ]
   },
