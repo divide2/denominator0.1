@@ -6,7 +6,23 @@
         <v-layout row wrap>
           <v-flex xs12 >
             <v-autocomplete
-
+                v-model="warehouseId"
+                :items="warehouses"
+                item-value="id"
+                item-text="name"
+                label="仓库"
+              >
+              <template slot="item" slot-scope="data">
+                <template>
+                  <v-list-tile-content>
+                    <v-list-tile-title>{{data.item.name}}</v-list-tile-title>
+                  </v-list-tile-content>
+                </template>
+              </template>
+            </v-autocomplete>
+          </v-flex>
+          <v-flex xs12 >
+            <v-autocomplete
                 :items="products"
                 item-value="id"
                 item-text="name"
@@ -59,17 +75,25 @@ import ProductApi from '../../api/ProductApi'
 import { ListParam, StockDTO } from '../types/product'
 import StockApi from '../../api/StockApi'
 import { Getter } from 'vuex-class'
+import WarehouseApi from '../../api/WarehouseApi'
 
 @Component({ components: {} })
 export default class Users extends Vue {
   products = [];
   specs = [];
   stockOut = new StockDTO();
+  warehouses = [];
+  warehouseId = '';
 
   @Getter('teamId') teamId;
 
   public created() {
     this.search();
+    this.listWarehouses();
+  }
+
+  async listWarehouses() {
+    this.warehouses = await WarehouseApi.list()
   }
 
   search() {
@@ -84,14 +108,14 @@ export default class Users extends Vue {
 
     let specs = this.products.find(item => item.id === productId).specs
     this.stockOut.productId = productId;
-    this.stockOut.teamId = this.teamId
-    this.stockOut.warehouseId = 'ac122f71-6943-13df-8169-440522930000'
+
     this.specs = specs.map(item => Object.assign({}, item, { amount: 0 }))
   }
 
   save() {
+    this.stockOut.teamId = this.teamId
+    this.stockOut.warehouseId = this.warehouseId;
     this.stockOut.specStocks = this.specs.map(item => ({ productSpecId: item.id, amount: item.amount }));
-    console.log(this.stockOut);
     StockApi.outStock(this.stockOut);
   }
 }
