@@ -78,7 +78,7 @@ import { Getter } from 'vuex-class'
 import WarehouseApi from '../../api/WarehouseApi'
 
 @Component({ components: {} })
-export default class Users extends Vue {
+export default class StockOut extends Vue {
   products = [];
   specs = [];
   stockOut = new StockDTO();

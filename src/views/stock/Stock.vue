@@ -46,7 +46,7 @@ import { Component, Vue } from 'vue-property-decorator'
 import StockApi from '../../api/StockApi'
 
 @Component({ components: {} })
-export default class Users extends Vue {
+export default class Stock extends Vue {
   stocks = []
 
   public created() {

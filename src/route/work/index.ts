@@ -41,6 +41,10 @@ export default {
       name: 'stockIn',
       component: () => import('@/views/stock/StockIn.vue')
     },
+    { path: '/stock/stream',
+      name: 'stockStream',
+      component: () => import('@/views/stock/StockStream.vue')
+    },
     ...product,
     ...warehouse,
     ...team,

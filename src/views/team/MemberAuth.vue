@@ -1,23 +1,23 @@
 <template>
   <page :hasBack="true">
-  <v-card>
-    <v-card-text>
-      <v-treeview
-          :items="menus"
-          v-model="tree"
-          activatable
-          active-class="grey lighten-4 indigo--text"
-          selected-color="indigo"
-          open-on-click
-          selectable
-          expand-icon="mdi-chevron-down"
-      >
-      </v-treeview>
-    </v-card-text>
-    <v-card-actions>
-      <v-btn @click="save" color="success">保存</v-btn>
-    </v-card-actions>
-  </v-card>
+    <v-card>
+      <v-card-text>
+        <v-treeview
+            :items="menus"
+            v-model="tree"
+            activatable
+            active-class="grey lighten-4 indigo--text"
+            selected-color="indigo"
+            open-on-click
+            selectable
+            expand-icon="mdi-chevron-down"
+        >
+        </v-treeview>
+      </v-card-text>
+      <v-card-actions>
+        <v-btn @click="save" color="success">保存</v-btn>
+      </v-card-actions>
+    </v-card>
   </page>
 </template>
 
@@ -49,6 +49,7 @@ export default class Users extends Vue {
     });
     return leaf;
   }
+
   async created() {
     this.menus = await MenuApi.tree()
     this.tree = await TeamApi.listTeamUserMenus(this.$route.params.type, this.$route.params.id)

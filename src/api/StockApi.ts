@@ -5,6 +5,9 @@ export default {
   list() {
     return Api.get(`/api/v1/team/${store.getters.teamId}/stocks`)
   },
+  stream() {
+    return Api.get('/api/v1/stock/stream');
+  },
   inStock(params: any) {
     return Api.post('/api/v1/stock/in', params);
   },
