@@ -17,11 +17,11 @@
         <v-stepper-items>
           <v-stepper-content step="1">
             <v-select
-                    v-model="order.toTeamId"
-                    :items="cooperations"
-                    :item-text="'name'"
-                    :item-value="'id'"
-                    @change="changeTeam">
+                v-model="order.toTeamId"
+                :items="cooperations"
+                :item-text="'name'"
+                :item-value="'id'"
+                @change="changeTeam">
             </v-select>
             <v-btn color="primary" @click="currStep = 2">下一步</v-btn>
             <v-btn flat @click="currStep = 1">上一步</v-btn>
@@ -53,7 +53,7 @@
               <v-text-field label="定金" v-model="order.earnestMoney"></v-text-field>
               <v-text-field label="尾款" v-model="order.balancePayment"></v-text-field>
               <v-text-field label="附件" v-model="order.attachment"></v-text-field>
-              <label for="">交付时间:</label> <input type="date" v-model="order.deliverDate">
+              <label>交付时间:</label> <input type="date" v-model="order.deliverDate">
               <v-divider></v-divider>
               <v-text-field label="备注" v-model="order.remarks"></v-text-field>
             </v-form>
@@ -88,40 +88,40 @@ import ProductList from './components/ProductList.vue'
 export default class WarehouseAdd extends Vue {
   public order = new Order()
   public ifAdd = true
-  public cooperations = new Array<Team>()
+  public cooperations: Team[] = [];
   public page = new Page()
   public currStep = 1// 当前步骤
-  public products = new Array<Product>()
+  public products: Product[] = [];
   public sheet = false
   public time = ''
 
   @State(state => state.order.shopping_cart) shopping_cart
 
-  save () {
+  save() {
     OrderApi.add(this.order).then(data => {
       this.$router.back()
     })
   }
 
-  created () {
+  created() {
     TeamApi.cooperationList().then(data => {
       this.cooperations = data
     })
   }
 
-  getProducts () {
+  getProducts() {
     ProductApi.list(this.page).then(data => {
 
     })
   }
 
-  nextStep () {
+  nextStep() {
     this.currStep = this.currStep === 2 ? this.currStep++ : 0
   }
 
   //todo 想变成是computed属性的products
 
-  changeTeam (id) {
+  changeTeam(id) {
     if (!id) {
       return
     } else {

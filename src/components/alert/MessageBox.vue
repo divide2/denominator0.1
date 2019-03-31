@@ -38,36 +38,36 @@
 </style>
 
 <script lang="ts">
-import {Vue, Component, Prop} from 'vue-property-decorator'
+import { Vue, Component, Prop } from 'vue-property-decorator'
 
-@Component({components: {}})
+@Component({ components: {} })
 export default class Alert extends Vue {
-    @Prop({default: ''})
-    message;
+  @Prop({ default: '' })
+  message;
 
-    visible = false;
-    promise = null;
-    resolve = null;
-    reject = null;
+  visible = false;
+  promise = null;
+  resolve = null;
+  reject = null;
 
-    show() {
-        this.visible = true;
-        this.promise = new Promise((resolve, reject) => {
-            this.resolve = resolve;
-            this.reject = reject;
-        });
-        // 返回promise对象
-        return this.promise;
-    }
+  show() {
+    this.visible = true;
+    this.promise = new Promise((resolve, reject) => {
+      this.resolve = resolve;
+      this.reject = reject;
+    });
+    // 返回promise对象
+    return this.promise;
+  }
 
-    confirm() {
-        this.visible = false;
-        this.resolve('confirm')
-    }
+  confirm() {
+    this.visible = false;
+    this.resolve('confirm')
+  }
 
-    cancel() {
-        this.visible = false;
-        this.reject('cancel');
-    }
+  cancel() {
+    this.visible = false;
+    this.reject('cancel');
+  }
 }
 </script>
