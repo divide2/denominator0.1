@@ -21,5 +21,7 @@ export default {
   confirm (data: idParam) {
     return Api.put('/api/v1/order/confirm', data)
   },
-  deliver()
+  deliver (data: { orderId: string, warehouseId: string }) {
+    return Api.put('/api/v1/order/confirm/deliver', data)
+  }
 }

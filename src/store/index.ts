@@ -3,6 +3,7 @@ import Vuex from 'vuex';
 import team from '@/store/modules/team';
 import base from '@/store/modules/base';
 import order from "@/store/modules/order";
+import warehouse from "@/store/modules/warehouse";
 
 Vue.use(Vuex);
 
@@ -18,6 +19,7 @@ export default new Vuex.Store({
   modules: {
     team,
     base,
-    order
+    order,
+    warehouse
   }
 });

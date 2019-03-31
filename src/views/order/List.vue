@@ -3,7 +3,11 @@
     <option-btn :icon="'add'" @click.native="$router.push({name:'orderAdd'})"></option-btn>
     <v-container>
       <v-tabs centered>
-        <v-tab v-for="(item,index) in orderStatus" @click="getData(item.value)">{{item.name}}</v-tab>
+        <v-tab @click="getData('waiting_confirm')">待确认</v-tab>
+        <v-tab @click="getData('waiting_deliver')">待发货</v-tab>
+        <v-tab @click="getData('waiting_receive')">待收货</v-tab>
+        <v-tab></v-tab>
+        <v-tab></v-tab>
         <v-tab-item>
           <order-list :orders="orders" @confirm="confirm"></order-list>
         </v-tab-item>
@@ -29,16 +33,18 @@ import OptionBtn from '@/components/OptionBtn'
 import { Page } from '../types/index';
 import { Warehouse } from '../types/warehouse';
 import { Order, Search } from '../types/order';
-import { ORDER_STATUS } from '../../const/index';
 import OrderApi from '../../api/OrderApi';
 import OrderList from './components/orderList'
+import { waiting_confirm, waiting_deliver, waiting_receive } from '@/const/index';
 
 @Component({ components: { OptionBtn, OrderList } })
 export default class File extends Vue {
   public page = new Page()
   public orders: Array<Order> = []
-  orderStatus = ORDER_STATUS
   orderSearchParams = new Search()
+  waiting_confirm = waiting_confirm
+  waiting_deliver = waiting_deliver
+  waiting_receive = waiting_receive
 
   created () {
     this.getData(this.orderStatus[0].value)
@@ -63,10 +69,10 @@ export default class File extends Vue {
     })
   }
 
-  deliver (id) {
-    OrderApi.confirm({ id: id }).then((res) => {
+  deliver (data) {
+    OrderApi.deliver(data).then((res) => {
       console.log(res)
-      this.getData(this.orderStatus[0].value)
+//      this.getData(this.orderStatus[0].value)
     })
   }
 
@@ -76,7 +82,6 @@ export default class File extends Vue {
       this.getData(this.orderStatus[0].value)
     })
   }
-
 
 
 }

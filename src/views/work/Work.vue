@@ -3,11 +3,11 @@
     <div slot="headerLeft">
       <v-toolbar-title class="company-select">
         <v-select
-            :value="currTeam"
-            :items="teams"
-            item-text="name"
-            item-value="id"
-            @change="changeTeam"></v-select>
+                :value="currTeam"
+                :items="teams"
+                item-text="name"
+                item-value="id"
+                @change="changeTeam"></v-select>
       </v-toolbar-title>
     </div>
     <div slot="headerRight">
@@ -42,6 +42,7 @@ import PageHeader from '@/components/PageHeader.vue'
 import { Mutation, State } from 'vuex-class';
 import { Workbench } from '../types/workbench'
 import workbench from './workbench.json'
+import WarehouseApi from '@/api/WarehouseApi';
 
 @Component({ components: { Page, PageHeader } })
 export default class Work extends Vue {
@@ -50,18 +51,23 @@ export default class Work extends Vue {
 
   @State(state => state.team.currTeam) currTeam
   @Mutation('setCurrTeam') setCurrTeam
+  @Mutation('setWarehouseList') setWarehouseList
   @State(state => state.team.teams) teams
 
+  created () {
+    WarehouseApi.list().then(data => {
+     this.setWarehouseList(data)
+    })
+  }
 
-
-  changeTeam(id: string) {
+  changeTeam (id: string) {
     let team = this.teams.find(item => item.id === id)
     this.setCurrTeam(team)
   }
 }
 </script>
 <style scoped lang="stylus">
-.company-select {
-  width: 200px;
-}
+  .company-select {
+    width: 200px;
+  }
 </style>
