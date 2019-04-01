@@ -44,6 +44,11 @@ const routes = [
     component: Login
   },
   {
+    path: '/register',
+    name: 'register',
+    component: import('@/views/login/Register.vue')
+  },
+  {
     path: '/chatRoom/:chatRoomId',
     name: 'chatRoom',
     component: () => import('@/views/message/ChatRoom.vue')
