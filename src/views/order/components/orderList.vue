@@ -33,12 +33,40 @@
     </v-list>
     <!--选择仓库-->
     <v-dialog v-model="show">
-      <v-select
-              :items="warehouseList"
-              item-text="name"
-              item-value="id"
-              @change="select"></v-select>
-      <v-btn @click="$emit('deliver', {warehouseId:warehouse_id,orderId:order_id})">确定</v-btn>
+      <div class="white">
+        <v-select
+                :items="warehouseList"
+                item-text="name"
+                item-value="id"
+                @change="select"></v-select>
+        <v-btn @click="$emit('deliver', {warehouseId:warehouse_id,orderId:order_id})">确定</v-btn>
+      </div>
+    </v-dialog>
+    <v-dialog v-model="show" persistent max-width="600px">
+      <v-card>
+        <v-card-title>
+          <span class="headline">User Profile</span>
+        </v-card-title>
+        <v-card-text>
+          <v-container grid-list-md>
+            <v-layout wrap>
+              <v-flex xs12 sm6>
+                <v-select
+                        :items="warehouseList"
+                        item-text="name"
+                        item-value="id"
+                        @change="select">
+                </v-select>
+              </v-flex>
+            </v-layout>
+          </v-container>
+        </v-card-text>
+        <v-card-actions>
+          <v-spacer></v-spacer>
+          <v-btn color="blue darken-1" flat @click="dialog = false">Close</v-btn>
+          <v-btn color="blue darken-1" flat @click="$emit('deliver', {warehouseId:warehouse_id,orderId:order_id})">Save</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-dialog>
   </div>
 
