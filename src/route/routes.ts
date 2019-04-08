@@ -1,5 +1,6 @@
 import Layout from '@/views/Layout.vue';
 import Login from '@/views/login/Login.vue'
+import Register from '@/views/login/Register.vue'
 import work from './work';
 
 const routes = [
@@ -46,7 +47,7 @@ const routes = [
   {
     path: '/register',
     name: 'register',
-    component: import('@/views/login/Register.vue')
+    component: Register
   },
   {
     path: '/chatRoom/:chatRoomId',

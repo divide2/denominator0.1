@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-form v-model="valid">
-      <h1 style="margin-top: 50px;">Divide2</h1>
+      <h1 style="margin-top: 50px;">登录</h1>
       <v-text-field
           v-model="form.username"
           label="用户名/手机号"
@@ -17,7 +17,7 @@
     </v-form>
     <v-layout justify-space-between>
       <v-btn flat color="primary" small>忘记密码?</v-btn>
-      <v-btn flat color="primary" small @click="$router.push({name: 'register'})">新用户注册</v-btn>
+      <v-btn flat color="primary" small @click="onRegClick">新用户注册</v-btn>
     </v-layout>
   </v-container>
 </template>
@@ -25,7 +25,7 @@
 <script lang="ts">
 // todo 修改样式
 import { Component, Vue } from 'vue-property-decorator'
-import { joinForm, LoginForm } from '../types'
+import { JoinForm, LoginForm } from '../types'
 import { Action } from 'vuex-class'
 
 @Component({})
@@ -34,7 +34,6 @@ export default class Login extends Vue {
   public lastPathName = ''
 
   public form = new LoginForm()
-  public joinForm = new joinForm()
 
   @Action('loginByUsername') loginByUsername
 
@@ -48,6 +47,11 @@ export default class Login extends Vue {
             }*/
       })
     }
+  }
+
+  onRegClick() {
+    console.log('cccccc')
+    this.$router.push('/register')
   }
 
   /*  beforeRouteEnter(to, from, next) {

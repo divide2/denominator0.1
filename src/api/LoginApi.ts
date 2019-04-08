@@ -1,6 +1,6 @@
 import qs from 'qs'
 import Api from '@/api/Api'
-import {joinForm, LoginForm} from '@/views/types'
+import { JoinForm, LoginForm } from '@/views/types'
 
 // todo 添加返回类型
 export default {
@@ -17,7 +17,10 @@ export default {
   getUserInfo() {
     return Api.get('/api/v1/user')
   },
-  join(data: joinForm) {
+  join(data: JoinForm) {
     return Api.post('/api/join', data)
+  },
+  sendVerifyCode(phone: string) {
+    return Api.post('/api/v1/verify/code', { phoneNumber: phone })
   }
 }

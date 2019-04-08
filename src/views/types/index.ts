@@ -4,9 +4,9 @@ export class LoginForm {
   public grant_type = 'password'
 }
 
-export class joinForm {
+export class JoinForm {
   public account = ''
-  public password = ''
+  public verifyCode = ''
 }
 
 interface Query {

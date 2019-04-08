@@ -11,8 +11,16 @@ const router = new Router({
   base: process.env.BASE_URL
 });
 
+const NO_LOGING = [
+  '/login', '/register', '/404'
+]
+
+const isAllowed = (path: string) => {
+  return NO_LOGING.includes(path)
+}
+
 router.beforeEach((to, from, next) => {
-  if (store.getters.token && to.path !== '/login') {
+  if (store.getters.token && !isAllowed(to.path)) {
     if (store.getters.userInfo) {
       next()
     } else {
@@ -24,9 +32,9 @@ router.beforeEach((to, from, next) => {
         next({ name: 'login' });
       })
     }
-  } else if (store.getters.token && to.path === '/login') {
-    next({ name: 'chat' })
-  } else if (!store.getters.token && to.path === '/login') {
+  } else if (store.getters.token && isAllowed(to.path)) {
+    next({ name: 'work' })
+  } else if (!store.getters.token && isAllowed(to.path)) {
     next()
   } else {
     next({ name: 'login' })
