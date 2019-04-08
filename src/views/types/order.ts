@@ -15,4 +15,13 @@ export class Order {
   productSpecPrices: Array<ProductSpecPrice> = []
   remarks = ''
   toTeamId = 0
+  fromTeamId = 0
+  orderNo = ''
+  orderId = ''
+  id = ''
+}
+
+export class Search {
+  createTime = ''
+  status = ''
 }

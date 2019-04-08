@@ -1,20 +1,27 @@
 import Api from './Api'
 import store from '@/store/index'
-import { Delete } from '@/views/types';
-import { Order } from '@/views/types/order';
+import { Delete, idParam } from "@/views/types";
+import { Order, Search } from "@/views/types/order";
 
 export default {
-  list() {
-    return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/warehouses`)
+  list (data: Search) {
+    return Api.get(`/api/v1/team/${store.state.team.currTeam.id}/order/receive`, data)
   },
-  add(data: Order) {
+  add (data: Order) {
     data.productSpecPrices = store.state.order.shopping_cart
+    data.fromTeamId = store.getters.teamId
     return Api.post('/api/v1/order', data)
   },
-  detail(id: string) {
+  detail (id: string) {
     return Api.get(`/api/v1/warehouse/${id}`)
   },
-  delete(data: Delete) {
+  delete (data: Delete) {
     return Api.delete('/v1/warehouse', data)
+  },
+  confirm (data: idParam) {
+    return Api.put('/api/v1/order/confirm', data)
+  },
+  deliver (data: { orderId: string, warehouseId: string }) {
+    return Api.put('/api/v1/order/confirm/deliver', data)
   }
 }
