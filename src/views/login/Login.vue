@@ -3,15 +3,21 @@
     <v-form v-model="valid">
       <h1 style="margin-top: 50px;">登录</h1>
       <v-text-field
-          v-model="form.username"
-          label="用户名/手机号"
-          required
+              v-model="form.username"
+              label="用户名/手机号"
+              v-validate="'required'"
+              :error-messages="errors.collect('username')"
+              data-vv-name="username"
+              required
       ></v-text-field>
       <v-text-field
-          type="password"
-          v-model="form.password"
-          label="密码"
-          required
+              type="password"
+              v-model="form.password"
+              label="密码"
+              v-validate="'required|min:6'"
+              :error-messages="errors.collect('password')"
+              data-vv-name="password"
+              required
       ></v-text-field>
       <v-btn @click="login()" block round color="primary">登录</v-btn>
     </v-form>
@@ -32,12 +38,13 @@ import { Action } from 'vuex-class'
 export default class Login extends Vue {
   public valid = null
   public lastPathName = ''
+  public name = ''
 
   public form = new LoginForm()
 
   @Action('loginByUsername') loginByUsername
 
-  login() {
+  login () {
     if (this.form.username && this.form.password) {
       this.loginByUsername(this.form).then(data => {
         this.$router.push({ name: 'chat' })
@@ -49,7 +56,7 @@ export default class Login extends Vue {
     }
   }
 
-  onRegClick() {
+  onRegClick () {
     console.log('cccccc')
     this.$router.push('/register')
   }
@@ -59,6 +66,13 @@ export default class Login extends Vue {
         vm.lastPathName = from.name
       })
     }*/
+  required (v) {
+    return !!v || '不能为空'
+  }
+
+  controlLength () {
+    console.log(arguments[0])
+  }
 }
 </script>
 
