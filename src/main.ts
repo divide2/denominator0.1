@@ -7,30 +7,36 @@ import store from './store/index';
 import '@/components/index'
 import '@/util/classComponentHooks'
 import MessageBox from '@/components/alert/Alert'
+import VueI18n from 'vue-i18n'
+import messages from '@/i18n/index'
 import VeeValidate, { Validator } from "vee-validate"
 // import zh from 'vee-validate/dist/locale/zh_CN'
+import validationMessages from 'vee-validate/dist/locale/zh_CN'
 
-const config = {
-  locale: 'zh_CN'
-}
-const dictionary = {
-  zh_CN: {
-    messages:{
-      required: '不能为空'
-    }
+Vue.use(MessageBox)
+Vue.use(VueI18n)
+
+// 通过选项创建 VueI18n 实例
+const i18n = new VueI18n({
+  locale: 'zh', // 设置地区
+  messages, // 设置地区信息
+})
+
+// 配置验证信息的语言
+Vue.use(VeeValidate, {
+  i18nRootKey: 'validations', // customize the root path for validation messages.
+  i18n,
+  dictionary: {
+    'zh': validationMessages
   }
-}
-
-Validator.localize('zh', dictionary.zh_CN)
+});
 
 Vue.config.productionTip = false;
-// 全局插件需要在new Vue()之前完成
-Vue.use(MessageBox)
-Vue.use(VeeValidate, config)
 
 new Vue({
   router,
   store,
-  render: (h) => h(App),
+  i18n,
+  render: (h) => h(App)
 }).$mount('#app');
 
