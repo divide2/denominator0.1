@@ -12,6 +12,9 @@ import messages from '@/i18n/index'
 import VeeValidate, { Validator } from "vee-validate"
 // import zh from 'vee-validate/dist/locale/zh_CN'
 import validationMessages from 'vee-validate/dist/locale/zh_CN'
+// ui组件
+import FormGroup from '@/components/form/FormGroup'
+// import UploadImage from '@/components/form/UploadImage'
 
 Vue.use(MessageBox)
 Vue.use(VueI18n)
@@ -30,6 +33,12 @@ Vue.use(VeeValidate, {
     'zh': validationMessages
   }
 });
+
+
+
+// ui组件
+Vue.component('FormGroup', FormGroup)
+// Vue.component('UploadImage', UploadImage)
 
 Vue.config.productionTip = false;
 

@@ -13,7 +13,7 @@ export class Specs {
 export class Product {
   name = ''
   remarks = ''
-  specs: Array<Specs> = []
+  specs: Array<Specs> = [new Specs()] // 新建一个空的规格
   teamId = ''
   unit = ''
   image: String[] = []

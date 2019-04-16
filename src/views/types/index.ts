@@ -55,3 +55,32 @@ export class Page {
   size = 10
   page = 0
 }
+
+// 商品单位
+export class Unit {
+  name = ''
+  rate = ''
+
+  constructor (name? = '', rate? = '') {
+    this.name = name
+    this.rate = rate
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
