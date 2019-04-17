@@ -67,6 +67,7 @@
 import { Vue, Component, Prop } from 'vue-property-decorator'
 import FileUpload from 'vue-upload-component'
 import UploadImage from '@/components/form/UploadImage'
+import { Specs } from '../../types/product';
 
 @Component({ components: { FileUpload, UploadImage } })
 export default class File extends Vue {
@@ -78,6 +79,11 @@ export default class File extends Vue {
 
   getNewFile () {
     arguments[1].image.push(arguments[0][0])
+  }
+
+  add () {
+    const specs = new Specs()
+    this.specs.push(specs)
   }
 }
 </script>

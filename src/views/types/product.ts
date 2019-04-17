@@ -1,4 +1,4 @@
-import { Page } from "@/views/types/index";
+import { Page, Unit } from "@/views/types/index";
 
 export class Specs {
   id = 0
@@ -15,11 +15,11 @@ export class Product {
   remarks = ''
   specs: Array<Specs> = [new Specs()] // 新建一个空的规格
   teamId = ''
-  unit = ''
   image: String[] = []
   createTime = ''
   id = 0
   initAmount = 0
+  units: Array<Unit> = [new Unit('', '1')] // 新建一个空的单位
 }
 
 export class ListParam extends Page {

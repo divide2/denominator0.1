@@ -24,12 +24,12 @@
       <form-group class="unit">
         <div slot="title" class="form-group-title">
           <span>单位</span>
-          <v-btn class="ma-0 pa-0 btn-height" round color="primary">
-            <v-icon size="20" @click="addUnit">add_circle</v-icon>
+          <v-btn class="ma-0 pa-0 btn-height" round color="primary" @click="addUnit">
+            <v-icon size="20">add_circle</v-icon>
             <span>添加单位</span>
           </v-btn>
         </div>
-        <units-component :units.sync="units" ref="units"></units-component>
+        <units-component :units.sync="product.units" ref="units"></units-component>
       </form-group>
       <v-divider></v-divider>
 
@@ -38,13 +38,13 @@
       <form-group class="specs">
         <div slot="title" class="form-group-title">
           <span>规格</span>
-          <v-btn class="ma-0 pa-0 btn-height" round color="primary">
-            <v-icon size="20" @click="addSpecs">add_circle</v-icon>
+          <v-btn class="ma-0 pa-0 btn-height" round color="primary" @click="addSpecs">
+            <v-icon size="20">add_circle</v-icon>
             <span>添加规格</span>
           </v-btn>
         </div>
         <!--规格输入-->
-        <specs-component :specs="product.specs"></specs-component>
+        <specs-component :specs="product.specs" ref="spec"></specs-component>
       </form-group>
       <v-divider></v-divider>
     </div>
@@ -69,7 +69,6 @@ import UploadImage from '@/components/form/UploadImage'
 @Component({ components: { FileUpload, UnitsComponent, SpecsComponent, UploadImage } })
 export default class AddProduct extends Vue {
   product = new Product()
-  public units = [new Unit()]
 
   @Getter('token') token
 
@@ -77,32 +76,9 @@ export default class AddProduct extends Vue {
     this.product.image.push(newFile)
   }
 
-  /**
-   * Pretreatment
-   * @param  Object|undefined   newFile   读写
-   * @param  Object|undefined   oldFile   只读
-   * @param  Function           prevent   阻止回调
-   * @return undefined
-   */
-//  public inputFilter (newFile: any, oldFile: any, prevent: any) {
-//    if (newFile && !oldFile) {
-//      // 过滤不是图片后缀的文件
-//      if (!/\.(jpeg|jpe|jpg|gif|png|webp)$/i.test(newFile.name)) {
-//        return prevent()
-//      }
-//    }
-//
-//    // 创建 blob 字段 用于图片预览
-//    newFile.blob = ''
-//    let URL = window.URL
-//    if (URL && URL.createObjectURL) {
-//      newFile.blob = URL.createObjectURL(newFile.file)
-//    }
-//  }
-
   addSpecs () {
-    const specs = new Specs()
-    this.product.specs.push(specs)
+    const units = this.$refs.specs as any
+    units.add()
   }
 
   add () {
