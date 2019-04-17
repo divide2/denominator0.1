@@ -4,83 +4,54 @@
       <!--基本信息-->
       <form-group class="base-info" title="基本信息">
         <v-text-field label="商品名称" placeholder="请输入商品名称" v-model="product.name"></v-text-field>
-        <v-layout class="img-list">
+        <v-layout class="img-list" wrap grid-list-md>
           <!--图片-->
           <v-flex xs4 class="img-item" v-for="(item,index) in product.image" :key="index">
-            <div class="img-box">
-              <c-image :src="item" :width="100" :height="100"></c-image>
-            </div>
+            <c-image :src="item" :width="100" :height="100"></c-image>
           </v-flex>
 
           <!--添加图片按钮-->
           <v-flex xs4 class="img-item">
-            <upload-image @getFile="getFile" class="file-upload-btn" name="productUploadFile"></upload-image>
+            <div class="img-item-add">
+              <upload-image @getFile="getFile" class="file-upload-btn" name="productUploadFile"></upload-image>
+            </div>
           </v-flex>
         </v-layout>
       </form-group>
+      <v-divider></v-divider>
 
       <!--单位-->
       <form-group class="unit">
         <div slot="title" class="form-group-title">
           <span>单位</span>
-          <v-icon size="20" color="green" @click="addUnit">add_circle</v-icon>
+          <v-btn class="ma-0 pa-0 btn-height" round color="primary">
+            <v-icon size="20" @click="addUnit">add_circle</v-icon>
+            <span>添加单位</span>
+          </v-btn>
         </div>
         <units-component :units.sync="units" ref="units"></units-component>
       </form-group>
+      <v-divider></v-divider>
+
 
       <!--规格-->
       <form-group class="specs">
         <div slot="title" class="form-group-title">
           <span>规格</span>
-          <v-icon size="20" color="green" @click="addSpecs">add_circle</v-icon>
+          <v-btn class="ma-0 pa-0 btn-height" round color="primary">
+            <v-icon size="20" @click="addSpecs">add_circle</v-icon>
+            <span>添加规格</span>
+          </v-btn>
         </div>
+        <!--规格输入-->
         <specs-component :specs="product.specs"></specs-component>
-        <!--<v-layout column>-->
-        <!--<v-layout v-for="(item,index) in product.specs" :key="index" row>-->
-        <!--<v-flex>-->
-        <!--<v-text-field label="规格名称" v-model="item.name"></v-text-field>-->
-        <!--<v-text-field label="规格价格" v-model="item.price"></v-text-field>-->
-        <!--<v-layout class="img-list">-->
-        <!--<v-flex xs4 class="img-item" v-for="(it,index) in item.image" :key="index">-->
-        <!--<div class="img-box">-->
-        <!--<c-image :src="it" :width="100" :height="100"></c-image>-->
-        <!--</div>-->
-        <!--</v-flex>-->
-        <!--{{item.image}}-->
-        <!--<v-flex xs4 class="img-item">-->
-        <!--<file-upload-->
-        <!--class="img-box"-->
-        <!--ref="specUpload"-->
-        <!--v-model="specFiles"-->
-        <!--:post-action="'/api/v1/upload/image'"-->
-        <!--:headers="headers"-->
-        <!--@input-file="specFile"-->
-        <!--@input-filter="inputFilter"-->
-        <!--&gt;-->
-        <!--<v-btn flat block>-->
-        <!--<v-icon>-->
-        <!--add-->
-        <!--</v-icon>-->
-        <!--</v-btn>-->
-        <!--</file-upload>-->
-        <!--</v-flex>-->
-        <!--</v-layout>-->
-        <!--</v-flex>-->
-
-        <!--<div class="d-flex align-center">-->
-        <!--&lt;!&ndash;<v-icon>delete</v-icon>&ndash;&gt;-->
-        <!--<v-btn flat icon color="pink">-->
-        <!--<v-icon>delete</v-icon>-->
-        <!--</v-btn>-->
-        <!--</div>-->
-        <!--</v-layout>-->
-        <!--</v-layout>-->
-        <v-layout class="img-list" wrap align-content-space-around>
-        </v-layout>
       </form-group>
+      <v-divider></v-divider>
     </div>
 
-    <v-btn block @click="save">添加</v-btn>
+    <v-container>
+      <v-btn block @click="save" color="primary">添加</v-btn>
+    </v-container>
   </page>
 </template>
 
@@ -170,19 +141,29 @@ export default class AddProduct extends Vue {
 </script>
 <style scoped lang="stylus">
   .add-product {
+    .btn-height {
+      height: 25px;
+    }
     .wrap-white {
       background-color: #fff;
     }
     .img-list {
+      margin-right: -5px;
+      margin-bottom: -5px;
       .img-item {
+        padding-right: 5px;
+        padding-bottom: 5px;
         text-align: center
-        padding: 2px
         height: 100px;
         overflow: hidden;
-        background-color: #ddd;
         .img-box {
-          /*border: 1px dashed gray*/
+          height: 100%;
         }
+      }
+      .img-item-add {
+        background-color: #ddd;
+        width: 100%;
+        height: 100%;
       }
       .file-upload-btn {
         width: 100%;
