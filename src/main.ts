@@ -6,17 +6,18 @@ import router from './route';
 import store from './store/index';
 import '@/components/index'
 import '@/util/classComponentHooks'
-import MessageBox from '@/components/alert/Alert'
 import VueI18n from 'vue-i18n'
 import messages from '@/i18n/index'
-import VeeValidate, { Validator } from "vee-validate"
+import VeeValidate from "vee-validate"
 // import zh from 'vee-validate/dist/locale/zh_CN'
-import validationMessages from 'vee-validate/dist/locale/zh_CN'
+import validationMessages from 'vee-validate/dist/locale/zh_CN.js'
 // ui组件
 import FormGroup from '@/components/form/FormGroup'
-// import UploadImage from '@/components/form/UploadImage'
-
+// 插件
+import MessageBox from '@/components/alert/Alert'
+import Message from '@/components/message/message.ts'
 Vue.use(MessageBox)
+Vue.use(Message)
 Vue.use(VueI18n)
 
 // 通过选项创建 VueI18n 实例
@@ -33,7 +34,6 @@ Vue.use(VeeValidate, {
     'zh': validationMessages
   }
 });
-
 
 
 // ui组件
