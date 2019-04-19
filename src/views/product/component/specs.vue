@@ -5,12 +5,14 @@
         <v-flex xs7>
           <v-text-field
                   label="名称"
+                  v-model="item.name"
                   placeholder="请输入名称"
           ></v-text-field>
         </v-flex>
         <v-flex xs4 offset-xs1>
           <v-text-field
                   label="价格"
+                  v-model="item.price"
                   placeholder="请输入价格"
           ></v-text-field>
         </v-flex>

@@ -84,6 +84,9 @@ export default class AddProduct extends Vue {
   add () {
     ProductApi.add(this.product).then(data => {
       this.$router.back()
+    }).then(() => {
+      console.log(111)
+      this.$message({ message: this.$t('action.add') + this.$t('status.success'), type: 'success' })
     })
   }
 

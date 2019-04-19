@@ -6,10 +6,11 @@
       <div v-for="(item, index) in products" @click="$router.push({name:'productUpdate',params:{id:item.id}})">
         <v-flex>
           <v-card>
-            <v-layout class="pa-2">
-              <c-image :src="item.image[0]" :width="100" :height="100">
-
-              </c-image>
+            <v-layout class="pa-2 align-center">
+              <div class="product-img">
+                <c-image :src="item.image[0]">
+                </c-image>
+              </div>
               <v-flex>
                 <v-card-title primary-title>
                   <div>
@@ -38,9 +39,11 @@ import { State } from 'vuex-class';
 import { Delete } from '../types/index';
 import OptionBtn from '@/components/OptionBtn'
 
-@Component({components:{
-  OptionBtn
-}})
+@Component({
+  components: {
+    OptionBtn
+  }
+})
 export default class Work extends Vue {
   @State(state => state.team.currTeam) currTeam
 
@@ -59,7 +62,8 @@ export default class Work extends Vue {
 //    this.products = content
     this.list()
   }
-  public list(){
+
+  public list () {
     ProductApi.list(this.listParam).then(data => {
       this.products = data.content
     })
@@ -73,9 +77,9 @@ export default class Work extends Vue {
     this.$router.push({ name: 'productUpdate' })
   }
 
-  public del(id){
-    let params=new Delete(id)
-    ProductApi.delete(params).then(data=>{
+  public del (id) {
+    let params = new Delete(id)
+    ProductApi.delete(params).then(data => {
       this.list()
     })
   }
@@ -83,6 +87,10 @@ export default class Work extends Vue {
 </script>
 <style scoped lang="stylus">
   .product {
+    .product-img {
+      width: 100px;
+      height: 100px;
+    }
     .btn-add {
       bottom: 30px
       right: 30px
