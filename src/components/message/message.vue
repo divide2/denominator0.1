@@ -2,8 +2,7 @@
   <div class="message">
     <v-alert
             :value="visible"
-            :color="cur_type.color"
-            :icon="cur_type.icon"
+            :type="cur_type.name"
             transition="scale-transition"
             outline
 
