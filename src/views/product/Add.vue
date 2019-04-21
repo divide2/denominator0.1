@@ -44,7 +44,7 @@
           </v-btn>
         </div>
         <!--规格输入-->
-        <specs-component :specs="product.specs" ref="spec"></specs-component>
+        <specs-component :specs="product.specs" ref="specs"></specs-component>
       </form-group>
       <v-divider></v-divider>
     </div>
@@ -77,8 +77,8 @@ export default class AddProduct extends Vue {
   }
 
   addSpecs () {
-    const units = this.$refs.specs as any
-    units.add()
+    const specs = this.$refs.specs as any
+    specs.add()
   }
 
   add () {
