@@ -4,7 +4,7 @@
       <v-flex>
         <v-card>
           <v-layout class="pa-2">
-            <c-image :src="product.image[0]" :width="100" :height="100">
+            <c-image :src="product.image[0]" class="product-img">
 
             </c-image>
             <v-flex>
@@ -31,6 +31,13 @@
 <style scoped lang='stylus'>
   .detail-modal {
     width: 100%;
+    .product-img {
+      width: 100px;
+      height: 100px;
+      -webkit-border-radius: 4px;
+      -moz-border-radius: 4px;
+      border-radius: 4px;
+    }
   }
   .detail {
     background-color: #fff;
@@ -64,6 +71,7 @@ export default class File extends Vue {
   @Mutation('setShoppingCart') setShoppingCart
 
   created () {
+    // todo unit，amount数据结构需要更换
     this.specArr = this.product.specs.map(item => {
       return {
         amount: 0,
@@ -75,6 +83,7 @@ export default class File extends Vue {
         name: item.name
       }
     })
+    console.log(this.specArr, '========')
   }
 
   removeOne (obj) {

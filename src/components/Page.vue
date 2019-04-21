@@ -17,7 +17,7 @@
       <slot name="headerRight"></slot>
 
     </v-toolbar>
-    <v-content>
+    <v-content class="content">
       <slot>
       </slot>
     </v-content>
@@ -26,11 +26,16 @@
   </div>
 </template>
 
-<style scoped>
-.page {
-  padding-bottom: 60px;
-  min-height:100%;
-}
+<style scoped lang="stylus">
+  .page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    .content {
+      flex: 1;
+      overflow-y: auto;
+    }
+  }
 </style>
 
 <script lang="ts">
@@ -45,10 +50,10 @@ import { Component, Prop, Vue } from 'vue-property-decorator'
 export default class Page extends Vue {
 
   @Prop()
-  title!: string;
+  title: string;
 
   @Prop({ default: false })
-  hasBack!: boolean
+  hasBack: boolean
 
 }
 </script>

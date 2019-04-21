@@ -22,7 +22,7 @@
           </v-flex>
           <v-flex xs4 class="img-item d-flex align-center">
             <upload-image @getFile="getNewFile(arguments,item)" class="file-upload-btn"
-                          name="specsUploadFile"></upload-image>
+                          :name="'specsUploadFile'+index"></upload-image>
           </v-flex>
         </v-layout>
       </v-layout>

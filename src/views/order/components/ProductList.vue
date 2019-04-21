@@ -12,10 +12,11 @@
           <v-list-tile-title>{{ item.name }}</v-list-tile-title>
           <v-list-tile-sub-title v-html="item.price"></v-list-tile-sub-title>
         </v-list-tile-content>
-        <div class="purchase">
+        <div class="purchase" v-for="(it,i) in item.units" :key="i">
           <v-icon @click="removeOne(item)">remove_circle</v-icon>
           <input type="number" class="purchase-input" v-model="item.amount">
           <v-icon @click="addOne(item)">add_circle</v-icon>
+          <span>{{it.name}}</span>
         </div>
       </v-list-tile>
 

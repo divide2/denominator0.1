@@ -1,7 +1,7 @@
 <template>
   <page :title="'订单'" :hasBack="true">
     <option-btn :icon="'add'" @click.native="$router.push({name:'orderAdd'})"></option-btn>
-    <v-container>
+    <v-container class="pl-0 pr-0">
       <v-tabs centered>
         <v-tab @click="getData('waiting_confirm')">待确认</v-tab>
         <v-tab @click="getData('waiting_deliver')">待发货</v-tab>

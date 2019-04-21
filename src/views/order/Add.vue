@@ -1,8 +1,8 @@
 <template>
-  <page :title="'采购'" :hasBack="true">
-    <v-container>
-      <v-stepper v-model="currStep">
-        <v-stepper-header>
+  <page :title="'采购'" :hasBack="true" class="order-add">
+    <v-layout column class="order-add-wrap">
+      <v-stepper v-model="currStep" class="order-add-content">
+        <v-stepper-header class="header">
           <v-stepper-step :complete="currStep > 1" step="1">Name of step 1</v-stepper-step>
 
           <v-divider></v-divider>
@@ -14,20 +14,22 @@
           <v-stepper-step step="3">Name of step 3</v-stepper-step>
         </v-stepper-header>
 
-        <v-stepper-items>
+        <v-stepper-items class="content">
+          <!--第一步-->
           <v-stepper-content step="1">
             <v-select
-                v-model="order.toTeamId"
-                :items="cooperations"
-                :item-text="'name'"
-                :item-value="'id'"
-                @change="changeTeam">
+                    v-model="order.toTeamId"
+                    :items="cooperations"
+                    :item-text="'name'"
+                    :item-value="'id'"
+                    @change="changeTeam">
             </v-select>
             <v-btn color="primary" @click="currStep = 2">下一步</v-btn>
             <v-btn flat @click="currStep = 1">上一步</v-btn>
 
           </v-stepper-content>
 
+          <!--第二步-->
           <v-stepper-content step="2">
 
             <v-list two-line class="product">
@@ -48,6 +50,7 @@
             <v-btn color="primary" @click="currStep = 1">上一步</v-btn>
           </v-stepper-content>
 
+          <!--第三步-->
           <v-stepper-content step="3">
             <v-form>
               <v-text-field label="定金" v-model="order.earnestMoney"></v-text-field>
@@ -64,11 +67,31 @@
           </v-stepper-content>
         </v-stepper-items>
       </v-stepper>
-    </v-container>
+      <div class="btns">
+        <v-btn color="primary" @click="currStep = 2">下一步</v-btn>
+        <v-btn flat @click="currStep = 1">上一步</v-btn>
+      </div>
+    </v-layout>
   </page>
 </template>
 
 <style scoped lang='stylus'>
+  .order-add-wrap {
+    height: 100%;
+    .order-add-content {
+      flex: 1;
+      overflow-y: scroll
+      display: flex;
+      flex-direction column
+      .header {
+        z-index: 2
+      }
+      .content {
+        flex: 1
+        overflow-y: auto
+      }
+    }
+  }
 </style>
 
 <script lang="ts">
@@ -97,31 +120,31 @@ export default class WarehouseAdd extends Vue {
 
   @State(state => state.order.shopping_cart) shopping_cart
 
-  save() {
+  save () {
     OrderApi.add(this.order).then(data => {
       this.$router.back()
     })
   }
 
-  created() {
+  created () {
     TeamApi.cooperationList().then(data => {
       this.cooperations = data
     })
   }
 
-  getProducts() {
+  getProducts () {
     ProductApi.list(this.page).then(data => {
 
     })
   }
 
-  nextStep() {
+  nextStep () {
     this.currStep = this.currStep === 2 ? this.currStep++ : 0
   }
 
   //todo 想变成是computed属性的products
 
-  changeTeam(id) {
+  changeTeam (id) {
     if (!id) {
       return
     } else {
