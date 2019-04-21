@@ -50,6 +50,11 @@ const routes = [
     component: Register
   },
   {
+    path: '/pwd/find',
+    name: 'pwdFind',
+    component: () => import('@/views/login/PwdFind.vue')
+  },
+  {
     path: '/chatRoom/:chatRoomId',
     name: 'chatRoom',
     component: () => import('@/views/message/ChatRoom.vue')

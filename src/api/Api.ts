@@ -28,6 +28,7 @@ const Api = {
 }
 
 const request = async function (url: string, data: any, method: string = 'get', headers?: any) {
+    // url = url.replace('/api', 'http://120.77.153.225:8080/');
   try {
     const response = await axios({
       url,

@@ -22,7 +22,7 @@
       <v-btn @click="login()" block round color="primary">登录</v-btn>
     </v-form>
     <v-layout justify-space-between>
-      <v-btn flat color="primary" small>忘记密码?</v-btn>
+      <v-btn flat color="primary" small @click="toPwdFind">忘记密码?</v-btn>
       <v-btn flat color="primary" small @click="onRegClick">新用户注册</v-btn>
     </v-layout>
   </v-container>
@@ -44,21 +44,25 @@ export default class Login extends Vue {
 
   @Action('loginByUsername') loginByUsername
 
-  login () {
-    if (this.form.username && this.form.password) {
+  async login () {
+    const valid = await this.$validator.validateAll()
+    if (valid) {
       this.loginByUsername(this.form).then(data => {
         this.$router.push({ name: 'chat' })
         /*    if (this.lastPathName) {
               this.$router.push({name: this.lastPathName})
             } else {
             }*/
-      })
+      });
     }
   }
 
   onRegClick () {
-    console.log('cccccc')
-    this.$router.push('/register')
+    this.$router.push({name: 'register'})
+  }
+
+  toPwdFind() {
+    this.$router.push({name: 'pwdFind'});
   }
 
   /*  beforeRouteEnter(to, from, next) {
@@ -66,13 +70,6 @@ export default class Login extends Vue {
         vm.lastPathName = from.name
       })
     }*/
-  required (v) {
-    return !!v || '不能为空'
-  }
-
-  controlLength () {
-    console.log(arguments[0])
-  }
 }
 </script>
 

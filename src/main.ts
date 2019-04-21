@@ -12,7 +12,7 @@ import VeeValidate from "vee-validate"
 // import zh from 'vee-validate/dist/locale/zh_CN'
 import validationMessages from 'vee-validate/dist/locale/zh_CN.js'
 // ui组件
-import FormGroup from '@/components/form/FormGroup'
+import FormGroup from '@/components/form/FormGroup.vue'
 // 插件
 import MessageBox from '@/components/alert/Alert'
 import Message from '@/components/message/message.ts'

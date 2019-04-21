@@ -12,7 +12,7 @@ const router = new Router({
 });
 
 const NO_LOGING = [
-  '/login', '/register', '/404'
+  '/login', '/register', '/404', '/pwd/find'
 ]
 
 const isAllowed = (path: string) => {

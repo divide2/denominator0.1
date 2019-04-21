@@ -7,6 +7,8 @@ export class LoginForm {
 export class JoinForm {
   public account = ''
   public verifyCode = ''
+  password= ''
+  rePassword =  ''
 }
 
 interface Query {
