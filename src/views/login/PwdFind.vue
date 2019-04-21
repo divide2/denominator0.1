@@ -1,13 +1,12 @@
 <template>
   <v-container>
     <v-content>
-      <h1 style="margin-top: 50px;">新用户注册</h1>
+      <h1 style="margin-top: 50px;">找回密码</h1>
       <v-form>
         <v-text-field
             v-model="joinForm.account"
-            type="number"
             label="手机号"
-            v-validate="'required|min:11|max:11'"
+            v-validate="'required'"
             data-vv-name="joinForm.account"
             :error-messages="errors.collect('joinForm.account')"
             required
@@ -15,9 +14,8 @@
         <v-input>
           <v-text-field
               v-model="joinForm.verifyCode"
-              type="number"
               label="验证码"
-              v-validate="'required|min:6|max:6'"
+              v-validate="'required|length:6'"
               data-vv-name="joinForm.verifyCode"
               :error-messages="errors.collect('joinForm.verifyCode')"
           >
@@ -45,7 +43,7 @@
         >
         </v-text-field>
 
-        <v-btn @click="join()" round block color="primary">{{$t('action.register')}}</v-btn>
+        <v-btn @click="join()" round block color="primary">{{$t('action.findPwd')}}</v-btn>
       </v-form>
     </v-content>
   </v-container>
